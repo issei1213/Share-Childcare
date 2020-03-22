@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "custom-font";
+  src: font-url("yomogifont.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+header {
+  padding: 156px 0 100px;
+}
+
+section {
+  padding: 150px 0;
+}
+
+.slick-prev.slick-arrow {
+  display: none;
+}
+
+.apl-aicon {
+  font-family: "custom-font";
+}
