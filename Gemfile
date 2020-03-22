@@ -86,4 +86,4 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
 
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap-honoka-rails' , '~> 4.3.1'
