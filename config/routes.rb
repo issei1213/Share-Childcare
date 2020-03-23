@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get 'step1'
       get 'step2'
+      get 'check'
       get 'done'
     end
   end
