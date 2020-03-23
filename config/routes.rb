@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'home#top'
+  root to: 'homes#root'
   resources :signup do
     collection do
       get 'step1'

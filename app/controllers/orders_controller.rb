@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  def top
+  def root
   end
 
   def index
