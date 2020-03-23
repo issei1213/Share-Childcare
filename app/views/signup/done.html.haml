@@ -1,0 +1,40 @@
+.container
+  .row.justify-content-center
+    .col-5
+      %img.d-block.mx-auto.mt-5{alt: "", height: "70px", width: "263px", src: "../images/logo_white.png"}/
+    %div{role: "content"}
+      .widget-body.mt-5
+        .row
+          %form#wizard-1{novalidate: "novalidate"}
+            #bootstrap-wizard-1.col-sm-12
+              .form-bootstrapWizard
+                %ul.bootstrapWizard.form-wizard
+                  %li.active{data: {target: "#step1"}}
+                    %a{data: {toggle: "tab"}, href: "#tab1"}
+                      %span.step 1
+                      %span.title 会員情報 入力
+                  %li.active{data: {target: "#step2"}}
+                    %a{data: {toggle: "tab"}, href: "#tab2"}
+                      %span.step 2
+                      %span.title 住所情報 入力
+                  %li.active{data: {target: "#step3"}}
+                    %a{data: {toggle: "tab"}, href: "#tab3"}
+                      %span.step 3
+                      %span.title 確認画面
+                  %li.active{data: {target: "#step3"}}
+                    %a{data: {toggle: "tab"}, href: "#tab3"}
+                      %span.step 4
+                      %span.title 完了
+.container.signup-step.bg-light.mt-5
+  .row.justify-content-center
+    .col-md-3.pt-4.text-center.font-weight-bold 
+      %h5= "登録完了"
+      %hr.mb-4/
+  .row.justify-content-center
+    .col-md-8.text-center
+      %h5= "登録完了しました。"
+    .col-md-8.text-center.mt-3
+      = link_to "トップページ", "#", class: "btn-lg btn-primary"
+
+
+  %footer.my-5.pt-5.text-muted.text-center.text-small
