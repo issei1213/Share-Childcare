@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'orders#index'
+  root to: 'home#top'
   resources :signup do
     collection do
       get 'step1'
@@ -8,4 +8,5 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
+  resources :homes, only: [:index]
 end
