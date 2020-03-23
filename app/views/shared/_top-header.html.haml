@@ -1,1 +1,26 @@
-トップ
+.row
+  .col-lg-12
+    .bs-component
+      %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+        = link_to "APL名", homes_path, class: "navbar-brand"
+        -# %a.navbar-brand{href: } APL名
+        -# ロゴ変更思考中
+        -# = link_to homes_path do
+          -# %img.d-block.ml-auto.navbar-brand{alt: "", height: "30px", width: "150px", src: "../images/logo_clear.png", class: "img-fluid top-image"}
+        %button.navbar-toggler{aria: {controls: "navbarColor01", expanded: "false", expanded: "false", label: "Toggle navigation"}, data: {target: "#navbarColor01", toggle: "collapse"}, type: "button"}
+          %span.navbar-toggler-icon
+        #navbarColor01.collapse.navbar-collapse
+          %ul.navbar-nav.mr-auto
+            %li.nav-item
+              %a.nav-link{href: "#"} マイページ
+            %li.nav-item
+              %a.nav-link{href: "#"} リンク
+            %li.nav-item.dropdown
+              %a#navbarDropdown.nav-link.dropdown-toggle{aria: {expanded: "false", haspopup: "true"},data: {toggle:"dropdown"}, href: "#", role: "button"}
+                サブメニュー
+              .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+                %a.dropdown-item{:href => "#"} 高坂穂乃果
+          -# 実装予定
+          -# %form.form-inline.my-2.my-lg-0
+          -#   %input.form-control.mr-sm-2{:placeholder => "Search", :type => "text"}/
+          -#   %button.btn.btn-secondary.my-2.my-sm-0{:type => "submit"} 検索
