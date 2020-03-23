@@ -1,15 +1,17 @@
 %nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
-  .container
-    .navbar-brand.js-scroll-trigger.apl-aicon 
-      SHERE CHILDCARE〜育児支援サービス〜
+  .container.signup-step
+    .navbar-brand.js-scroll-trigger
+      %img.d-block.ml-auto{alt: "", height: "40px", width: "200px", src: "../images/logo_clear.png", class: "img-fluid top-image"}/
     %button.navbar-toggler{aria: {controls: "navbarResponsive", expanded: "false", label: "Toggle navigation"}, data: {target: "#navbarResponsive", toggle: "collapse"}, type: "button"}
       %span.navbar-toggler-icon
     #navbarResponsive.collapse.navbar-collapse
       %ul.navbar-nav.ml-auto
         %li.nav-item
-          = link_to "新規登録", "#", class: "nav-link js-scroll-trigger header-signup"
+          = link_to "新規登録", step1_signup_index_path, class: "nav-link js-scroll-trigger header-signup"
         %li.nav-item
           = link_to "ログイン", "#", class: "nav-link js-scroll-trigger header-login", data: {target: "#exampleModal", toggle: "modal"}
+        %li.nav-item
+          = link_to "", "#", class: "nav-link js-scroll-trigger header-login", data: {target: "#exampleModal", toggle: "modal"}
 
 
 -# ログインページ
