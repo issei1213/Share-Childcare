@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      order: 注文  #g
+      user: ユーザー  #g
+
+    attributes:
+      user:
+        block: ブロック  #g
+        building: 建物  #g
+        city: 市  #g
+        email: Eメール  #g
+        encrypted_password: 暗号化されたパスワード  #g
+        first_name: ファーストネーム  #g
+        first_name_kana: 名かな  #g
+        last_name: 苗字  #g
+        last_name_kana: 姓かな  #g
+        nickname: ニックネーム  #g
+        phone_number: 電話番号  #g
+        postcode: 郵便番号  #g
+        prefecture: 県  #g
+        remember_created_at: 作成日を記憶する  #g
+        reset_password_sent_at: に送信されたパスワードをリセット  #g
+        reset_password_token: パスワードトークンをリセットする  #g

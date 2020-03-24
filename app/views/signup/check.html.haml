@@ -32,7 +32,7 @@
       %hr.mb-4/
   .row.justify-content-center
     .col-md-8.order-md-1
-      = form_with url: check_signup_index_path, class: "needs-validation", validation: "", local: true do |f|
+      = form_with model:@user, url: check_signup_index_path, method: :get, class: "needs-validation", validation: "", local: true do |f|
         .row
           .col-md-6.mb-3
             = f.label "姓", class: "font-weight-bold"

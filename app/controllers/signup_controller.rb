@@ -4,12 +4,15 @@ class SignupController < ApplicationController
   end
 
   def step2
+    @signup = User.new
   end
 
   def check
+    @signup = User.new
   end
 
   def done
+    @signup = User.new
   end
 
   private
