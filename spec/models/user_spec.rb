@@ -14,15 +14,40 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
-    it "first_name_kanaが全角で登録できること" do
+    it "first_nameが全角で登録できること" do
+      user = build(:user, first_name: "三浦")
+      user.valid?
+      expect(user).to be_valid
+    end
+
+    it "last_nameが全角で登録できること" do
+      user = build(:user, last_name: "壱生")
+      user.valid?
+      expect(user).to be_valid
+    end
+
+    it "first_name_kanaが全角カナで登録できること" do
       user = build(:user, first_name_kana: "ミウラ")
       user.valid?
       expect(user).to be_valid
     end
 
-    it "last_name_kanaが全角で登録できること" do
+    it "last_name_kanaが全角カナで登録できること" do
       user = build(:user, last_name_kana: "イッセイ")
       user.valid?
+      expect(user).to be_valid
+    end
+
+    it "phone_numberが正しい値で登録できること" do
+      user = build(:user, phone_number: "090-1234-5678")
+      user.valid?
+      expect(user).to be_valid
+    end
+
+    it "emailが一意な値で登録ができること" do
+      user = create(:user)
+      user_build = build(:user, email: "test@test.com")
+      user_build.valid?
       expect(user).to be_valid
     end
   end
@@ -117,11 +142,24 @@ RSpec.describe User, type: :model do
       user.valid?
       expect(user.errors[:email]).to include("を入力してください") 
     end
+
+    it "emailが重複した登録ができないこと" do
+      user = create(:user)
+      user_build = build(:user, email: user.email)
+      user_build.valid?
+      expect(user_build.errors[:email]).to include("はすでに存在します") 
+    end
   
     it "phone_numberが空では登録できないこと" do
       user = build(:user, phone_number: "")
       user.valid?
       expect(user.errors[:phone_number]).to include("を入力してください") 
+    end
+
+    it "phone_numberが不正な値では登録できないこと" do
+      user = build(:user, phone_number: "9999-99-9999")
+      user.valid?
+      expect(user.errors[:phone_number]).to include("は不正な値です") 
     end
 
     it "passwordが空では登録できないこと" do
