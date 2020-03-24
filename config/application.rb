@@ -1,5 +1,4 @@
 require_relative 'boot'
-
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -15,5 +14,8 @@ module ShareChildcare
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.i18n.default_locale = :ja
+    config.time_zone = 'Asia/Tokyo'
+
   end
 end
