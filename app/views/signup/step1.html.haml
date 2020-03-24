@@ -1,0 +1,92 @@
+.container
+  .row.justify-content-center
+    .col-5
+      %img.d-block.mx-auto.mt-5{alt: "", height: "70px", width: "263px", src: "../images/logo_white.png"}/
+    %div{role: "content"}
+      .widget-body.mt-5
+        .row
+          %form#wizard-1{novalidate: "novalidate"}
+            #bootstrap-wizard-1.col-sm-12
+              .form-bootstrapWizard
+                %ul.bootstrapWizard.form-wizard
+                  %li.active{data: {target: "#step1"}}
+                    %a{data: {toggle: "tab"}, href: "#tab1"}
+                      %span.step 1
+                      %span.title 会員情報 入力
+                  %li{data: {target: "#step2"}}
+                    %a{data: {toggle: "tab"}, href: "#tab2"}
+                      %span.step 2
+                      %span.title 住所情報 入力
+                  %li{data: {target: "#step3"}}
+                    %a{data: {toggle: "tab"}, href: "#tab3"}
+                      %span.step 3
+                      %span.title 確認画面
+                  %li{data: {target: "#step3"}}
+                    %a{data: {toggle: "tab"}, href: "#tab3"}
+                      %span.step 4
+                      %span.title 完了
+.container.signup-step.bg-light.mt-5
+  .row.justify-content-center
+    .col-md-4.pt-4.text-center
+      %h5= "新規会員情報入力"
+      %hr.mb-4/
+  .row.justify-content-center
+    .col-md-8.order-md-1
+      = form_with url: step2_signup_index_path, class: "needs-validation", validation: "", local: true do |f|
+        .row
+          .col-md-6.mb-3
+            = f.label "姓", class: "font-weight-bold"
+            %span.badge.badge-danger 必須
+            = f.text_field :first_name, class: "form-control", placeholder: "田中"
+            .invalid-feedback
+              名字を入力してください
+          .col-md-6.mb-3
+            = f.label "名"
+            %span.badge.badge-danger 必須
+            = f.text_field :last_name, class: "form-control", placeholder: "太郎"
+            .invalid-feedback
+              名前を入力してください
+          .col-md-6.mb-3
+            = f.label "姓(かな)"
+            %span.badge.badge-danger 必須
+            = f.text_field :first_name_kana, class: "form-control", placeholder: "たなか"
+            .invalid-feedback
+              名字(かな)を入力してください
+          .col-md-6.mb-3
+            = f.label "名(かな)"
+            %span.badge.badge-danger 必須
+            = f.text_field :last_name_kana, class: "form-control", placeholder: "たろう"
+            .invalid-feedback
+              名前(かな)を入力してください
+        .mb-3
+          = f.label "ニックネーム"
+          %span.badge.badge-danger 必須
+          = f.text_field :nickname, class: "form-control", placeholder: "Taroh"
+          .invalid-feedback
+            名前を入力してください
+        .mb-3
+          = f.label "Eメール"
+          %span.badge.badge-danger 必須
+          = f.email_field :email, class: "form-control", placeholder: "tanaka_tarou@example.com"
+          .invalid-feedback
+            配送の更新に有効なメールアドレスを入力してください
+        .mb-3
+          = f.label "電話番号"
+          %span.badge.badge-danger 必須
+          = f.text_field :phone_number, class: "form-control", placeholder: "XXX-XXXX-XXXX"
+          .invalid-feedback
+            電話番号を入力してください
+        .mb-3
+          = f.label "パスワード"
+          %span.badge.badge-danger 必須
+          = f.password_field :password, class: "form-control", placeholder: "7文字以上半角"
+          .invalid-feedback
+            パスワードを入力してください
+        .mb-3
+          = f.label "パスワード(確認用)"
+          %span.badge.badge-danger 必須
+          = f.password_field :password_confirmation, class: "form-control", placeholder: "7文字以上半角(再度入力)"
+          .invalid-feedback
+            パスワードを入力してください
+        %hr.mb-4/
+        = f.submit "次へ進む", class: "btn btn-primary w-50 mx-auto d-block"

@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '5.2.4.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
@@ -86,4 +86,5 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
 
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap-honoka-rails' , '~> 4.3.1'
+gem 'bootstrap'

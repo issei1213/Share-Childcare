@@ -1,0 +1,78 @@
+.container
+  .row.justify-content-center
+    .col-5
+      %img.d-block.mx-auto.mt-5{alt: "", height: "70px", width: "263px", src: "../images/logo_white.png"}/
+    %div{role: "content"}
+      .widget-body.mt-5
+        .row
+          %form#wizard-1{novalidate: "novalidate"}
+            #bootstrap-wizard-1.col-sm-12
+              .form-bootstrapWizard
+                %ul.bootstrapWizard.form-wizard
+                  %li.active{data: {target: "#step1"}}
+                    %a{data: {toggle: "tab"}, href: "#tab1"}
+                      %span.step 1
+                      %span.title 会員情報 入力
+                  %li.active{data: {target: "#step2"}}
+                    %a{data: {toggle: "tab"}, href: "#tab2"}
+                      %span.step 2
+                      %span.title 住所情報 入力
+                  %li.active{data: {target: "#step3"}}
+                    %a{data: {toggle: "tab"}, href: "#tab3"}
+                      %span.step 3
+                      %span.title 確認画面
+                  %li{data: {target: "#step3"}}
+                    %a{data: {toggle: "tab"}, href: "#tab3"}
+                      %span.step 4
+                      %span.title 完了
+.container.signup-step.bg-light.mt-5
+  .row.justify-content-center
+    .col-md-3.pt-4.text-center.font-weight-bold 
+      %h5= "入力確認画面"
+      %hr.mb-4/
+  .row.justify-content-center
+    .col-md-8.order-md-1
+      = form_with url: check_signup_index_path, class: "needs-validation", validation: "", local: true do |f|
+        .row
+          .col-md-6.mb-3
+            = f.label "姓", class: "font-weight-bold"
+            = f.text_field :first_name, class: "form-control bg-white", readonly: "", value: "田中"
+          .col-md-6.mb-3
+            = f.label "名"
+            = f.text_field :last_name, class: "form-control bg-white", readonly: "", value: "太郎"
+          .col-md-6.mb-3
+            = f.label "姓(かな)"
+            = f.text_field :first_name_kana, class: "form-control bg-white", readonly: "", value: "たなか"
+          .col-md-6.mb-3
+            = f.label "名(かな)"
+            = f.text_field :last_name_kana, class: "form-control bg-white", readonly: "", value: "たろう"
+        .mb-3
+          = f.label "ニックネーム"
+          = f.text_field :nickname, class: "form-control bg-white", readonly: "", value: "Taroh"
+        .mb-3
+          = f.label "Eメール"
+          = f.email_field :email, class: "form-control bg-white", readonly: "", value: "tanaka_tarou@example.com"
+        .mb-3
+          = f.label "電話番号"
+          = f.text_field :phone_number, class: "form-control bg-white", readonly: "", value: "XXX-XXXX-XXXX"
+        .mb-3
+          = f.label "パスワード"
+          = f.password_field :password, class: "form-control bg-white", readonly: "", value: "7文字以上半角"
+        .mb-3
+          = f.label "郵便番号"
+          = f.text_field :postcode, class: "form-control bg-white", readonly: "", value: "XXX-XXXX"
+        .mb-3
+          = f.label "都道府県"
+          = f.select :prefecture,{}, {}, class: "form-control bg-white",readonly: ""
+        .mb-3
+          = f.label "市区町村"
+          = f.text_field :city, class: "form-control bg-white", readonly: "", value: "福岡市博多区"
+        .mb-3
+          = f.label "番地"
+          = f.text_field :block, class: "form-control bg-white", readonly: "", value: "博多1-1-1"
+        .mb-3
+          = f.label "建物名"
+          = f.text_field :building, class: "form-control bg-white", readonly: "", value: "博多ビル"
+        %hr.mb-4/
+        = f.submit "登録する", class: "btn btn-primary w-50 mx-auto d-block"
+  %footer.my-5.pt-5.text-muted.text-center.text-small
