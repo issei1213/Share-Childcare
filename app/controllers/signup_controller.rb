@@ -3,16 +3,14 @@ class SignupController < ApplicationController
     @user = User.new
   end
 
+  def step1_validates
+    @user_step1 = User.new(user_params)
+    unless @user_step1.valid?
+      render :step11
+    end
+  end
+
   def step2
-    session[:first_name] = user_params[:first_name],
-    session[:last_name] = user_params[:last_name],
-    session[:first_name_kana] = user_params[:first_name_kana],
-    session[:last_name_kana] = user_params[:last_name_kana],
-    session[:nickname] = user_params[:nickname],
-    session[:email] = user_params[:email],
-    session[:phone_number] = user_params[:phone_number],
-    session[:password] = user_params[:password],
-    session[:password_confirmation] = user_params[:password_confirmation]
     @user = User.new
   end
 
@@ -30,23 +28,19 @@ class SignupController < ApplicationController
   end
 
   private
+    def user_params
+      params.permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :nickname, :postcode, :prefecture, :city, :block, :building, :email, :phone_number, :password, :password_confirmation)
+    end
 
-  # def user_params
-  #   params.require(:user).permit(
-  #     :first_name,
-  #     :last_name,
-  #     :first_name_kana,
-  #     :last_name_kana,
-  #     :nickname,
-  #     :postcode,
-  #     :prefecture,
-  #     :city,
-  #     :block,
-  #     :building,
-  #     :email,
-  #     :phone_number,
-  #     :password,
-  #     :password_confirmation
-  # )
-  # end
-end
+    def set_step1_session(user_params)
+      session[:first_name] = user_params[:first_name]
+      session[:last_name] = user_params[:last_name]
+      session[:first_name_kana] = user_params[:first_name_kana]
+      session[:last_name_kana] = user_params[:last_name_kana]
+      session[:nickname] = user_params[:nickname]
+      session[:email] = user_params[:email]
+      session[:phone_number] = user_params[:phone_number]
+      session[:password] = user_params[:password]
+      session[:password_confirmation] = user_params[:password_confirmation]
+    end
+  end

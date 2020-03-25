@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :signup do
     collection do
       get 'step1'
+      post 'step1', to: 'signup#step1_validates'
       get 'step2'
+      post 'step2', to: 'signup#step2_validates'
       get 'check'
       get 'done'
     end
