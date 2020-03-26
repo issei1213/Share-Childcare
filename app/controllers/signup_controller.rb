@@ -6,8 +6,10 @@ class SignupController < ApplicationController
   def step1_validates
     @user_step1 = User.new(user_params)
     unless @user_step1.valid?
-      render :step11
+      flash.now[:alert] = @user_step1.errors.messages
+      render :step1
     end
+    redirect_to step2_signup_index_path
   end
 
   def step2

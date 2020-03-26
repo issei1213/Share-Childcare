@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#root'
-  resources :signup do
+  resources :signups do
     collection do
       get 'step1'
       post 'step1', to: 'signup#step1_validates'
