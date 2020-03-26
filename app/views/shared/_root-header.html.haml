@@ -7,7 +7,7 @@
     #navbarResponsive.collapse.navbar-collapse
       %ul.navbar-nav.ml-auto
         %li.nav-item
-          = link_to "新規登録", step1_signup_index_path, class: "nav-link js-scroll-trigger header-signup"
+          = link_to "新規登録", step1_signups_path, method: :GET, class: "nav-link js-scroll-trigger header-signup"
         %li.nav-item
           = link_to "ログイン", "#", class: "nav-link js-scroll-trigger header-login", data: {target: "#exampleModal", toggle: "modal"}
         %li.nav-item
