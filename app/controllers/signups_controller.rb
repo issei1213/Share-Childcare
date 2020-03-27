@@ -39,11 +39,10 @@ class SignupsController < ApplicationController
   end
 
   def create
-    @user = set_user_with_session
-    if @user.save
+    @user = User.new(user_params)
+    if @user.save!
       sign_in User.find(@user.id) unless user_signed_in?
       delete_session
-      redirect_to done_signups_path
     else
       render :new
     end
@@ -131,25 +130,6 @@ class SignupsController < ApplicationController
       session[:city] = user_params[:city],
       session[:block] = user_params[:block],
       session[:building] = user_params[:building]
-    end
-
-    def set_user_with_session
-      User.new(
-        first_name: session[:first_name],
-        last_name: session[:last_name],
-        first_name_kana: session[:first_name_kana],
-        last_name_kana: session[:last_name_kana],
-        nickname: session[:nickname],
-        email: session[:email],
-        phone_number: session[:phone_number],
-        password: session[:password],
-        password_confirmation: session[:password_confirmation],
-        postcode: session[:postcode],
-        prefecture: session[:prefecture],
-        city: session[:city],
-        block: session[:block],
-        building: session[:building]
-      )
     end
 
     def delete_session

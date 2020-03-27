@@ -20,7 +20,7 @@
               .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
                 %a.dropdown-item{:href => "#"} 高坂穂乃果
             %li.nav-item
-              = link_to "ログアウト(#{current_user.nickname})", destroy_user_session_path, method: :delete, class: "nav-link"
+              = link_to "ログアウト(#{current_user.nickname}さん:ID#{current_user.id})", destroy_user_session_path, method: :delete, class: "nav-link"
           -# 実装予定
           -# %form.form-inline.my-2.my-lg-0
           -#   %input.form-control.mr-sm-2{:placeholder => "Search", :type => "text"}/
