@@ -13,7 +13,7 @@ class SignupsController < ApplicationController
       redirect_to step2_signups_path
     else
       flash.now[:alert] = @user_step1.errors.messages
-      render :step1 and return
+      render :step1
     end
   end
 
@@ -41,6 +41,7 @@ class SignupsController < ApplicationController
   def create
     @user = set_user_with_session
     if @user.save
+      sign_in User.find(@user.id) unless user_signed_in?
       delete_session
       redirect_to done_signups_path
     else
