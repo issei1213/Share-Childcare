@@ -1,0 +1,11 @@
+- flash.each do |key, value|
+  %div{class: "alert alert-#{key}"}
+    %button.close{data: {dismiss: "alert"}, type: "button"}
+      %span{aria: {hidden: "true"}} ×
+    %ul
+      %li= value
+
+-# 配列対応用
+      -# - value.each do |v|
+      -#   %li
+      -#     = v

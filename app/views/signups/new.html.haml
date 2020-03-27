@@ -3,7 +3,7 @@
     .col-5
       %img.d-block.mx-auto.mt-5{alt: "", height: "70px", width: "263px", src: "../images/logo_white.png"}/
     %div{role: "content"}
-      .widget-body.mt-5
+      .widget-body.mt-5.mr-5
         .row
           %form#wizard-1{novalidate: "novalidate"}
             #bootstrap-wizard-1.col-sm-12
@@ -25,54 +25,54 @@
                     %a{data: {toggle: "tab"}, href: "#tab3"}
                       %span.step 4
                       %span.title 完了
-.container.signup-step.bg-light.mt-5
+.container.signup-step.bg-light.mt-5.rounded
   .row.justify-content-center
     .col-md-3.pt-4.text-center.font-weight-bold 
       %h5= "入力確認画面"
       %hr.mb-4/
   .row.justify-content-center
     .col-md-8.order-md-1
-      = form_with model:@user, url: check_signup_index_path, method: :get, class: "needs-validation", validation: "", local: true do |f|
+      = form_with model: @user, url: signups_path, method: :POST, class: "needs-validation", validation: "", local: true do |f|
         .row
           .col-md-6.mb-3
             = f.label "姓", class: "font-weight-bold"
-            = f.text_field :first_name, class: "form-control bg-white", readonly: "", value: "田中"
+            = f.text_field :first_name, class: "form-control bg-white", readonly: "", value: session[:first_name]
           .col-md-6.mb-3
             = f.label "名"
-            = f.text_field :last_name, class: "form-control bg-white", readonly: "", value: "太郎"
+            = f.text_field :last_name, class: "form-control bg-white", readonly: "", value: session[:last_name]
           .col-md-6.mb-3
             = f.label "姓(かな)"
-            = f.text_field :first_name_kana, class: "form-control bg-white", readonly: "", value: "たなか"
+            = f.text_field :first_name_kana, class: "form-control bg-white", readonly: "",value: session[:first_name_kana]
           .col-md-6.mb-3
             = f.label "名(かな)"
-            = f.text_field :last_name_kana, class: "form-control bg-white", readonly: "", value: "たろう"
+            = f.text_field :last_name_kana, class: "form-control bg-white", readonly: "", value: session[:last_name_kana]
         .mb-3
           = f.label "ニックネーム"
-          = f.text_field :nickname, class: "form-control bg-white", readonly: "", value: "Taroh"
+          = f.text_field :nickname, class: "form-control bg-white", readonly: "", value: session[:nickname]
         .mb-3
           = f.label "Eメール"
-          = f.email_field :email, class: "form-control bg-white", readonly: "", value: "tanaka_tarou@example.com"
+          = f.email_field :email, class: "form-control bg-white", readonly: "", value: session[:email]
         .mb-3
           = f.label "電話番号"
-          = f.text_field :phone_number, class: "form-control bg-white", readonly: "", value: "XXX-XXXX-XXXX"
+          = f.text_field :phone_number, class: "form-control bg-white", readonly: "", value: session[:phone_number]
         .mb-3
           = f.label "パスワード"
-          = f.password_field :password, class: "form-control bg-white", readonly: "", value: "7文字以上半角"
+          = f.password_field :password, class: "form-control bg-white", readonly: "", value: session[:password]
         .mb-3
           = f.label "郵便番号"
-          = f.text_field :postcode, class: "form-control bg-white", readonly: "", value: "XXX-XXXX"
+          = f.text_field :postcode, class: "form-control bg-white", readonly: "", value: session[:postcode]
         .mb-3
           = f.label "都道府県"
-          = f.select :prefecture,{}, {}, class: "form-control bg-white",readonly: ""
+          = f.text_field :prefecture, class: "form-control bg-white",readonly: "",  value: session[:prefecture]
         .mb-3
           = f.label "市区町村"
-          = f.text_field :city, class: "form-control bg-white", readonly: "", value: "福岡市博多区"
+          = f.text_field :city, class: "form-control bg-white", readonly: "", value: session[:city]
         .mb-3
           = f.label "番地"
-          = f.text_field :block, class: "form-control bg-white", readonly: "", value: "博多1-1-1"
+          = f.text_field :block, class: "form-control bg-white", readonly: "", value: session[:block]
         .mb-3
           = f.label "建物名"
-          = f.text_field :building, class: "form-control bg-white", readonly: "", value: "博多ビル"
+          = f.text_field :building, class: "form-control bg-white", readonly: "", value: session[:building]
         %hr.mb-4/
         = f.submit "登録する", class: "btn btn-primary w-50 mx-auto d-block"
   %footer.my-5.pt-5.text-muted.text-center.text-small

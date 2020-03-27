@@ -3,7 +3,7 @@
     .col-5
       %img.d-block.mx-auto.mt-5{alt: "", height: "70px", width: "263px", src: "../images/logo_white.png"}/
     %div{role: "content"}
-      .widget-body.mt-5
+      .widget-body.mt-5.mr-5
         .row
           %form#wizard-1{novalidate: "novalidate"}
             #bootstrap-wizard-1.col-sm-12
@@ -25,7 +25,7 @@
                     %a{data: {toggle: "tab"}, href: "#tab3"}
                       %span.step 4
                       %span.title 完了
-.container.signup-step.bg-light.mt-5
+.container.signup-step.bg-light.mt-5.rounded
   .row.justify-content-center
     .col-md-3.pt-4.text-center.font-weight-bold 
       %h5= "登録完了"
@@ -34,7 +34,7 @@
     .col-md-8.text-center
       %h5= "登録完了しました。"
     .col-md-8.text-center.mt-3
-      = link_to "トップページ", "#", class: "btn-lg btn-primary"
+      = link_to "トップページ", homes_path, class: "btn-lg btn-primary"
 
 
   %footer.my-5.pt-5.text-muted.text-center.text-small
