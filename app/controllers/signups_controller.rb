@@ -1,8 +1,8 @@
 class SignupsController < ApplicationController
   before_action :move_to_root
+  before_action :create_user_new, only: [:step1, :step2, :new]
 
   def step1
-    @user = User.new
   end
 
   def step1_validates
@@ -19,7 +19,6 @@ class SignupsController < ApplicationController
   end
 
   def step2
-    @user = User.new
   end
 
   def step2_validates
@@ -36,7 +35,6 @@ class SignupsController < ApplicationController
   end
 
   def new
-    @user = User.new
   end
 
   def create
@@ -152,5 +150,9 @@ class SignupsController < ApplicationController
 
     def move_to_root
       redirect_to root_path unless user_signed_in?
+    end
+  
+    def create_user_new
+      @user = User.new
     end
 end
