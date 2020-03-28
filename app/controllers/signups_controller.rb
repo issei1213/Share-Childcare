@@ -1,4 +1,5 @@
 class SignupsController < ApplicationController
+  before_action :move_to_root
 
   def step1
     @user = User.new
@@ -147,5 +148,9 @@ class SignupsController < ApplicationController
       session.delete(:city)
       session.delete(:block)
       session.delete(:building)
+    end
+
+    def move_to_root
+      redirect_to root_path unless user_signed_in?
     end
 end
