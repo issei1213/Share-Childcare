@@ -41,7 +41,7 @@ RSpec.describe SignupsController, type: :controller do
       expect(response).to render_template :new
     end
   end
-  describe "POST #create" do #ログイン中である条件を追加する必要あり deviseの設定変更必要あり
+  describe "POST #create" do #ログイン中である条件を追加する必要あり deviseの設定変更必要あり 
     context "when user is valid" do
       subject { post :create, params: params }
       it "HTTPステータスが200であることを確認" do
