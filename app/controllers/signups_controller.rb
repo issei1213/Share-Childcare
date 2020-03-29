@@ -168,4 +168,5 @@ class SignupsController < ApplicationController
       session.delete(:block)
       session.delete(:building)
     end
+    
 end
