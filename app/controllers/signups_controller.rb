@@ -93,13 +93,7 @@ class SignupsController < ApplicationController
 
 
     def step2_params(user_params)
-      User.new(
-        postcode: user_params[:postcode],
-        prefecture: user_params[:prefecture],
-        city: user_params[:city],
-        block: user_params[:block],
-        building: user_params[:building]
-      )
+      User.new(postcode: user_params[:postcode], prefecture: user_params[:prefecture], city: user_params[:city], block: user_params[:block], building: user_params[:building])
     end
 
     def skip_step2_validates(errors)
@@ -124,11 +118,7 @@ class SignupsController < ApplicationController
     end
 
     def step2_session(user_params)
-      session[:postcode] = user_params[:postcode],
-      session[:prefecture] = user_params[:prefecture],
-      session[:city] = user_params[:city],
-      session[:block] = user_params[:block],
-      session[:building] = user_params[:building]
+      session[:postcode] = user_params[:postcode], session[:prefecture] = user_params[:prefecture], session[:city] = user_params[:city], session[:block] = user_params[:block], session[:building] = user_params[:building]
     end
 
     def delete_session
