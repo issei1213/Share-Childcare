@@ -137,7 +137,7 @@ class SignupsController < ApplicationController
       session.delete(:block)
       session.delete(:building)
     end
-
+  
     def move_to_root
       redirect_to root_path if user_signed_in?
     end
@@ -145,4 +145,5 @@ class SignupsController < ApplicationController
     def create_user_new
       @user = User.new
     end
+
 end
