@@ -35,55 +35,55 @@
       = form_with model: @user, url: step1_signups_path, method: :post, html: {class: "needs-validation", novalidate: true}, local: true do |f|
         .row
           .col-md-6.mb-3
-            = f.label "姓", class: "font-weight-bold"
+            = f.label :first_name, "姓", class: "font-weight-bold"
             %span.badge.badge-danger 必須
             = f.text_field :first_name, class: "form-control", placeholder: "田中", required: true, pattern: "^[ぁ-んァ-ンヴー-龥]+$"
             .invalid-feedback
               名字を全角入力してください
           .col-md-6.mb-3
-            = f.label "名"
+            = f.label :last_name, "名"
             %span.badge.badge-danger 必須
             = f.text_field :last_name, class: "form-control", placeholder: "太郎", required: true, pattern: "^[ぁ-んァ-ンヴー一-龥]+$"
             .invalid-feedback
               名前を全角入力してください
           .col-md-6.mb-3
-            = f.label "姓(かな)"
+            = f.label :first_name_kana, "姓(かな)"
             %span.badge.badge-danger 必須
             = f.text_field :first_name_kana, class: "form-control", placeholder: "たなか", required: true, pattern: "^[ぁ-んァ-ンヴー]+$"
             .invalid-feedback
               名字(かな)を全角入力してください
           .col-md-6.mb-3
-            = f.label "名(かな)"
+            = f.label :last_name_kana, "名(かな)"
             %span.badge.badge-danger 必須
             = f.text_field :last_name_kana, class: "form-control", placeholder: "たろう", required: true, pattern: "^[ぁ-んァ-ンヴー]+$"
             .invalid-feedback
               名前(かな)を全角入力してください
         .mb-3
-          = f.label "ニックネーム"
+          = f.label :nickname, "ニックネーム"
           %span.badge.badge-danger 必須
           = f.text_field :nickname, class: "form-control", placeholder: "Taroh", required: true
           .invalid-feedback
             名前を入力してください
         .mb-3
-          = f.label "Eメール"
+          = f.label :email, "Eメール"
           %span.badge.badge-danger 必須
           = f.email_field :email, class: "form-control", placeholder: "tanaka_tarou@example.com", required: true, pattern: '/\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i'
           .invalid-feedback
             メールアドレスを入力してください
         .mb-3
-          = f.label "電話番号"
+          = f.label :phone_number, "電話番号"
           %span.badge.badge-danger 必須
           = f.text_field :phone_number, class: "form-control", placeholder: "XXX-XXXX-XXXX", required: true, pattern: '0[1-9]\d{0,3}-\d{1,4}-\d{4}'
           .invalid-feedback
             電話番号を正しく入力してください 例)090-1234-5678
         .mb-3
-          = f.label "パスワード"
+          = f.label :password, "パスワード"
           %span.badge.badge-danger 必須
           = f.password_field :password, class: "form-control", placeholder: "7文字以上半角", required: true, pattern: '[a-zA-Z0-9]{7,}', id: "password-input"
           .invalid-feedback
             パスワードを7文字以上半角で入力してください
         .mb-3
-          = f.label "パスワード(確認用)"
+          = f.label :password_confirmation, "パスワード(確認用)"
           %span.badge.badge-danger 必須
           = f.password_field :password_confirmation, class: "form-control", placeholder: "7文字以上半角(再度入力)", required: true, pattern: '', id: "password-confirmation-input"
           .invalid-feedback
