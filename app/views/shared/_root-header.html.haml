@@ -15,33 +15,4 @@
 
 
 -# ログインページ
-#exampleModal.modal.fade.mt-5{aria: {labelledby: "exampleModalLabel"}, role: "dialog", tabindex: "-1"}
-  .modal-dialog{role: "document"}
-    .modal-content
-      .modal-header
-        %h5#exampleModalLabel.modal-title ログイン
-        %button.close{aria: {label: "閉じる"},data: {dismiss: "modal"}, type: "button"}
-          %span{aria: {hidden: "true"}} ×
-      .modal-body
-        %form.form-signin
-          %form.form-signin
-            .form-label-group
-              %label{for: "inputEmail"} メールアドレス
-              %input#inputEmail.form-control{autofocus: "", placeholder: "メールアドレスを入力",required: "",type: "email"}/
-            %br
-            .form-label-group
-              %label{for: "inputPassword"} パスワード
-              %input#inputPassword.form-control{placeholder: "パスワードを入力", required: "", type: "password"}/
-            .custom-control.custom-checkbox.mb-3
-              %input#customCheck1.custom-control-input{type: "checkbox"}/
-              %label.custom-control-label{for: "customCheck1"} パスワードを保存
-            .d-flex.justify-content-end
-              %button.btn-lg.btn-secondary.mr-2{data: {dismiss: "modal"}, type: "button"} 閉じる
-              %button.btn-lg.btn-primary{type: "submit"} ログイン
-      .modal-footer
-        %button.btn.btn-google.btn-block.text-white{type: "submit"}
-          %i.fab.fa-google.mr-2.text-white
-          Googleでログイン
-        %button.btn.btn-facebook.btn-block.text-white.mt-0{type: "submit"}
-          %i.fab.fa-facebook-f.mr-2.text-white
-          Facebookでログイン
+= render "devise/sessions/new"

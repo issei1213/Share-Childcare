@@ -1,9 +1,8 @@
-- flash.each do |key, value|
-  %div{class: "alert alert-#{key}"}
-    %button.close{data: {dismiss: "alert"}, type: "button"}
-      %span{aria: {hidden: "true"}} ×
-    %ul
-      %li= value
+- flash.each do |msg_type, msg|
+  #alert{:class => "alert alert-#{msg_type}", :role => "alert"}
+    %a.close{"data-dismiss" => "alert", :href => "#"} ×
+    = msg
+
 
 -# 配列対応用
       -# - value.each do |v|
