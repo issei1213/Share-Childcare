@@ -5,11 +5,12 @@ default: &default
   username: root
   password: password
   socket: /tmp/mysql.sock
-  host: db
+
 
 development:
   <<: *default
   database: Share_Childcare_development
+  host: db
 
 test:
   <<: *default
@@ -21,3 +22,4 @@ production:
   database: Share_Childcare_production
   username: Share_Childcare
   password: <%= ENV['SHARE_CHILDCARE_DATABASE_PASSWORD'] %>
+  host: db
