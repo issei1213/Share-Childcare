@@ -27,12 +27,12 @@ jobs:
         paths:
         - ./vendor/bundle
         key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-    # Database setup
+    # DB作成
     - run:
         name: Prepare db
         command: |
           bin/rails db:schema:load --trace
-    # run tests!
+    # テスト時(Rspec)
     - run:
         name: Run rspec
         command: |
@@ -40,7 +40,6 @@ jobs:
           TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
           bundle exec rspec --format progress --color --format documentation
 
-    # collect reports
     - store_test_results:
         path: /tmp/test-results
     - store_artifacts:
