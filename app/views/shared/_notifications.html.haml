@@ -1,10 +1,6 @@
-- flash.each do |msg_type, msg|
-  #alert{:class => "alert alert-#{msg_type}", :role => "alert"}
-    %a.close{"data-dismiss" => "alert", :href => "#"} ×
-    = msg
-
-
--# 配列対応用
-      -# - value.each do |v|
-      -#   %li
-      -#     = v
+- if flash[:error_messages]
+  .alert.alert-danger
+    %ul
+      - flash[:error_messages].each do |msg|
+        %li= msg
+      %ul

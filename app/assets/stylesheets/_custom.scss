@@ -1,15 +1,15 @@
-.container-login {
-  @extend .container-fluid;
-  max-width: 576px;
-  padding: 2rem;
-}
+// .container-login {
+//   @extend .container-fluid;
+//   max-width: 576px;
+//   padding: 2rem;
+// }
 
-// 「ログインしました」などのフラッシュ用スタイル
+// // 「ログインしました」などのフラッシュ用スタイル
 
-.alert-notice {
-  @extend .alert-info;
-}
+// .alert-notice {
+//   @extend .alert-info;
+// }
 
-.alert-alert {
-  @extend .alert-danger;
-}
+// .alert-alert {
+//   @extend .alert-danger;
+// }

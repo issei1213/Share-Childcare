@@ -13,8 +13,10 @@ class SignupsController < ApplicationController
       step1_session(user_params)
       redirect_to step2_signups_path
     else
-      flash.now[:alert] = @user_step1.errors.messages
-      render :step1
+      redirect_to step1_signups_path, flash: {
+        alert: @user_step1,
+        error_messages: @user_step1.errors.full_messages 
+      }
     end
   end
 
