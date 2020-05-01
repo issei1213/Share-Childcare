@@ -21,6 +21,5 @@ test:
 production:
   <<: *default
   database: Share_Childcare_production
-  username: Share_Childcare
-  password: <%= ENV['SHARE_CHILDCARE_DATABASE_PASSWORD'] %>
-  host: db
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
