@@ -35,6 +35,20 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+gem "better_errors"
+gem "binding_of_caller"
+gem 'pry-rails'
+gem 'devise'
+gem 'enum_help'
+gem "haml-rails", ">= 1.0", '<= 2.0.1'
+gem 'jquery-rails'
+gem 'font-awesome-sass'
+gem 'bootstrap-honoka-rails' , '~> 4.3.1'
+gem 'bootstrap'
+gem 'i18n_generators'
+gem 'gimei'
+gem 'devise-i18n'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -77,17 +91,3 @@ end
 group :production do
   gem 'unicorn', '5.4.1'
 end
-
-gem "better_errors"
-gem "binding_of_caller"
-gem 'pry-rails'
-gem 'devise'
-gem 'enum_help'
-gem "haml-rails", ">= 1.0", '<= 2.0.1'
-gem 'jquery-rails'
-gem 'font-awesome-sass'
-gem 'bootstrap-honoka-rails' , '~> 4.3.1'
-gem 'bootstrap'
-gem 'i18n_generators'
-gem 'gimei'
-gem 'devise-i18n'
