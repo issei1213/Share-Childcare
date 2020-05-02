@@ -13,10 +13,10 @@ class SignupsController < ApplicationController
       step1_session(user_params)
       redirect_to step2_signups_path
     else
-      redirect_to step1_signups_path, flash: {
-        alert: @user_step1,
-        error_messages: @user_step1.errors.full_messages 
-      }
+      flash[:alert] = @user_step1
+      flash[:error_messages] = @user_step1.errors.full_messages
+      @user = User.new(user_params)
+      render "step1"
     end
   end
 
@@ -31,8 +31,8 @@ class SignupsController < ApplicationController
       step2_session(user_params)
       redirect_to new_signup_path
     else
-      flash.now[:alert] = @user_step2.errors.messages
-      render :step2 and return
+      flash[:alert] = @user_step2.errors.messages
+      render "step2" and return
     end
   end
 
@@ -45,7 +45,7 @@ class SignupsController < ApplicationController
       sign_in User.find(@user.id) unless user_signed_in?
       delete_session
     else
-      render :new
+      render "new"
     end
   end
 
