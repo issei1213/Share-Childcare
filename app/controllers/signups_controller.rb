@@ -1,5 +1,5 @@
 class SignupsController < ApplicationController
-  before_action :move_to_root
+  before_action :move_to_root, except: [:mypage]
   before_action :create_user_new, only: [:step1, :step1_validates, :step2, :step2_validates, :new]
 
   def step1
@@ -48,6 +48,9 @@ class SignupsController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def mypage
   end
 
   private
