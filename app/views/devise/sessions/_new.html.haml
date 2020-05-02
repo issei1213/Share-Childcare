@@ -9,7 +9,7 @@
         = form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-signin") do |f|
           .form-label-group
             = f.label :email, "メールアドレス"
-            = f.email_field :email, autofocus: true, placeholder: "メールアドレスを入力test", required: false, class: "form-control", id: "inputEmail"
+            = f.email_field :email, autofocus: true, placeholder: "メールアドレスを入力", required: false, class: "form-control", id: "inputEmail"
           %br
           .form-label-group
             = f.label :password, "パスワード"
