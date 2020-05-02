@@ -32,6 +32,7 @@ class SignupsController < ApplicationController
       redirect_to new_signup_path
     else
       flash[:alert] = @user_step2.errors.messages
+      @user = User.new(user_params)
       render "step2" and return
     end
   end
