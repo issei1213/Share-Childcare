@@ -1,6 +1,10 @@
 class SignupsController < ApplicationController
-  before_action :move_to_root, except: [:mypage]
+  before_action :move_to_root, except: [:mypage, :edit, :update]
   before_action :create_user_new, only: [:step1, :step1_validates, :step2, :step2_validates]
+
+  def index
+    @user = User.all
+  end
 
   def step1
   end
@@ -43,7 +47,7 @@ class SignupsController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save
       sign_in User.find(@user.id) unless user_signed_in?
       delete_session
     else
@@ -52,6 +56,20 @@ class SignupsController < ApplicationController
   end
 
   def mypage
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      sign_in(user, bypass: true)
+    else
+      flash[:error_messages] = @user.errors.full_messages
+      render :edit
+    end
   end
 
   private
