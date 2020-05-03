@@ -1,15 +1,7 @@
-// .container-login {
-//   @extend .container-fluid;
-//   max-width: 576px;
-//   padding: 2rem;
-// }
+.col-100vh {
+  height: 100vh;
+  }
 
-// // 「ログインしました」などのフラッシュ用スタイル
-
-// .alert-notice {
-//   @extend .alert-info;
-// }
-
-// .alert-alert {
-//   @extend .alert-danger;
-// }
+.bg-gray {
+  background-color: #DBE9EE;
+}

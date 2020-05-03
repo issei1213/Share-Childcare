@@ -1,6 +1,10 @@
 class SignupsController < ApplicationController
-  before_action :move_to_root
-  before_action :create_user_new, only: [:step1, :step1_validates, :step2, :step2_validates, :new]
+  before_action :move_to_root, except: [:mypage, :edit, :update]
+  before_action :create_user_new, only: [:step1, :step1_validates, :step2, :step2_validates]
+
+  def index
+    @user = User.all
+  end
 
   def step1
   end
@@ -38,15 +42,33 @@ class SignupsController < ApplicationController
   end
 
   def new
+    @user = User.new(first_name: session[:first_name], last_name: session[:last_name], first_name_kana: session[:first_name_kana], last_name_kana: session[:last_name_kana], nickname: session[:nickname], email: session[:email], phone_number: session[:phone_number], password: session[:password], password_confirmation: session[:password_confirmation], postcode: session[:postcode], prefecture: session[:prefecture], city: session[:city], block: session[:block], building: session[:building])
   end
 
   def create
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save
       sign_in User.find(@user.id) unless user_signed_in?
       delete_session
     else
-      render "new"
+      render :new
+    end
+  end
+
+  def mypage
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      sign_in(user, bypass: true)
+    else
+      flash[:error_messages] = @user.errors.full_messages
+      render :edit
     end
   end
 
@@ -121,7 +143,11 @@ class SignupsController < ApplicationController
     end
 
     def step2_session(user_params)
-      session[:postcode] = user_params[:postcode], session[:prefecture] = user_params[:prefecture], session[:city] = user_params[:city], session[:block] = user_params[:block], session[:building] = user_params[:building]
+      session[:postcode] = user_params[:postcode]
+      session[:prefecture] = user_params[:prefecture]
+      session[:city] = user_params[:city]
+      session[:block] = user_params[:block]
+      session[:building] = user_params[:building]
     end
 
     def delete_session
