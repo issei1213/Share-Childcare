@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_103350) do
+ActiveRecord::Schema.define(version: 2020_05_04_062844) do
+
+  create_table "babysitters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "baby_age_range_top_month"
+    t.integer "baby_age_range_top_year"
+    t.integer "baby_age_range_down_year"
+    t.integer "baby_age_range_down_month"
+    t.integer "number_of_baby"
+    t.integer "babysitter_year"
+    t.integer "experience_year"
+    t.integer "experience_support_count"
+    t.integer "experience_user_count"
+    t.string "introduction_title"
+    t.string "introduction_content"
+    t.integer "money_hour"
+    t.integer "money_option"
+    t.string "profile_license"
+    t.integer "profile_receiving_time_top"
+    t.integer "profile_receiving_time_down"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_babysitters_on_user_id"
+  end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -40,4 +63,5 @@ ActiveRecord::Schema.define(version: 2020_03_23_103350) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "babysitters", "users"
 end
