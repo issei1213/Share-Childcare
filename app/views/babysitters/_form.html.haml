@@ -5,7 +5,7 @@
         - flash[:error_messages].each do |msg|
           %li= msg
   = form_with model: babysitter, html: { class: "needs-validation", novalidate: true }, local: true do |f|
-    .pb-1
+    .pb-1.text-left
       %label 受入可能年齢
       %span.badge.badge-danger 必須
     .row
@@ -25,23 +25,23 @@
           %span#basic-addon2.input-group-text ヶ月
         .invalid-feedback
           選択してください
-    .row
-      .pb-1.text-left
-        %label 受入可能人数
-        %span.badge.badge-danger 必須
-        .col-md-12.mb-3
-          = f.text_field :first_name, class: "form-control", required: true, pattern: "^[ぁ-んァ-ンヴー-龥]+$", aria: {label: "Recipient's username", describedby: "basic-addon2" }
-          .input-group-append
-            %span#basic-addon2.input-group-text 人
-          .invalid-feedback
-            名字を全角入力してください
-      .pb-1.text-left
-        %label 受入可能人数
-        %span.badge.badge-danger 必須
-        .col-md-12.mb-3
-          = f.text_field :first_name, class: "form-control", required: true, pattern: "^[ぁ-んァ-ンヴー-龥]+$"
-          .invalid-feedback
-            名字を全角入力してください
+    -# .row
+    -#   .pb-1.text-left
+    -#     %label 受入可能人数
+    -#     %span.badge.badge-danger 必須
+    -#     .col-md-12.mb-3
+    -#       = f.text_field :first_name, class: "form-control", required: true, pattern: "^[ぁ-んァ-ンヴー-龥]+$", aria: {label: "Recipient's username", describedby: "basic-addon2" }
+    -#       .input-group-append
+    -#         %span#basic-addon2.input-group-text 人
+    -#       .invalid-feedback
+    -#         名字を全角入力してください
+    -#   .pb-1.text-left
+    -#     %label 受入可能人数
+    -#     %span.badge.badge-danger 必須
+    -#     .col-md-12.mb-3
+    -#       = f.text_field :first_name, class: "form-control", required: true, pattern: "^[ぁ-んァ-ンヴー-龥]+$"
+    -#       .invalid-feedback
+    -#         名字を全角入力してください
 
 
 
