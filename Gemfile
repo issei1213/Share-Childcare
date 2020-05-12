@@ -50,6 +50,7 @@ gem 'gimei'
 gem 'devise-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
 
 
 group :development, :test do
