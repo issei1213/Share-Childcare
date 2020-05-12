@@ -65,7 +65,7 @@ class SignupsController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      sign_in(user, bypass: true)
+      sign_in(@user)
     else
       flash[:error_messages] = @user.errors.full_messages
       render :edit
