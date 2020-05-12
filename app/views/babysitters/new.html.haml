@@ -1,0 +1,9 @@
+= render "shared/mypage/mypage-top"
+.container
+  .row.text-center
+    = render "shared/mypage/mypage-side"
+    %main.col-md-9.ml-sm-auto.col-lg-10.bg-gray.px-4{:role => "main"}
+      .d-flex.justify-content-between.flex-wrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
+        %h1.h2 ベビーシッター情報
+      = render partial: "form", locals: { babysitter: @babysitter } 
+

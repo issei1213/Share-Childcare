@@ -1,0 +1,58 @@
+.btn-toolbar.mb-2.mb-md-0
+  - if flash[:error_messages]
+    .alert.alert-danger.justify-content-between
+      %ul
+        - flash[:error_messages].each do |msg|
+          %li= msg
+  = form_with model: babysitter, html: { class: "needs-validation", novalidate: true }, local: true do |f|
+    .pb-1.text-left
+      %label 受入可能年齢
+      %span.badge.badge-danger 必須
+    .row
+      .input-group.mb-3
+        = f.select :baby_age_range_top_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+        .input-group-append
+          %span#basic-addon2.input-group-text 年
+        = f.select :baby_age_range_top_month, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+        .input-group-append
+          %span#basic-addon2.input-group-text ヶ月
+        %label.mt-1  〜 
+        = f.select :baby_age_range_down_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+        .input-group-append
+          %span#basic-addon2.input-group-text 年
+        = f.select :baby_age_range_down_month, { "0": "0",  "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+        .input-group-append
+          %span#basic-addon2.input-group-text ヶ月
+        .invalid-feedback
+          選択してください
+      .input-group.mb-12
+        #image-box
+          = f.fields_for :babysitter_images do |image|
+            .js-file_group{"data-index" => "#{image.index}"}
+              = image.file_field :name, class: 'js-file'
+              %br/
+              %span.js-remove 削除
+      .input-group.mb-12
+        = f.submit "登録する", class: "btn btn-primary mx-auto d-block"
+    -# .row
+    -#   .pb-1.text-left
+    -#     %label 受入可能人数
+    -#     %span.badge.badge-danger 必須
+    -#     .col-md-12.mb-3
+    -#       = f.text_field :first_name, class: "form-control", required: true, pattern: "^[ぁ-んァ-ンヴー-龥]+$", aria: {label: "Recipient's username", describedby: "basic-addon2" }
+    -#       .input-group-append
+    -#         %span#basic-addon2.input-group-text 人
+    -#       .invalid-feedback
+    -#         名字を全角入力してください
+    -#   .pb-1.text-left
+    -#     %label 受入可能人数
+    -#     %span.badge.badge-danger 必須
+    -#     .col-md-12.mb-3
+    -#       = f.text_field :first_name, class: "form-control", required: true, pattern: "^[ぁ-んァ-ンヴー-龥]+$"
+    -#       .invalid-feedback
+    -#         名字を全角入力してください
+
+
+
+
+

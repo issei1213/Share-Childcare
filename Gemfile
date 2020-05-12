@@ -48,6 +48,8 @@ gem 'bootstrap'
 gem 'i18n_generators'
 gem 'gimei'
 gem 'devise-i18n'
+gem 'carrierwave'
+gem 'mini_magick'
 
 
 group :development, :test do
