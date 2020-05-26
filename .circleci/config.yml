@@ -54,5 +54,5 @@ jobs:
         command: |
           if [ "${CIRCLE_BRANCH}" != "master" ]; then
             exit 0
-          if
-            bundle exec cap production deploy
+          fi
+          bundle exec cap production deploy
