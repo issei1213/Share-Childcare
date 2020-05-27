@@ -1,1 +1,92 @@
-= render "shared/home/index"
+- if user_signed_in?
+  .container
+    .row
+      .col-lg-12
+        .bs-component
+          %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+            = link_to "Share Childcare", root_path, class: "navbar-brand"
+            %button.navbar-toggler{aria: {controls: "navbarColor01", expanded: "false", expanded: "false", label: "Toggle navigation"}, data: {target: "#navbarColor01", toggle: "collapse"}, type: "button"}
+              %span.navbar-toggler-icon
+            #navbarColor01.collapse.navbar-collapse
+              %ul.navbar-nav.mr-auto
+                %li.nav-item.nav-link
+                  = "#{current_user.nickname}さん:ID.#{current_user.id}"
+                %li.nav-item.dropdown
+                  %a#navbarDropdown.nav-link.dropdown-toggle{aria: {expanded: "false", haspopup: "true"},data: {toggle:"dropdown"}, href: "#", role: "button"}
+                    = "マイページ"
+                  .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+                    = link_to "ベビーシッター情報", root_path, class: "dropdown-item"         
+                    = link_to "保護者情報", root_path, class: "dropdown-item"             
+
+                %li.nav-item
+                  = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link", data: { confirm: "ログアウトします。よろしいでしょうか。" }
+
+              -# 実装予定
+              -# %form.form-inline.my-2.my-lg-0
+              -#   %input.form-control.mr-sm-2{:placeholder => "Search", :type => "text"}/
+              -#   %button.btn.btn-secondary.my-2.my-sm-0{:type => "submit"} 検索
+  .container
+    %header.jumbotron.my-4
+      %h1.display-3 A Warm Welcome!
+      %p.lead Lorem ipsum dolor sit amet
+      %a.btn.btn-primary.btn-lg{href: "#"} Call to action!
+    .row.text-center
+      .col-lg-3.col-md-6.mb-4
+        .card.h-100
+          %img.card-img-top{alt: "", src: "https://picsum.photos/500/325"}/
+          .card-body
+            %h4.card-title ニックネーム
+            %p.card-text 紹介文
+          %table.table
+            %thead
+            %tbody
+              %tr
+                %th{scope: "col"} 時給
+                %td= "¥1,000"
+              %tr
+                %th{scope: "col"} 市区町村
+                %td= "福岡市博多区"
+          .card-footer
+            %a.btn.btn-primary{:href => "#"} 詳細
+
+- else
+  .container
+    .row
+      %nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
+        .container.signup-step
+          .navbar-brand.js-scroll-trigger
+            %img.d-block.ml-auto{alt: "", height: "40px", width: "200px", src: "../images/logo_clear.png", class: "img-fluid top-image"}/
+          %button.navbar-toggler{aria: {controls: "navbarResponsive", expanded: "false", label: "Toggle navigation"}, data: {target: "#navbarResponsive", toggle: "collapse"}, type: "button"}
+            %span.navbar-toggler-icon
+          #navbarResponsive.collapse.navbar-collapse
+            %ul.navbar-nav.ml-auto
+              %li.nav-item
+                = link_to "新規登録", step1_signups_path, method: :GET, class: "nav-link js-scroll-trigger header-signup"
+              %li.nav-item
+                = link_to "ログイン", "#", class: "nav-link js-scroll-trigger header-login", data: {target: "#exampleModal", toggle: "modal"}
+              %li.nav-item
+                = link_to "", "#", class: "nav-link js-scroll-trigger header-login", data: {target: "#exampleModal", toggle: "modal"}
+
+
+    -# ログインページ
+    = render "devise/sessions/new"
+
+  %header.bg-primary.text-white
+    .container.text-center
+      %h1 SHARE CHILDCARE ~育児支援サービス~
+      %p.lead お子様専用のベビーシッターサービスです。
+      %p.lead どうしてもお子様のお世話ができない時に、本サービスで依頼することができます。
+      .top-image-box
+        %img{src: "/images/top-image1.jpg", class: "img-fluid top-image"}
+        %img{src: "/images/top-image2.jpg", class: "img-fluid top-image"}
+        %img{src: "/images/top-image3.jpg", class: "img-fluid top-image"}
+  %section#about
+    .container
+      .row
+        .col-lg-8.mx-auto
+          %h2 本APLについて
+          %ul
+            %li Clickable nav links that smooth scroll to page sections
+            %li Responsive behavior when clicking nav links perfect for a one page website
+            %li Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar
+            %li Minimal custom CSS so you are free to explore your own unique design options

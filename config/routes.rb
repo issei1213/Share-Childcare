@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'homes#root'
+  root to: 'homes#index'
   resources :babysitters
   resources :parents
   resources :signups, only: [:new, :create, :edit, :update] do
@@ -12,5 +12,4 @@ Rails.application.routes.draw do
       get 'mypage', to: 'signups#mypage'
     end
   end
-  resources :homes, only: [:index]
 end
