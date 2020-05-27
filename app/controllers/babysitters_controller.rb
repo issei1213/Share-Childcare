@@ -16,6 +16,7 @@ class BabysittersController < ApplicationController
   def update
   end
 
+
   private
 
   def babysitter_params
