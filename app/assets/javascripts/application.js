@@ -14,6 +14,7 @@
 //= require activestorage
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap.min
-//= require bootstrap.bundle.min
+//= require bootstrap-material-design.min
+//= require popper
+//= require bootstrap-sprockets
 //= require_tree .
