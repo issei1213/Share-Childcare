@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'homes#index'
   resources :babysitters
   resources :parents
-  resources :signups, only: [:new, :create, :edit, :update] do
+  resources :signups do
     collection do
       get 'step1', to: 'signups#step1'
       post 'step1', to: 'signups#step1_validates'

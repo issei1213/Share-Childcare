@@ -17,9 +17,9 @@ class BabysittersController < ApplicationController
   end
 
   def show
-    binding.pry
-    @babysitter = current_user.babysitters.find(params[:id])
+    @babysitter = current_user.babysitter
   end
+
   private
 
   def babysitter_params

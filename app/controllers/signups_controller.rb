@@ -1,5 +1,5 @@
 class SignupsController < ApplicationController
-  before_action :move_to_root, except: [:mypage, :edit, :update]
+  before_action :move_to_root, except: [:mypage, :edit, :update, :show]
   before_action :create_user_new, only: [:step1, :step1_validates, :step2, :step2_validates]
 
   def index
@@ -70,6 +70,9 @@ class SignupsController < ApplicationController
       flash[:error_messages] = @user.errors.full_messages
       render :edit
     end
+  end
+
+  def show
   end
 
   private

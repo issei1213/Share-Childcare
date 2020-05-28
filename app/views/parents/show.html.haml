@@ -1,2 +1,49 @@
-%h1 UserParents#show
-%p Find me in app/views/user_parents/show.html.haml
+.wrapper
+  .sidebar{"data-background-color" => "white", "data-color" => "purple", "data-image" => "../assets/img/sidebar-1.jpg"}
+    .logo
+      %a.simple-text.logo-normal{:href => "http://www.creative-tim.com"}
+        マイページ
+    .sidebar-wrapper
+      %ul.nav
+        %li.nav-item
+          = link_to "共通情報", root_path, class: "nav-link"
+        %li.nav-item.active
+          = link_to "保護者情報", root_path, class: "nav-link"
+        %li.nav-item
+          = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "nav-link"
+        %li.nav-item
+          = link_to "ホーム画面", root_path, class: "nav-link"
+  .main-panel
+    / Navbar
+    %nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
+      .container-fluid
+        .navbar-wrapper
+          %a.navbar-brand{:href => "javascript:;"} ベビーシッター情報入力
+    / End Navbar
+    .content
+      .container-fluid
+        .row
+          .col-md-12
+            .card
+              .card-header.card-header-warning
+                %h4.card-title ベビーシッター情報一覧
+                %p.card-category 最終更新日
+              .card-body.table-responsive
+                %table.table.table-hover
+                  %thead.text-warning
+                    %th 項目
+                    %th 内容
+                  %tbody
+                    %tr
+                      %td 内容
+                      %td $36,738
+                    %tr
+                      %td Minerva Hooper
+                      %td $23,789
+                    %tr
+                      %td Sage Rodriguez
+                      %td $56,142
+                    %tr
+                      %td Philip Chaney
+                      %td $38,735
+

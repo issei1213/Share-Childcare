@@ -1,0 +1,88 @@
+.wrapper
+  .sidebar{"data-background-color" => "white", "data-color" => "purple" }
+    .logo
+      %a.simple-text
+        マイページ
+    .sidebar-wrapper
+      %ul.nav
+        %li.nav-item
+          = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
+        %li.nav-item
+          = link_to "保護者情報", root_path, class: "nav-link"
+        %li.nav-item.active
+          = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "nav-link"
+        %li.nav-item
+          = link_to "ホーム画面", root_path, class: "nav-link"
+  .main-panel
+    .container-fluid
+      .row
+        .col-md-12
+          .card
+            .card-header.card-header-warning
+              %h4.card-title ベビーシッター基本情報
+              %p.card-category= "最終更新日 #{I18n.l(@babysitter.updated_at, format: :long)}"
+            .card-body.table-responsive
+              %table.table.table-hover
+                %thead.text-warning
+                  %th
+                    項目
+                  %th
+                    内容
+                %tbody
+                  %tr
+                    %td
+                      保育可能年齢
+                    %td
+                      = "#{@babysitter.baby_age_range_top_month} 年 #{@babysitter.baby_age_range_top_year} ヶ月 〜 #{@babysitter.baby_age_range_down_year} 年 #{@babysitter.baby_age_range_down_month} ヶ月"
+                  %tr
+                    %td 
+                      受入可能人数
+                    %td
+                      = "#{@babysitter.number_of_baby} 人"
+                  %tr
+                    %td
+                      サポート回数
+                    %td
+                      = "#{@babysitter.experience_support_count} 回"
+                  %tr
+                    %td
+                      累計ユーザー数
+                    %td
+                      = "#{@babysitter.experience_user_count} 人"
+                  %tr
+                    %td
+                      子育て経験
+                    %td
+                      = "#{@babysitter.experience_support_count} 年"
+                  %tr
+                    %td 
+                      タイトル
+                    %td 
+                      = "#{@babysitter.introduction_title}"
+                  %tr
+                    %td 
+                      本文
+                    %td
+                      = simple_format(h(@babysitter.introduction_content))
+                  %tr
+                    %td 時給
+                    %td
+                      = "#{@babysitter.money_hour} 円"
+                  %tr
+                    %td オプション料金
+                    %td
+                      =  "#{@babysitter.money_option} 円"
+                  %tr
+                    %td 資格
+                    %td
+                      = "#{@babysitter.profile_license}"
+                  %tr
+                    %td 可能時間帯
+                    %td
+                      = "#{@babysitter.profile_receiving_time_top} 時 〜 #{@babysitter.profile_receiving_time_down} 時"
+            .card-body.table-responsive
+              = link_to "編集", edit_babysitter_path, class: "btn btn-primary"
+
+
+
+  -# = @babysitter.baby_age_range_top_month

@@ -1,103 +1,148 @@
-= render "shared/mypage/mypage-top"
-.container
-  .row.text-center
-    = render "shared/mypage/mypage-side"
-    %main.col-md-9.ml-sm-auto.col-lg-10.bg-gray.px-4{:role => "main"}
-      .d-flex.justify-content-between.flex-wrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
-        %h1.h2 共通情報
-        .btn-toolbar.mb-2.mb-md-0
-          - if flash[:error_messages]
-            .alert.alert-danger.justify-content-between
-              %ul
-                - flash[:error_messages].each do |msg|
-                  %li= msg
-          = form_with model: @user, method: :put, url: signup_path(@user), html: {class: "needs-validation", novalidate: true}, local: true do |f|
-            .row.justify-content-center
-              .col-md-5.mb-3
-                = f.label :first_name, "姓", class: "font-weight-bold"
-                %span.badge.badge-danger 必須
-                = f.text_field :first_name, class: "form-control", required: true, pattern: "^[ぁ-んァ-ンヴー-龥]+$"
-                .invalid-feedback
-                  名字を全角入力してください
-              .col-md-5.mb-3
-                = f.label :last_name, "名"
-                %span.badge.badge-danger 必須
-                = f.text_field :last_name, class: "form-control", required: true, pattern: "^[ぁ-んァ-ンヴー一-龥]+$"
-                .invalid-feedback
-                  名前を全角入力してください
-              .col-md-5.mb-3
-                = f.label :first_name_kana, "姓(かな)"
-                %span.badge.badge-danger 必須
-                = f.text_field :first_name_kana, class: "form-control bg-white", required: true, pattern: "^[ぁ-んァ-ンヴー]+$"
-                .invalid-feedback
-                  名字(かな)を全角入力してください
-              .col-md-5.mb-3
-                = f.label :last_name_kana, "名(かな)"
-                %span.badge.badge-danger 必須
-                = f.text_field :last_name_kana, class: "form-control bg-white", required: true, pattern: "^[ぁ-んァ-ンヴー]+$"
-                .invalid-feedback
-                  名前(かな)を全角入力してください
-              .col-md-5.mb-3
-                = f.label :nickname, "ニックネーム"
-                %span.badge.badge-danger 必須
-                = f.text_field :nickname, class: "form-control bg-white", required: true
-                .invalid-feedback
-                  名前を入力してください
-              .col-md-5.mb-3
-                = f.label :phone_number, "電話番号"
-                %span.badge.badge-danger 必須
-                = f.text_field :phone_number, class: "form-control bg-white", required: true, pattern: '0[1-9]\d{0,3}-\d{1,4}-\d{4}'
-                .invalid-feedback
-                  電話番号を正しく入力してください 例)090-1234-5678
-              .col-md-10.mb-3
-                = f.label :email, "Eメール"
-                %span.badge.badge-danger 必須
-                = f.email_field :email, class: "form-control bg-white", required: true, pattern: '/\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i'
-                .invalid-feedback
-                  メールアドレスを入力してください
-              .col-md-5.mb-3
-                = f.label :password, "パスワード"
-                %span.badge.badge-danger 必須
-                = f.password_field :password, class: "form-control bg-white", required: true, pattern: '[a-zA-Z0-9]{7,}', id: "password-input"
-                .invalid-feedback
-                  パスワードを7文字以上半角で入力してください
-              .col-md-5.mb-3
-                = f.label :password_confirmation, "パスワード(確認用)"
-                %span.badge.badge-danger 必須
-                = f.password_field :password_confirmation, class: "form-control bg-white", required: true, pattern: '', id: "password-confirmation-input"
-                .invalid-feedback
-                  空欄もしくはパスワードが不一致です
-              .col-md-5.mb-3
-                = f.label :postcode, "郵便番号"
-                %span.badge.badge-danger 必須
-                = f.text_field :postcode, class: "form-control bg-white", required: true
-                .invalid-feedback
-                  郵便番号を選択してください
-              .col-md-5.mb-3
-                = f.label :prefecture, "都道府県"
-                %span.badge.badge-danger 必須
-                = f.select :prefecture,{ 北海道: "北海道" ,青森県: "青森県" ,岩手県: "岩手県" ,宮城県: "宮城県" ,秋田県: "秋田県" ,山形県: "山形県" ,福島県: "福島県" ,茨城県: "茨城県" ,栃木県: "栃木県" ,群馬県: "群馬県" ,埼玉県: "埼玉県" ,千葉県: "千葉県" ,東京都: "東京都" ,神奈川県: "神奈川県 ",新潟県: "新潟県" ,富山県: "富山県" ,石川県: "石川県" ,福井県: "福井県" ,山梨県: "山梨県" ,長野県: "長野県" ,岐阜県: "岐阜県" ,静岡県: "静岡県" ,愛知県: "愛知県" ,三重県: "三重県" ,滋賀県: "滋賀県" ,京都府: "京都府" ,大阪府: "大阪府" ,兵庫県: "兵庫県" ,奈良県: "奈良県" ,和歌山県: "和歌山県 ",鳥取県: "鳥取県" ,島根県: "島根県" ,岡山県: "岡山県" ,広島県: "広島県" ,山口県: "山口県" ,徳島県: "徳島県" ,香川県: "香川県" ,愛媛県: "愛媛県" ,高知県: "高知県" ,福岡県: "福岡県" ,佐賀県: "佐賀県" ,長崎県: "長崎県" ,熊本県: "熊本県" ,大分県: "大分県" ,宮崎県: "宮崎県" ,鹿児島県: "鹿児島県 ",沖縄県: "沖縄県" }, {include_blank: "---"}, class: "form-control", required: true
-                .invalid-feedback
-                  都道府県を入力してください
-              .col-md-5.mb-3
-                = f.label :city, "市区町村"
-                %span.badge.badge-danger 必須
-                = f.text_field :city, class: "form-control bg-white", required: true
-                .invalid-feedback
-                  市区町村を入力してください
-              .col-md-5.mb-3
-                = f.label :block, "番地"
-                %span.badge.badge-danger 必須
-                = f.text_field :block, class: "form-control bg-white", required: true
-                .invalid-feedback
-                  番地を入力してください
-              .col-md-10.mb-3
-                = f.label :building, "建物名"
-                %span.badge.badge-danger 必須
-                = f.text_field :building, class: "form-control bg-white", required: true
-                .invalid-feedback
-                  建物名を入力してください
-              .col-md-10.mb-3
-                = f.submit "変更する", class: "btn btn-primary mx-auto d-block"
+.wrapper
+  .sidebar{"data-background-color" => "white", "data-color" => "purple" }
+    .logo
+      %a.simple-text
+        マイページ
+    .sidebar-wrapper
+      %ul.nav
+        %li.nav-item
+          = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
+        %li.nav-item
+          = link_to "保護者情報", root_path, class: "nav-link"
+        %li.nav-item.active
+          = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "nav-link"
+        %li.nav-item
+          = link_to "ホーム画面", root_path, class: "nav-link"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-# = render "shared/mypage/mypage-top"
+-# .container
+-#   .row.text-center
+-#     = render "shared/mypage/mypage-side"
+-#     %main.col-md-9.ml-sm-auto.col-lg-10.bg-gray.px-4{:role => "main"}
+-#       .d-flex.justify-content-between.flex-wrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
+-#         %h1.h2 共通情報
+-#         .btn-toolbar.mb-2.mb-md-0
+-#           - if flash[:error_messages]
+-#             .alert.alert-danger.justify-content-between
+-#               %ul
+-#                 - flash[:error_messages].each do |msg|
+-#                   %li= msg
+-#           = form_with model: @user, method: :put, url: signup_path(@user), html: {class: "needs-validation", novalidate: true}, local: true do |f|
+-#             .row.justify-content-center
+-#               .col-md-5.mb-3
+-#                 = f.label :first_name, "姓", class: "font-weight-bold"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.text_field :first_name, class: "form-control", required: true, pattern: "^[ぁ-んァ-ンヴー-龥]+$"
+-#                 .invalid-feedback
+-#                   名字を全角入力してください
+-#               .col-md-5.mb-3
+-#                 = f.label :last_name, "名"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.text_field :last_name, class: "form-control", required: true, pattern: "^[ぁ-んァ-ンヴー一-龥]+$"
+-#                 .invalid-feedback
+-#                   名前を全角入力してください
+-#               .col-md-5.mb-3
+-#                 = f.label :first_name_kana, "姓(かな)"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.text_field :first_name_kana, class: "form-control bg-white", required: true, pattern: "^[ぁ-んァ-ンヴー]+$"
+-#                 .invalid-feedback
+-#                   名字(かな)を全角入力してください
+-#               .col-md-5.mb-3
+-#                 = f.label :last_name_kana, "名(かな)"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.text_field :last_name_kana, class: "form-control bg-white", required: true, pattern: "^[ぁ-んァ-ンヴー]+$"
+-#                 .invalid-feedback
+-#                   名前(かな)を全角入力してください
+-#               .col-md-5.mb-3
+-#                 = f.label :nickname, "ニックネーム"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.text_field :nickname, class: "form-control bg-white", required: true
+-#                 .invalid-feedback
+-#                   名前を入力してください
+-#               .col-md-5.mb-3
+-#                 = f.label :phone_number, "電話番号"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.text_field :phone_number, class: "form-control bg-white", required: true, pattern: '0[1-9]\d{0,3}-\d{1,4}-\d{4}'
+-#                 .invalid-feedback
+-#                   電話番号を正しく入力してください 例)090-1234-5678
+-#               .col-md-10.mb-3
+-#                 = f.label :email, "Eメール"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.email_field :email, class: "form-control bg-white", required: true, pattern: '/\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i'
+-#                 .invalid-feedback
+-#                   メールアドレスを入力してください
+-#               .col-md-5.mb-3
+-#                 = f.label :password, "パスワード"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.password_field :password, class: "form-control bg-white", required: true, pattern: '[a-zA-Z0-9]{7,}', id: "password-input"
+-#                 .invalid-feedback
+-#                   パスワードを7文字以上半角で入力してください
+-#               .col-md-5.mb-3
+-#                 = f.label :password_confirmation, "パスワード(確認用)"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.password_field :password_confirmation, class: "form-control bg-white", required: true, pattern: '', id: "password-confirmation-input"
+-#                 .invalid-feedback
+-#                   空欄もしくはパスワードが不一致です
+-#               .col-md-5.mb-3
+-#                 = f.label :postcode, "郵便番号"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.text_field :postcode, class: "form-control bg-white", required: true
+-#                 .invalid-feedback
+-#                   郵便番号を選択してください
+-#               .col-md-5.mb-3
+-#                 = f.label :prefecture, "都道府県"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.select :prefecture,{ 北海道: "北海道" ,青森県: "青森県" ,岩手県: "岩手県" ,宮城県: "宮城県" ,秋田県: "秋田県" ,山形県: "山形県" ,福島県: "福島県" ,茨城県: "茨城県" ,栃木県: "栃木県" ,群馬県: "群馬県" ,埼玉県: "埼玉県" ,千葉県: "千葉県" ,東京都: "東京都" ,神奈川県: "神奈川県 ",新潟県: "新潟県" ,富山県: "富山県" ,石川県: "石川県" ,福井県: "福井県" ,山梨県: "山梨県" ,長野県: "長野県" ,岐阜県: "岐阜県" ,静岡県: "静岡県" ,愛知県: "愛知県" ,三重県: "三重県" ,滋賀県: "滋賀県" ,京都府: "京都府" ,大阪府: "大阪府" ,兵庫県: "兵庫県" ,奈良県: "奈良県" ,和歌山県: "和歌山県 ",鳥取県: "鳥取県" ,島根県: "島根県" ,岡山県: "岡山県" ,広島県: "広島県" ,山口県: "山口県" ,徳島県: "徳島県" ,香川県: "香川県" ,愛媛県: "愛媛県" ,高知県: "高知県" ,福岡県: "福岡県" ,佐賀県: "佐賀県" ,長崎県: "長崎県" ,熊本県: "熊本県" ,大分県: "大分県" ,宮崎県: "宮崎県" ,鹿児島県: "鹿児島県 ",沖縄県: "沖縄県" }, {include_blank: "---"}, class: "form-control", required: true
+-#                 .invalid-feedback
+-#                   都道府県を入力してください
+-#               .col-md-5.mb-3
+-#                 = f.label :city, "市区町村"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.text_field :city, class: "form-control bg-white", required: true
+-#                 .invalid-feedback
+-#                   市区町村を入力してください
+-#               .col-md-5.mb-3
+-#                 = f.label :block, "番地"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.text_field :block, class: "form-control bg-white", required: true
+-#                 .invalid-feedback
+-#                   番地を入力してください
+-#               .col-md-10.mb-3
+-#                 = f.label :building, "建物名"
+-#                 %span.badge.badge-danger 必須
+-#                 = f.text_field :building, class: "form-control bg-white", required: true
+-#                 .invalid-feedback
+-#                   建物名を入力してください
+-#               .col-md-10.mb-3
+-#                 = f.submit "変更する", class: "btn btn-primary mx-auto d-block"
 
 
