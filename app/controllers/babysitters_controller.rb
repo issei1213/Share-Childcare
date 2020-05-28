@@ -13,6 +13,11 @@ class BabysittersController < ApplicationController
     end
   end
 
+  def edit
+    @babysitter = Babysitter.new
+    @babysitter.babysitter_images.new
+  end
+
   def update
   end
 

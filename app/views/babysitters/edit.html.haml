@@ -1,0 +1,74 @@
+.wrapper
+  .sidebar{"data-background-color" => "white", "data-color" => "purple" }
+    .logo
+      %a.simple-text
+        マイページ
+    .sidebar-wrapper
+      %ul.nav
+        %li.nav-item
+          = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
+        %li.nav-item
+          = link_to "保護者情報", root_path, class: "nav-link"
+        %li.nav-item.active
+          = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "nav-link"
+        %li.nav-item
+          = link_to "ホーム画面", root_path, class: "nav-link"
+    
+  .main-panel
+    .container-fluid
+      .row
+        .col-md-12
+          .card
+            .card-header.card-header-primary
+              %h4.card-title ベビーシッター情報編集
+            .card-body
+              = form_with model: @babysitter, html: { class: "needs-validation", novalidate: true }, local: true do |f|
+                .row
+                  .col-md-5
+                    .form-group
+                      = f.label  "受入可能人数", class: "bmd-label-floating"
+                      = f.select :baby_age_range_top_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+                  .col-md-3
+                    .form-group
+                      %label.bmd-label-floating Username
+                      %input.form-control{:type => "text"}/
+                  .col-md-4
+                    .form-group
+                      %label.bmd-label-floating Email address
+                      %input.form-control{:type => "email"}/
+                .row
+                  .col-md-6
+                    .form-group
+                      %label.bmd-label-floating Fist Name
+                      %input.form-control{:type => "text"}/
+                  .col-md-6
+                    .form-group
+                      %label.bmd-label-floating Last Name
+                      %input.form-control{:type => "text"}/
+                .row
+                  .col-md-12
+                    .form-group
+                      %label.bmd-label-floating Adress
+                      %input.form-control{:type => "text"}/
+                .row
+                  .col-md-4
+                    .form-group
+                      %label.bmd-label-floating City
+                      %input.form-control{:type => "text"}/
+                  .col-md-4
+                    .form-group
+                      %label.bmd-label-floating Country
+                      %input.form-control{:type => "text"}/
+                  .col-md-4
+                    .form-group
+                      %label.bmd-label-floating Postal Code
+                      %input.form-control{:type => "text"}/
+                .row
+                  .col-md-12
+                    .form-group
+                      %label About Me
+                      .form-group
+                        %label.bmd-label-floating Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.
+                        %textarea.form-control{:rows => "5"}
+                %button.btn.btn-primary.pull-right{:type => "submit"} Update Profile
+                .clearfix
