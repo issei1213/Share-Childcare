@@ -1,6 +1,9 @@
 - if user_signed_in?
   .container
     .row
+      .col-md-12
+        = render "shared/alert_message"
+    .row
       .col-lg-12
         .bs-component
           %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
