@@ -14,11 +14,14 @@ class BabysittersController < ApplicationController
   end
 
   def edit
-    @babysitter = Babysitter.new
-    @babysitter.babysitter_images.new
+    @babysitter = current_user.babysitter
+    @babysitter.babysitter_images
   end
 
   def update
+    @babysitter = current_user.babysitter
+    @babysitter.update!(babysitter_params)
+    redirect_to babysitter_path, notice: "変更しました。"
   end
 
   def show
