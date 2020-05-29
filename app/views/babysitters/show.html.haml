@@ -65,7 +65,7 @@
                       = "#{@babysitter.introduction_title}"
                   %tr
                     %td 
-                      本文
+                      紹介文
                     %td
                       = simple_format(h(@babysitter.introduction_content))
                   %tr
@@ -84,6 +84,11 @@
                     %td 可能時間帯
                     %td
                       = "#{@babysitter.profile_receiving_time_top} 時 〜 #{@babysitter.profile_receiving_time_down} 時"
+                  %tr
+                    %td 本人画像
+                    %td
+                      - @babysitter.babysitter_images.each do |image|
+                        = image_tag "#{image.name.to_s}"
             .card-body.table-responsive
               = link_to "編集", edit_babysitter_path, class: "btn btn-primary"
 
