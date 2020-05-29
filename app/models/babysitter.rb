@@ -7,15 +7,15 @@
 #  baby_age_range_down_year    :integer
 #  baby_age_range_top_month    :integer
 #  baby_age_range_top_year     :integer
-#  babysitter_year             :integer
-#  experience_support_count    :integer
-#  experience_user_count       :integer
+#  babysitter_year             :integer          default(0)
+#  experience_support_count    :integer          default(0)
+#  experience_user_count       :integer          default(0)
 #  experience_year             :integer
 #  introduction_content        :string(255)
 #  introduction_title          :string(255)
 #  money_hour                  :integer
 #  money_option                :integer
-#  number_of_baby              :integer
+#  number_of_baby              :integer          default(0)
 #  profile_license             :string(255)
 #  profile_receiving_time_down :integer
 #  profile_receiving_time_top  :integer

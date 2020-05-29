@@ -77,10 +77,16 @@
                     = f.label :introduction_content, "本文", class: "bmd-label-floating"
                     = f.text_area :introduction_content, class: "form-control", row: 5, required: true
               .row
-                .col-md-3
+                .col-md-12
                   = f.label "本人写真", class: "bmd-label-floating"
                   .input-group
                     #image-box
+                      -# プレビュー表示
+                      #previews
+                        - if @babysitter.persisted?
+                          - @babysitter.babysitter_images.each_with_index do |image, i|
+                            = image_tag image.name.url, data: { index: i }, width: "100", height: '100'
+                      -# 追加
                       = f.fields_for :babysitter_images do |image|
                         .js-file_group{"data-index" => "#{image.index}"}
                           = image.file_field :name, class: 'js-file'
@@ -90,6 +96,7 @@
                           = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
                       - if @babysitter.persisted?
                         .js-file_group{"data-index" => "#{@babysitter.babysitter_images.count}"}
-                          = file_field_tag :name, name: "babysitter[babysitter_images_attributes][#{@babysitter.babysitter_images.count}][name]", class: 'js-file'
+                          = file_field_tag :name, name: "babysitter[images_attributes][#{@babysitter.babysitter_images.count}][name]", class: 'js-file'
                           .js-remove 削除
+
               = f.submit "登録", class: "btn btn-primary pull-right"

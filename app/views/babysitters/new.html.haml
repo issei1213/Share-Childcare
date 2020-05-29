@@ -1,8 +1,17 @@
-.container
-  .row.text-center
-    = render "shared/mypage/mypage-side"
-    %main.col-md-9.ml-sm-auto.col-lg-10.bg-gray.px-4{:role => "main"}
-      .d-flex.justify-content-between.flex-wrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
-        %h1.h2 ベビーシッター情報
-      = render partial: "form", locals: { babysitter: @babysitter } 
+.wrapper
+  .sidebar{"data-background-color" => "white", "data-color" => "purple" }
+    .logo
+      %a.simple-text
+        マイページ
+    .sidebar-wrapper
+      %ul.nav
+        %li.nav-item
+          = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
+        %li.nav-item
+          = link_to "保護者情報", root_path, class: "nav-link"
+        %li.nav-item.active
+          = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "nav-link"
+        %li.nav-item
+          = link_to "ホーム画面", root_path, class: "nav-link"
 
+  = render partial: "form", locals: { babysitter: @babysitter }
