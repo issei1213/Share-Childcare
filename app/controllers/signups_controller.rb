@@ -59,13 +59,14 @@ class SignupsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
     if @user.update(user_params)
-      sign_in(@user)
+      sign_in(@user, bypass: true)
+      redirect_to signup_path(current_user.id), notice: "変更しました。"
     else
       flash[:error_messages] = @user.errors.full_messages
       render :edit
@@ -90,7 +91,7 @@ class SignupsController < ApplicationController
         email: user_params[:email],
         phone_number: user_params[:phone_number],
         password: user_params[:password],
-        password_confirmation: user_params[:password_confirmation]
+        password_confirmation: user_params[:password_confirmation]  
       )
     end
 
