@@ -18,8 +18,10 @@
                   %a#navbarDropdown.nav-link.dropdown-toggle{aria: {expanded: "false", haspopup: "true"},data: {toggle:"dropdown"}, href: "#", role: "button"}
                     = "マイページ"
                   .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-                    = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "dropdown-item"
+                    = link_to "共通情報", signup_path(current_user.id), class: "dropdown-item"
                     = link_to "保護者情報", root_path, class: "dropdown-item"
+                    = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "dropdown-item"
+
                 %li.nav-item
                   = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link", data: { confirm: "ログアウトします。よろしいでしょうか。" }
 

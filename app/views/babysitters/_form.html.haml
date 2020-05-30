@@ -10,48 +10,32 @@
               .row
                 .col-md-2
                   .form-group
-                    = f.label :baby_age_range_top_year, "受入可能人数", class: "bmd-label-floating"
-                    = f.select :baby_age_range_top_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "選択して下さい"}, class: "form-control", required: true
+                    = f.label :baby_age_range_top_year, "受入可能人数", class: "bmd-label-floating", aria: {label: "Recipient's username", describedby: "basic-addon2" }
+                    .input-group
+                      = f.select :baby_age_range_top_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true
+                      .input-group-append
+                        %span#basic-addon2.input-group-text 年
+                      .invalid-feedback
+                        受入可能人数を選択してください
                 .col-md-6
                   .form-group
                     = f.label "受入可能年齢", class: "bmd-label-floating"
-                    .col-md-12
-                      .input-group
-                        = f.select :baby_age_range_top_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
-                        .input-group-append
-                          %span#basic-addon2.input-group-text 年
-                        = f.select :baby_age_range_top_month, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
-                        .input-group-append
-                          %span#basic-addon2.input-group-text
-                            = "ヶ月 ~ "
-                        = f.select :baby_age_range_down_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
-                        .input-group-append
-                          %span#basic-addon2.input-group-text 年
-                        = f.select :baby_age_range_down_month, { "0": "0",  "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
-                        .input-group-append
-                          %span#basic-addon2.input-group-text ヶ月
-                        .invalid-feedback
-                          選択してください
-                .col-md-2
-                  .form-group
-                    = f.label :experience_year, "子育て経験", class: "bmd-label-floating"
-                    = f.select :experience_year, { "1年未満": 0, "1~3年": 1, "3~4年": 2, "4~5年": 3, "5年以上": 4} , {include_blank: "選択して下さい"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
-              .row
-                .col-md-2
-                  .form-group
-                    = f.label :money_hour, "時給", class: "bmd-label-floating"
                     .input-group
-                      = f.text_field :money_hour, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+                      = f.select :baby_age_range_top_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
                       .input-group-append
-                        %span#basic-addon2.input-group-text 円
-                .col-md-2
-                  .form-group
-                    = f.label :money_option, "オプション料金", class: "bmd-label-floating"
-                    .input-group
-                      = f.text_field :money_option, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+                        %span#basic-addon2.input-group-text 年
+                      = f.select :baby_age_range_top_month, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
                       .input-group-append
-                        %span#basic-addon2.input-group-text 円
-                .col-md-8
+                        %span#basic-addon2.input-group-text= "ヶ月 ~ "
+                      = f.select :baby_age_range_down_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+                      .input-group-append
+                        %span#basic-addon2.input-group-text 年
+                      = f.select :baby_age_range_down_month, { "0": "0",  "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+                      .input-group-append
+                        %span#basic-addon2.input-group-text ヶ月
+                      .invalid-feedback
+                        受入可能年齢を選択してください
+                .col-md-3
                   .form-group
                     = f.label "可能時間帯", class: "bmd-label-floating"
                     .input-group
@@ -61,6 +45,34 @@
                       = f.select :profile_receiving_time_down, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12", "13": "13", "14": "14", "15": "15", "16": "16", "17": "17", "18": "18", "19": "19", "20": "20", "21": "21", "22": "22", "23": "23"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
                       .input-group-append
                         %span#basic-addon2.input-group-text 時
+                      .invalid-feedback
+                        可能時間帯を選択してください
+              .row
+                .col-md-2
+                  .form-group
+                    = f.label :experience_year, "子育て経験", class: "bmd-label-floating"
+                    = f.select :experience_year, { "1年未満": 0, "1~3年": 1, "3~4年": 2, "4~5年": 3, "5年以上": 4} , {include_blank: "選択して下さい"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+                    .invalid-feedback
+                      子育て経験を選択してください
+                .col-md-2
+                  .form-group
+                    = f.label :money_hour, "時給", class: "bmd-label-floating"
+                    .input-group
+                      = f.text_field :money_hour, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+                      .input-group-append
+                        %span#basic-addon2.input-group-text 円
+                      .invalid-feedback
+                        時給を入力してください
+                .col-md-2
+                  .form-group
+                    = f.label :money_option, "オプション料金", class: "bmd-label-floating"
+                    .input-group
+                      = f.text_field :money_option, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+                      .input-group-append
+                        %span#basic-addon2.input-group-text 円
+                      .invalid-feedback
+                        時給を入力してください
+
               .row
                 .col-md-12
                   .form-group
@@ -71,11 +83,16 @@
                   .form-group
                     = f.label :introduction_title, "タイトル", class: "bmd-label-floating"
                     = f.text_field :introduction_title, class: "form-control", required: true
+                    .invalid-feedback
+                      タイトルを入力してください
               .row
                 .col-md-12
                   .form-group
                     = f.label :introduction_content, "本文", class: "bmd-label-floating"
-                    = f.text_area :introduction_content, class: "form-control", row: 5, required: true
+                    = f.text_area :introduction_content, class: "form-control", rows: 3, required: true
+                    .invalid-feedback
+                      本文を入力してください
+
               .row
                 .col-md-12
                   = f.label "本人写真", class: "bmd-label-floating"
@@ -85,13 +102,15 @@
                       #previews
                         - if @babysitter.persisted?
                           - @babysitter.babysitter_images.each_with_index do |image, i|
-                            = image_tag image.name.url, data: { index: i }, width: "100", height: '100'
+                            = image_tag image.name.url, data: { index: i }, width: "100", height: '100', class: "ml-1"
                       -# 追加
                       = f.fields_for :babysitter_images do |image|
                         .js-file_group{"data-index" => "#{image.index}"}
-                          = image.file_field :name, class: 'js-file'
-                          %br/
-                          %span.js-remove 削除
+                          .d-flex.justify-content-start
+                            = image.file_field :name, class: 'js-file form-control', required: true
+                            %span.js-remove.btn.btn-sm 削除
+                          .invalid-feedback
+                            写真を1枚以上添付して下さい
                         - if @babysitter.persisted?
                           = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
                       - if @babysitter.persisted?
