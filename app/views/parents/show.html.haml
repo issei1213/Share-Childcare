@@ -1,49 +1,42 @@
 .wrapper
-  .sidebar{"data-background-color" => "white", "data-color" => "purple", "data-image" => "../assets/img/sidebar-1.jpg"}
+  .sidebar{"data-background-color" => "white", "data-color" => "purple" }
     .logo
-      %a.simple-text.logo-normal{:href => "http://www.creative-tim.com"}
+      %a.simple-text
         マイページ
     .sidebar-wrapper
       %ul.nav
         %li.nav-item
-          = link_to "共通情報", root_path, class: "nav-link"
+          = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
         %li.nav-item.active
-          = link_to "保護者情報", root_path, class: "nav-link"
+          = link_to "保護者情報", parent_path(current_user.id), class: "nav-link"
         %li.nav-item
           = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "nav-link"
         %li.nav-item
           = link_to "ホーム画面", root_path, class: "nav-link"
   .main-panel
-    / Navbar
-    %nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
-      .container-fluid
-        .navbar-wrapper
-          %a.navbar-brand{:href => "javascript:;"} ベビーシッター情報入力
-    / End Navbar
-    .content
-      .container-fluid
-        .row
-          .col-md-12
-            .card
-              .card-header.card-header-warning
-                %h4.card-title ベビーシッター情報一覧
-                %p.card-category 最終更新日
-              .card-body.table-responsive
-                %table.table.table-hover
-                  %thead.text-warning
-                    %th 項目
-                    %th 内容
-                  %tbody
-                    %tr
-                      %td 内容
-                      %td $36,738
-                    %tr
-                      %td Minerva Hooper
-                      %td $23,789
-                    %tr
-                      %td Sage Rodriguez
-                      %td $56,142
-                    %tr
-                      %td Philip Chaney
-                      %td $38,735
-
+    .container-fluid
+      .row
+        .col-md-12
+          = render "shared/alert_message"
+      .row
+        .col-md-12
+          .card
+            .card-header.card-header-warning
+              %h4.card-title 保護者情報
+              %p.card-category= "最終更新日 #{I18n.l(current_user.updated_at, format: :long)}"
+            .card-body.table-responsive
+              %table.table.table-hover
+                %thead.text-warning
+                  %th
+                    項目
+                  %th
+                    内容
+                %tbody
+                  %tr
+                    %td
+                      依頼金額
+                    %td
+                      = "#{@parent.order_money_hour} 円"
+                  %tr
+            .card-body.table-responsive
+              = link_to "編集", edit_signup_path, class: "btn btn-primary"
