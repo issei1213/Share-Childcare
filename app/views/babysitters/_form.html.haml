@@ -109,8 +109,8 @@
                           .d-flex.justify-content-start
                             = image.file_field :name, class: 'js-file form-control', required: true
                             %span.js-remove.btn.btn-sm 削除
-                          .invalid-feedback
-                            写真を1枚以上添付して下さい
+                            .invalid-feedback
+                              写真を1枚以上添付して下さい
                         - if @babysitter.persisted?
                           = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
                       - if @babysitter.persisted?
