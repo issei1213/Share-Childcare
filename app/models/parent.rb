@@ -22,7 +22,8 @@
 #
 class Parent < ApplicationRecord
   belongs_to :user
-  has_many :baby_infomations
+  has_many :baby_infomations, inverse_of: :parent
+  accepts_nested_attributes_for :baby_infomations, reject_if: :all_blank, allow_destroy: true
 
 
 end

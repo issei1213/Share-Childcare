@@ -42,7 +42,7 @@ class Babysitter < ApplicationRecord
     two_to_less_than_three: 2,
     three_to_less_than_four: 3,
     four_to_less_than_five: 4,
-    over_five_year: 5,
+    over_five_year: 5
   }
 
 end

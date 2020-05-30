@@ -18,6 +18,10 @@ ja:
       parent:
         order_money_hour: 希望時給
         order_money_option: 希望オプション金額
+    baby_infomation:
+      sex:
+        man: 男の子
+        woman: 女の子
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

@@ -16,21 +16,18 @@ class BabysittersController < ApplicationController
   end
 
   def edit
-    @babysitter = current_user.babysitter
     @babysitter.babysitter_images
   end
 
   def update
-    @babysitter = current_user.babysitter
     if @babysitter.update(babysitter_params)
-      redirect_to babysitter_path, notice: "変更しました。"
+      redirect_to babysitter_path(current_user.id), notice: "変更しました。"
     else
       render :edit
     end
   end
 
   def show
-    @babysitter = current_user.babysitter
   end
 
   private
