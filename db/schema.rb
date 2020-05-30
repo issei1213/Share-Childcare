@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_054020) do
+ActiveRecord::Schema.define(version: 2020_05_30_055638) do
+
+  create_table "baby_infomations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "parent_id"
+    t.string "name"
+    t.integer "age"
+    t.integer "sex"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_baby_infomations_on_parent_id"
+  end
 
   create_table "babysitter_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -82,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_054020) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "baby_infomations", "parents"
   add_foreign_key "babysitter_images", "babysitters"
   add_foreign_key "babysitters", "users"
   add_foreign_key "parents", "users"
