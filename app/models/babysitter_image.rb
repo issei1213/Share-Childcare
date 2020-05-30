@@ -20,5 +20,7 @@ class BabysitterImage < ApplicationRecord
   mount_uploader :name, ImageUploader
   belongs_to :babysitter
 
-  
+  enum sex:{ 
+    men: 0,
+    women: 1  }
 end

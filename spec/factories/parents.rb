@@ -7,6 +7,7 @@
 #  order_memo         :string(255)
 #  order_money_hour   :integer
 #  order_money_option :integer
+#  order_prefecture   :string(255)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  user_id            :bigint

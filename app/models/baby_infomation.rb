@@ -20,4 +20,6 @@
 #
 class BabyInfomation < ApplicationRecord
   belongs_to :parent
+
+  enum sex:{ man: 0, woman: 1 }
 end

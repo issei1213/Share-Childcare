@@ -1,0 +1,106 @@
+= form_with model: parent, html: { class: "needs-validation", novalidate: true }, local: true do |f|
+  .row
+    .col-md-2
+      .form-group
+        = f.label :order_money_hour, "希望時給", class: "bmd-label-floating"
+        .input-group
+          = f.text_field :order_money_hour, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+          .input-group-append
+            %span#basic-addon2.input-group-text 円
+          .invalid-feedback
+            希望時給を入力してください
+    .col-md-2
+      .form-group
+        = f.label :order_money_hour, "希望オプション料金", class: "bmd-label-floating"
+        .input-group
+          = f.text_field :order_money_hour, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+          .input-group-append
+            %span#basic-addon2.input-group-text 円
+          .invalid-feedback
+            希望オプション料金を入力してください
+    .col-md-3
+      .form-group
+        = f.label :order_prefecture, "都道府県"
+        = f.select :order_prefecture,{ 北海道: "北海道" ,青森県: "青森県" ,岩手県: "岩手県" ,宮城県: "宮城県" ,秋田県: "秋田県" ,山形県: "山形県" ,福島県: "福島県" ,茨城県: "茨城県" ,栃木県: "栃木県" ,群馬県: "群馬県" ,埼玉県: "埼玉県" ,千葉県: "千葉県" ,東京都: "東京都" ,神奈川県: "神奈川県 ",新潟県: "新潟県" ,富山県: "富山県" ,石川県: "石川県" ,福井県: "福井県" ,山梨県: "山梨県" ,長野県: "長野県" ,岐阜県: "岐阜県" ,静岡県: "静岡県" ,愛知県: "愛知県" ,三重県: "三重県" ,滋賀県: "滋賀県" ,京都府: "京都府" ,大阪府: "大阪府" ,兵庫県: "兵庫県" ,奈良県: "奈良県" ,和歌山県: "和歌山県 ",鳥取県: "鳥取県" ,島根県: "島根県" ,岡山県: "岡山県" ,広島県: "広島県" ,山口県: "山口県" ,徳島県: "徳島県" ,香川県: "香川県" ,愛媛県: "愛媛県" ,高知県: "高知県" ,福岡県: "福岡県" ,佐賀県: "佐賀県" ,長崎県: "長崎県" ,熊本県: "熊本県" ,大分県: "大分県" ,宮崎県: "宮崎県" ,鹿児島県: "鹿児島県 ",沖縄県: "沖縄県" }, {include_blank: "---"}, class: "form-control", required: true
+        .invalid-feedback
+          都道府県を選択してください
+    .col-md-4
+      .form-group
+        = f.label :order_city, "市区町村"
+        = f.text_field :order_city, class: "form-control", placeholder: "福岡市博多区", required: true
+        .invalid-feedback
+          市区町村を入力してください
+
+  = f.submit "登録", class: "btn btn-primary pull-right"
+
+
+
+
+
+
+-# = form_with model: @babysitter, html: { class: "needs-validation", novalidate: true }, local: true do |f|
+-#   .row
+-#     .col-md-2
+-#       .form-group
+-#         = f.label :baby_age_range_top_year, "受入可能人数", class: "bmd-label-floating", aria: {label: "Recipient's username", describedby: "basic-addon2" }
+-#         .input-group
+-#           = f.select :baby_age_range_top_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true
+-#           .input-group-append
+-#             %span#basic-addon2.input-group-text 年
+-#           .invalid-feedback
+-#             受入可能人数を選択してください
+-#     .col-md-6
+-#       .form-group
+-#         = f.label "受入可能年齢", class: "bmd-label-floating"
+-#         .input-group
+-#           = f.select :baby_age_range_top_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+-#           .input-group-append
+-#             %span#basic-addon2.input-group-text 年
+-#           = f.select :baby_age_range_top_month, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+-#           .input-group-append
+-#             %span#basic-addon2.input-group-text= "ヶ月 ~ "
+-#           = f.select :baby_age_range_down_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+-#           .input-group-append
+-#             %span#basic-addon2.input-group-text 年
+-#           = f.select :baby_age_range_down_month, { "0": "0",  "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+-#           .input-group-append
+-#             %span#basic-addon2.input-group-text ヶ月
+-#           .invalid-feedback
+-#             受入可能年齢を選択してください
+-#     .col-md-3
+-#       .form-group
+-#         = f.label "可能時間帯", class: "bmd-label-floating"
+-#         .input-group
+-#           = f.select :profile_receiving_time_top, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12", "13": "13", "14": "14", "15": "15", "16": "16", "17": "17", "18": "18", "19": "19", "20": "20", "21": "21", "22": "22", "23": "23"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+-#           .input-group-append
+-#             %span#basic-addon2.input-group-text 時 ~ 
+-#           = f.select :profile_receiving_time_down, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12", "13": "13", "14": "14", "15": "15", "16": "16", "17": "17", "18": "18", "19": "19", "20": "20", "21": "21", "22": "22", "23": "23"} , {include_blank: "---"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+-#           .input-group-append
+-#             %span#basic-addon2.input-group-text 時
+-#           .invalid-feedback
+-#             可能時間帯を選択してください
+-#   .row
+-#     .col-md-2
+-#       .form-group
+-#         = f.label :experience_year, "子育て経験", class: "bmd-label-floating"
+-#         = f.select :experience_year, Babysitter.experience_years_i18n.invert, {include_blank: "選択して下さい"}, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+-#         .invalid-feedback
+-#           子育て経験を選択してください
+-#     .col-md-2
+-#       .form-group
+-#         = f.label :money_hour, "時給", class: "bmd-label-floating"
+-#         .input-group
+-#           = f.text_field :money_hour, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+-#           .input-group-append
+-#             %span#basic-addon2.input-group-text 円
+-#           .invalid-feedback
+-#             時給を入力してください
+-#     .col-md-2
+-#       .form-group
+-#         = f.label :money_option, "オプション料金", class: "bmd-label-floating"
+-#         .input-group
+-#           = f.text_field :money_option, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
+-#           .input-group-append
+-#             %span#basic-addon2.input-group-text 円
+-#           .invalid-feedback
+-#             時給を入力してください

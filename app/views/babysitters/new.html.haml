@@ -14,4 +14,12 @@
         %li.nav-item
           = link_to "ホーム画面", root_path, class: "nav-link"
 
-  = render partial: "form", locals: { babysitter: @babysitter }
+  .main-panel
+    .container-fluid
+      .row
+        .col-md-12
+          .card
+            .card-header.card-header-primary
+              %h4.card-title ベビーシッター情報登録
+            .card-body
+              = render partial: "form", locals: { babysitter: @babysitter }
