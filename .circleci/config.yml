@@ -11,6 +11,7 @@ jobs:
         MYSQL_ALLOW_EMPTY_PASSWORD: true
         MYSQL_ROOT_HOST: '%'
         MYSQL_USER: root
+        MYSQL_PASSWORD: password
     working_directory: ~/ShareChildcare
     steps:
     - checkout
