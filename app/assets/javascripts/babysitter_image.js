@@ -23,7 +23,7 @@ $(document).on('turbolinks:load', ()=> {
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
 
-  $('.hidden-destroy').hide();
+  // $('.hidden-destroy').hide();
 
   $('#image-box').on('change', '.js-file', function(e) {
     const targetIndex = $(this).parent().data('index');
@@ -45,14 +45,14 @@ $(document).on('turbolinks:load', ()=> {
   });
 
   $('#image-box').on('click', '.js-remove', function() {
-    const targetIndex = $(this).prev().data('index');
+    const targetIndex = $(this).parent().data('index');
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
 
-    $(this).prev().remove();
-    $(this).remove();
+    $(this).parent().remove();
+    // $(this).remove();
     $(`img[data-index="${targetIndex}"]`).remove();
 
     // 画像入力欄が0個にならないようにしておく

@@ -1,6 +1,27 @@
 ---
 ja:
+  enums:
+    babysitter:
+      experience_year:
+        less_than_one_year: 1年未満
+        one_to_less_than_two: 1~2年
+        two_to_less_than_three: 2~3年
+        three_to_less_than_four: 3~4年
+        four_to_less_than_five: 4~5年
+        over_five_year: 5年以上
+    baby_infomation:
+      sex:
+        man: 男の子
+        woman: 女の子
   activerecord:
+    attributes:
+      parent:
+        order_money_hour: 希望時給
+        order_money_option: 希望オプション金額
+    baby_infomation:
+      sex:
+        man: 男の子
+        woman: 女の子
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

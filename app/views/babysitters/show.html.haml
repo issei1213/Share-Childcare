@@ -8,7 +8,7 @@
         %li.nav-item
           = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
         %li.nav-item
-          = link_to "保護者情報", root_path, class: "nav-link"
+          = link_to "保護者情報", parent_path(current_user.id), class: "nav-link"
         %li.nav-item.active
           = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "nav-link"
         %li.nav-item
@@ -56,7 +56,7 @@
                     %td
                       子育て経験
                     %td
-                      = "#{@babysitter.experience_support_count} 年"
+                      = "#{@babysitter.experience_year_i18n}"
                   %tr
                     %td 
                       タイトル

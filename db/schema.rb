@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_055638) do
+ActiveRecord::Schema.define(version: 2020_05_30_070735) do
 
   create_table "baby_infomations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "parent_id"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_055638) do
     t.integer "order_money_option"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "order_prefecture"
     t.index ["user_id"], name: "index_parents_on_user_id"
   end
 

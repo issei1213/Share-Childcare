@@ -19,7 +19,7 @@
                     = "マイページ"
                   .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
                     = link_to "共通情報", signup_path(current_user.id), class: "dropdown-item"
-                    = link_to "保護者情報", root_path, class: "dropdown-item"
+                    = link_to "保護者情報", parent_path(current_user.id), class: "dropdown-item"
                     = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "dropdown-item"
 
                 %li.nav-item

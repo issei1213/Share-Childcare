@@ -7,6 +7,7 @@
 #  order_memo         :string(255)
 #  order_money_hour   :integer
 #  order_money_option :integer
+#  order_prefecture   :string(255)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  user_id            :bigint
@@ -21,6 +22,8 @@
 #
 class Parent < ApplicationRecord
   belongs_to :user
-  has_many :baby_infomations
+  has_many :baby_infomations, inverse_of: :parent
+  accepts_nested_attributes_for :baby_infomations, reject_if: :all_blank, allow_destroy: true
+
 
 end
