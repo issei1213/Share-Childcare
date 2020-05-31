@@ -5,12 +5,11 @@ jobs:
     - image: circleci/ruby:2.5.1-node
       environment:
         RAILS_ENV: test
+        DB_HOST: 127.0.0.1
+        DB_USERNAME: 'root'
+        DB_PASSWORD: 'password'
     - image: circleci/mysql:5.7-ram
-      environment:
-        MYSQL_DATABASE: Share_Childcare_test
-        MYSQL_ALLOW_EMPTY_PASSWORD: true
-        MYSQL_ROOT_HOST: '%'
-        MYSQL_USER: root
+
     working_directory: ~/ShareChildcare
     steps:
     - checkout
