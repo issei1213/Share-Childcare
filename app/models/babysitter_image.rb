@@ -17,6 +17,6 @@
 #  fk_rails_...  (babysitter_id => babysitters.id)
 #
 class BabysitterImage < ApplicationRecord
-  mount_uploader :name, ImageUploader
   belongs_to :babysitter
+  mount_uploader :name, ImageUploader
 end

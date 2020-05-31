@@ -1,13 +1,13 @@
 
-= form_with model: babysitter, html: { class: "needs-validation", novalidate: true }, local: true do |f|
+= form_with(model: babysitter, html: { class: "needs-validation", novalidate: true }, local: true )do |f|
   .row
     .col-md-2
       .form-group
-        = f.label :baby_age_range_top_year, "受入可能人数", class: "bmd-label-floating", aria: {label: "Recipient's username", describedby: "basic-addon2" }
+        = f.label :number_of_baby, "受入可能人数", class: "bmd-label-floating", aria: {label: "Recipient's username", describedby: "basic-addon2" }
         .input-group
-          = f.select :baby_age_range_top_year, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true
+          = f.select :number_of_baby, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true
           .input-group-append
-            %span#basic-addon2.input-group-text 年
+            %span#basic-addon2.input-group-text 人
           .invalid-feedback
             受入可能人数を選択してください
     .col-md-6
@@ -109,7 +109,10 @@
           - if @babysitter.persisted?
             .js-file_group{"data-index" => "#{@babysitter.babysitter_images.count}"}
               .d-flex.justify-content-start
-                = file_field_tag :name, name: "babysitter[images_attributes][#{@babysitter.babysitter_images.count}][name]", class: 'js-file form-control'
+                = file_field_tag :name, name: "babysitter[babysitter_images_attributes][#{@babysitter.babysitter_images.count}][name]", class: 'js-file form-control'
                 .js-remove.btn.btn-sm 削除
 
-  = f.submit "登録", class: "btn btn-primary pull-right"
+    = f.submit "登録", class: "btn btn-primary pull-right"
+
+
+
