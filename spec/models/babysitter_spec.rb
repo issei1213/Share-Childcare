@@ -41,4 +41,11 @@ RSpec.describe Babysitter, type: :model do
       expect(babysitter).to be_valid
     end
   end
+  context "can not save" do
+    it "baby_age_range_down_monthが空では登録できないこと" do
+      babysitter = build(:babysitter, baby_age_range_down_month: "")
+      babysitter.valid?
+      expect(babysitter.errors[:baby_age_range_down_month]).to include("を入力してください")
+    end
+  end
 end
