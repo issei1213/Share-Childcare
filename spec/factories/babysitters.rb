@@ -7,7 +7,6 @@
 #  baby_age_range_down_year    :integer
 #  baby_age_range_top_month    :integer
 #  baby_age_range_top_year     :integer
-#  babysitter_year             :integer          default(0)
 #  experience_support_count    :integer          default(0)
 #  experience_user_count       :integer          default(0)
 #  experience_year             :integer
@@ -49,6 +48,5 @@ FactoryBot.define do
     profile_license             { "保育士" }
     profile_receiving_time_down { Faker::Number.between(from: 1, to: 24) }
     profile_receiving_time_top  { Faker::Number.between(from: 1, to: 24) }
-    babysitter_year             { Faker::Number.between(from: 1, to: 9) }
   end
 end

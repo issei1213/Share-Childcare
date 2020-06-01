@@ -7,7 +7,6 @@
 #  baby_age_range_down_year    :integer
 #  baby_age_range_top_month    :integer
 #  baby_age_range_top_year     :integer
-#  babysitter_year             :integer          default(0)
 #  experience_support_count    :integer          default(0)
 #  experience_user_count       :integer          default(0)
 #  experience_year             :integer
@@ -64,12 +63,6 @@ RSpec.describe Babysitter, type: :model do
       babysitter = build(:babysitter, baby_age_range_top_year: "")
       babysitter.valid?
       expect(babysitter.errors[:baby_age_range_top_year]).to include("を入力してください")
-    end
-
-    it "babysitter_yearが空では登録できないこと" do
-      babysitter = build(:babysitter, babysitter_year: "")
-      babysitter.valid?
-      expect(babysitter.errors[:babysitter_year]).to include("を入力してください")
     end
 
     it "experience_yearが空では登録できないこと" do

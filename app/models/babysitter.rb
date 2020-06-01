@@ -7,7 +7,6 @@
 #  baby_age_range_down_year    :integer
 #  baby_age_range_top_month    :integer
 #  baby_age_range_top_year     :integer
-#  babysitter_year             :integer          default(0)
 #  experience_support_count    :integer          default(0)
 #  experience_user_count       :integer          default(0)
 #  experience_year             :integer
