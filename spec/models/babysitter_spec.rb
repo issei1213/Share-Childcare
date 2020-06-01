@@ -34,5 +34,11 @@
 require 'rails_helper'
 
 RSpec.describe Babysitter, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "can save" do
+    it "全カラムが存在すれば登録できる事" do
+      babysitter = babysitter(:babysitter)
+      babysitter.valid?
+      expect(babysitter).to be_valid
+    end
+  end
 end

@@ -11,6 +11,7 @@ class ParentsController < ApplicationController
     if @parent.save!
       redirect_to parent_path(current_user.id), notice: "登録しました。"
     else
+      flash[:error_messages] = @parent.errors.full_messages
       render :new
     end
   end
@@ -23,6 +24,7 @@ class ParentsController < ApplicationController
     if @parent.update(parent_params)
       redirect_to parent_path(current_user.id), notice: "変更しました。"
     else
+      flash[:error_messages] = @parent.errors.full_messages
       render :edit
     end
   end

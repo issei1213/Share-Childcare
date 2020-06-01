@@ -11,6 +11,7 @@ class BabysittersController < ApplicationController
     if @babysitter.save
       redirect_to babysitter_path(current_user.id), notice: "登録しました。"
     else
+      flash[:error_messages] = @babysitter.errors.full_messages
       render :new
     end
   end
@@ -23,6 +24,7 @@ class BabysittersController < ApplicationController
     if @babysitter.update(babysitter_params)
       redirect_to babysitter_path, notice: "変更しました。"
     else
+      flash[:error_messages] = @babysitter.errors.full_messages
       render :edit
     end
   end
