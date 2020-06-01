@@ -83,6 +83,35 @@ RSpec.describe Babysitter, type: :model do
       expect(babysitter.errors[:introduction_title]).to include("を入力してください")
     end
 
+    it "money_hour" do
+      babysitter = build(:babysitter, money_hour: "")
+      babysitter.valid?
+      expect(babysitter.errors[:money_hour]).to include("を入力してください")
+    end
+
+    it "money_option" do
+      babysitter = build(:babysitter, money_option: "")
+      babysitter.valid?
+      expect(babysitter.errors[:money_option]).to include("を入力してください")
+    end
+
+    it "profile_license" do
+      babysitter = build(:babysitter, profile_license: "")
+      babysitter.valid?
+      expect(babysitter.errors[:profile_license]).to include("を入力してください")
+    end
+
+    it "profile_receiving_time_down" do
+      babysitter = build(:babysitter, profile_receiving_time_down: "")
+      babysitter.valid?
+      expect(babysitter.errors[:profile_receiving_time_down]).to include("を入力してください")
+    end
+
+    it "profile_receiving_time_top" do
+      babysitter = build(:babysitter, profile_receiving_time_top: "")
+      babysitter.valid?
+      expect(babysitter.errors[:profile_receiving_time_top]).to include("を入力してください")
+    end
 
   end
 end
