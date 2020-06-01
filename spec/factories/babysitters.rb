@@ -35,6 +35,7 @@ FactoryBot.define do
   factory :babysitter do
     user
     baby_age_range_top_year     { Faker::Number.between(from: 0, to: 6) }
+    baby_age_range_top_month    { Faker::Number.between(from: 1, to: 12) }
     baby_age_range_down_year    { Faker::Number.between(from: 0, to: 6) }
     baby_age_range_down_month   { Faker::Number.between(from: 1, to: 12) }
     experience_support_count    { Faker::Number.between(from: 1, to: 6) }
