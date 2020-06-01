@@ -47,5 +47,49 @@ RSpec.describe Babysitter, type: :model do
       babysitter.valid?
       expect(babysitter.errors[:baby_age_range_down_month]).to include("を入力してください")
     end
+
+    it "baby_age_range_down_yearが空では登録できないこと" do
+      babysitter = build(:babysitter, baby_age_range_down_year: "")
+      babysitter.valid?
+      expect(babysitter.errors[:baby_age_range_down_year]).to include("を入力してください")
+    end
+
+    it "baby_age_range_top_monthが空では登録できないこと" do
+      babysitter = build(:babysitter, baby_age_range_top_month: "")
+      babysitter.valid?
+      expect(babysitter.errors[:baby_age_range_top_month]).to include("を入力してください")
+    end
+
+    it "baby_age_range_top_yearが空では登録できないこと" do
+      babysitter = build(:babysitter, baby_age_range_top_year: "")
+      babysitter.valid?
+      expect(babysitter.errors[:baby_age_range_top_year]).to include("を入力してください")
+    end
+
+    it "babysitter_yearが空では登録できないこと" do
+      babysitter = build(:babysitter, :babysitter_year "")
+      babysitter.valid?
+      expect(babysitter.errors[:babysitter_year]).to include("を入力してください")
+    end
+
+    it "experience_yearが空では登録できないこと" do
+      babysitter = build(:babysitter, :experience_year "")
+      babysitter.valid?
+      expect(babysitter.errors[:experience_year]).to include("を入力してください")
+    end
+
+    it "introduction_contentが空では登録できないこと" do
+      babysitter = build(:babysitter, :introduction_content "")
+      babysitter.valid?
+      expect(babysitter.errors[:introduction_content]).to include("を入力してください")
+    end
+
+    it "introduction_titleが空では登録できないこと" do
+      babysitter = build(:babysitter, :introduction_title "")
+      babysitter.valid?
+      expect(babysitter.errors[:introduction_title]).to include("を入力してください")
+    end
+
+
   end
 end
