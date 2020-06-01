@@ -36,7 +36,7 @@ require 'rails_helper'
 RSpec.describe Babysitter, type: :model do
   context "can save" do
     it "全カラムが存在すれば登録できる事" do
-      babysitter = babysitter(:babysitter)
+      babysitter = build(:babysitter)
       babysitter.valid?
       expect(babysitter).to be_valid
     end
