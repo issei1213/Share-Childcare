@@ -37,7 +37,7 @@ FactoryBot.define do
     baby_age_range_top_year     { Faker::Number.between(from: 0, to: 6) }
     baby_age_range_down_year    { Faker::Number.between(from: 0, to: 6) }
     baby_age_range_down_month   { Faker::Number.between(from: 1, to: 12) }
-    number_of_babies            { Faker::Number.between(from: 1, to: 12) }
+    number_of_baby              { Faker::Number.between(from: 1, to: 12) }
     experience_support_count    { Faker::Number.between(from: 1, to: 6) }
     experience_user_count       { Faker::Number.between(from: 1, to: 9) }
     experience_year             { Faker::Number.between(from: 1, to: 12) }
