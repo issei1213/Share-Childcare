@@ -37,7 +37,7 @@ class Babysitter < ApplicationRecord
 
   enum experience_year:{ less_than_one_year: 0, one_to_less_than_two: 1, two_to_less_than_three: 2, three_to_less_than_four: 3, four_to_less_than_five: 4, over_five_year: 5 }
 
-  validates :baby_age_range_down_month, :baby_age_range_down_year, :baby_age_range_top_month, :baby_age_range_top_year, :introduction_content, :introduction_title, :money_hour, :money_option, :profile_receiving_time_down, :profile_receiving_time_top, :number_of_baby, :experience_year, presence: true
+  validates :baby_age_range_down_month, :baby_age_range_down_year, :baby_age_range_top_month, :baby_age_range_top_year, :introduction_content, :introduction_title, :money_hour, :money_option, :profile_receiving_time_down, :profile_receiving_time_top, :number_of_baby, :experience_year, :profile_license, presence: true
 
 
 
