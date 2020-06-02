@@ -22,6 +22,10 @@
 #
 FactoryBot.define do
   factory :parent do
-    
+    order_city          { Gimei.city.kanji }
+    order_memo          { "テストメモ"}
+    order_money_hour    { Faker::Number.number(digits: 4) }
+    order_money_option  { Faker::Number.number(digits: 4) }
+    order_prefecture    { Gimei.prefecture.kanji }
   end
 end
