@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_070735) do
+ActiveRecord::Schema.define(version: 2020_06_01_143344) do
 
   create_table "baby_infomations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "parent_id"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2020_05_30_070735) do
     t.integer "baby_age_range_down_year"
     t.integer "baby_age_range_down_month"
     t.integer "number_of_baby", default: 0
-    t.integer "babysitter_year", default: 0
     t.integer "experience_year"
     t.integer "experience_support_count", default: 0
     t.integer "experience_user_count", default: 0

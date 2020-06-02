@@ -17,6 +17,9 @@
     .container-fluid
       .row
         .col-md-12
+          = render 'shared/error_message'
+      .row
+        .col-md-12
           = form_with model: @parent, html: { class: "needs-validation", novalidate: true }, local: true do |f|
             .card
               .card-header.card-header-primary

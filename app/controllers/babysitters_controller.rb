@@ -11,11 +11,13 @@ class BabysittersController < ApplicationController
     if @babysitter.save
       redirect_to babysitter_path(current_user.id), notice: "登録しました。"
     else
+      flash[:error_messages] = @babysitter.errors.full_messages
       render :new
     end
   end
 
   def edit
+    redirect_to action: :new if user_signed_in? && Babysitter.where(user_id: current_user.id).present?
     @babysitter.babysitter_images
   end
 
@@ -23,8 +25,10 @@ class BabysittersController < ApplicationController
     if @babysitter.update(babysitter_params)
       redirect_to babysitter_path, notice: "変更しました。"
     else
+      flash[:error_messages] = @babysitter.errors.full_messages
       render :edit
-    end
+
+     end
   end
 
   def show
@@ -38,5 +42,9 @@ class BabysittersController < ApplicationController
 
   def babysitter_find
     @babysitter = current_user.babysitter
+  end
+
+  def move_to_new
+    redirect_to action: :new if user_signed_in? && Babysitter.where(id: current_user.id).present?
   end
 end

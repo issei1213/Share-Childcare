@@ -7,7 +7,6 @@
 #  baby_age_range_down_year    :integer
 #  baby_age_range_top_month    :integer
 #  baby_age_range_top_year     :integer
-#  babysitter_year             :integer          default(0)
 #  experience_support_count    :integer          default(0)
 #  experience_user_count       :integer          default(0)
 #  experience_year             :integer
@@ -34,5 +33,85 @@
 require 'rails_helper'
 
 RSpec.describe Babysitter, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "can save" do
+    it "全カラムが存在すれば登録できる事" do
+      babysitter = build(:babysitter)
+      babysitter.valid?
+      expect(babysitter).to be_valid
+    end
+  end
+  context "can not save" do
+    it "baby_age_range_down_monthが空では登録できないこと" do
+      babysitter = build(:babysitter, baby_age_range_down_month: "")
+      babysitter.valid?
+      expect(babysitter.errors[:baby_age_range_down_month]).to include("を入力してください")
+    end
+
+    it "baby_age_range_down_yearが空では登録できないこと" do
+      babysitter = build(:babysitter, baby_age_range_down_year: "")
+      babysitter.valid?
+      expect(babysitter.errors[:baby_age_range_down_year]).to include("を入力してください")
+    end
+
+    it "baby_age_range_top_monthが空では登録できないこと" do
+      babysitter = build(:babysitter, baby_age_range_top_month: "")
+      babysitter.valid?
+      expect(babysitter.errors[:baby_age_range_top_month]).to include("を入力してください")
+    end
+
+    it "baby_age_range_top_yearが空では登録できないこと" do
+      babysitter = build(:babysitter, baby_age_range_top_year: "")
+      babysitter.valid?
+      expect(babysitter.errors[:baby_age_range_top_year]).to include("を入力してください")
+    end
+
+    it "experience_yearが空では登録できないこと" do
+      babysitter = build(:babysitter, experience_year: "")
+      babysitter.valid?
+      expect(babysitter.errors[:experience_year]).to include("を入力してください")
+    end
+
+    it "introduction_contentが空では登録できないこと" do
+      babysitter = build(:babysitter, introduction_content: "")
+      babysitter.valid?
+      expect(babysitter.errors[:introduction_content]).to include("を入力してください")
+    end
+
+    it "introduction_titleが空では登録できないこと" do
+      babysitter = build(:babysitter, introduction_title: "")
+      babysitter.valid?
+      expect(babysitter.errors[:introduction_title]).to include("を入力してください")
+    end
+
+    it "money_hourが空では登録できないこと" do
+      babysitter = build(:babysitter, money_hour: "")
+      babysitter.valid?
+      expect(babysitter.errors[:money_hour]).to include("を入力してください")
+    end
+
+    it "money_optionが空では登録できないこと" do
+      babysitter = build(:babysitter, money_option: "")
+      babysitter.valid?
+      expect(babysitter.errors[:money_option]).to include("を入力してください")
+    end
+
+    it "profile_licenseが空では登録できないこと" do
+      babysitter = build(:babysitter, profile_license: "")
+      babysitter.valid?
+      expect(babysitter.errors[:profile_license]).to include("を入力してください")
+    end
+
+    it "profile_receiving_time_downが空では登録できないこと" do
+      babysitter = build(:babysitter, profile_receiving_time_down: "")
+      babysitter.valid?
+      expect(babysitter.errors[:profile_receiving_time_down]).to include("を入力してください")
+    end
+
+    it "profile_receiving_time_topが空では登録できないこと" do
+      babysitter = build(:babysitter, profile_receiving_time_top: "")
+      babysitter.valid?
+      expect(babysitter.errors[:profile_receiving_time_top]).to include("を入力してください")
+    end
+
+  end
 end

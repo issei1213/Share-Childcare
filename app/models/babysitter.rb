@@ -7,7 +7,6 @@
 #  baby_age_range_down_year    :integer
 #  baby_age_range_top_month    :integer
 #  baby_age_range_top_year     :integer
-#  babysitter_year             :integer          default(0)
 #  experience_support_count    :integer          default(0)
 #  experience_user_count       :integer          default(0)
 #  experience_year             :integer
@@ -37,5 +36,9 @@ class Babysitter < ApplicationRecord
   accepts_nested_attributes_for :babysitter_images
 
   enum experience_year:{ less_than_one_year: 0, one_to_less_than_two: 1, two_to_less_than_three: 2, three_to_less_than_four: 3, four_to_less_than_five: 4, over_five_year: 5 }
+
+  validates :baby_age_range_down_month, :baby_age_range_down_year, :baby_age_range_top_month, :baby_age_range_top_year, :introduction_content, :introduction_title, :money_hour, :money_option, :profile_receiving_time_down, :profile_receiving_time_top, :number_of_baby, :experience_year, :profile_license, presence: true
+
+
 
 end

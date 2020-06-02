@@ -3,6 +3,7 @@ ja:
     models:
       order: 注文  #g
       user: ユーザー  #g
+      babysitter: 保護者
 
     attributes:
       user:
@@ -22,3 +23,20 @@ ja:
         remember_created_at: 作成日を記憶する  #g
         reset_password_sent_at: に送信されたパスワードをリセット  #g
         reset_password_token: パスワードトークンをリセットする  #g
+      babysitter:
+        number_of_baby: 受入可能人数
+        baby_age_range_down_month: 受入可能年齢
+        baby_age_range_down_year: 受入可能年齢
+        baby_age_range_top_month: 受入可能年齢
+        baby_age_range_top_year: 受入可能年齢
+        babysitter_year: 子育て経験
+        experience_support_count: サポート回数
+        experience_user_count: 累計ユーザー数
+        experience_year: 子育て経験
+        introduction_content: 紹介文
+        introduction_title: タイトル
+        money_hour: 時給
+        money_option: オプション料金
+        profile_license: 資格
+        profile_receiving_time_down: 可能時間帯
+        profile_receiving_time_top: 可能時間帯
