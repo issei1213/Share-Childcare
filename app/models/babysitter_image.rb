@@ -19,4 +19,6 @@
 class BabysitterImage < ApplicationRecord
   belongs_to :babysitter
   mount_uploader :name, ImageUploader
+
+  validates :name, presence: true
 end

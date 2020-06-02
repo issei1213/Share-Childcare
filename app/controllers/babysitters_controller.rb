@@ -27,8 +27,7 @@ class BabysittersController < ApplicationController
     else
       flash[:error_messages] = @babysitter.errors.full_messages
       render :edit
-
-     end
+    end
   end
 
   def show

@@ -20,6 +20,9 @@
 #
 FactoryBot.define do
   factory :baby_infomation do
-    
+    age   { Faker::Number.between(from: 1, to: 9) }
+    name  { Gimei.name.last.hiragana }
+    sex   { "man" }
+    parent
   end
 end

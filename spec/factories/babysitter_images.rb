@@ -18,6 +18,7 @@
 #
 FactoryBot.define do
   factory :babysitter_image do
-    
+    name { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/fixtures/test.png")) }
+    babysitter
   end
 end

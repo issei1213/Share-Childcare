@@ -40,3 +40,16 @@ ja:
         profile_license: 資格
         profile_receiving_time_down: 可能時間帯
         profile_receiving_time_top: 可能時間帯
+      parent:
+        order_city: 市区町村
+        order_prefecture: 都道府県
+        order_memo: 補足
+        order_money_hour: 希望時給
+        order_money_option: 希望オプション料金
+      baby_infomation:
+        age: 年齢
+        name: 名前
+        sex: 性別
+      babysitter_image:
+        name: 本人画像
+      
