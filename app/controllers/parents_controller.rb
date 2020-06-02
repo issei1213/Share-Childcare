@@ -1,5 +1,7 @@
 class ParentsController < ApplicationController
   before_action :parent_find, only: [:edit, :update, :show]
+  before_action :move_to_show, only: [:new]
+  before_action :move_to_new, only: [:show]
 
   def new
     @parent = Parent.new
@@ -40,5 +42,13 @@ class ParentsController < ApplicationController
 
   def parent_find
     @parent = current_user.parent
+  end
+
+  def move_to_show
+    redirect_to parent_path(current_user) if user_signed_in? && Parent.where(user_id: current_user.id).present?
+  end
+
+  def move_to_new
+    redirect_to new_parent_path unless user_signed_in? && Parent.where(user_id: current_user.id).present?
   end
 end

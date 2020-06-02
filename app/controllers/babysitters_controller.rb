@@ -1,5 +1,7 @@
 class BabysittersController < ApplicationController
   before_action :babysitter_find, only: [:edit, :update, :show]
+  before_action :move_to_show, only: [:new]
+  before_action :move_to_new, only: [:show]
 
   def new
     @babysitter = Babysitter.new
@@ -17,7 +19,7 @@ class BabysittersController < ApplicationController
   end
 
   def edit
-    redirect_to action: :new if user_signed_in? && Babysitter.where(user_id: current_user.id).present?
+
     @babysitter.babysitter_images
   end
 
@@ -43,7 +45,11 @@ class BabysittersController < ApplicationController
     @babysitter = current_user.babysitter
   end
 
+  def move_to_show
+    redirect_to babysitter_path(current_user) if user_signed_in? && Babysitter.where(user_id: current_user.id).present?
+  end
+
   def move_to_new
-    redirect_to action: :new if user_signed_in? && Babysitter.where(id: current_user.id).present?
+    redirect_to new_babysitter_path unless user_signed_in? && Babysitter.where(user_id: current_user.id).present?
   end
 end
