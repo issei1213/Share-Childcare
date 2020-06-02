@@ -27,5 +27,6 @@ FactoryBot.define do
     order_money_hour    { Faker::Number.number(digits: 4) }
     order_money_option  { Faker::Number.number(digits: 4) }
     order_prefecture    { Gimei.prefecture.kanji }
+    user
   end
 end
