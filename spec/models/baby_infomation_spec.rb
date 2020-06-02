@@ -21,9 +21,11 @@
 require 'rails_helper'
 
 RSpec.describe BabyInfomation, type: :model do
-  context "全カラムが存在すれば登録できる事" do
-    baby_infomation = build(:baby_infomation)
-    baby_infomation.valid?
-    expect(baby_infomation).to be_valid
+  context "can save" do
+    it "全カラムが存在すれば登録できる事" do
+      baby_infomation = build(:baby_infomation)
+      baby_infomation.valid?
+      expect(baby_infomation).to be_valid
+    end
   end
 end
