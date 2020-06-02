@@ -21,5 +21,9 @@
 require 'rails_helper'
 
 RSpec.describe BabyInfomation, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  contect "全カラムが存在すれば登録できる事" do
+    baby_infomation = build(:baby_infomation)
+    baby_infomation.valid?
+    expect(baby_infomation).to be_valid
+  end
 end
