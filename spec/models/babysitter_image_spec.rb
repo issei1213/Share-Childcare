@@ -31,7 +31,7 @@ RSpec.describe BabysitterImage, type: :model do
     it "画像無しで登録できないこと" do
       babysitter_image = build(:babysitter_image, name: "")
       babysitter_image.valid?
-      expect(babysitter_image).to include("を入力してください")
+      expect(babysitter_image.errors[:name]).to include("を入力してください")
     end
   end
 end
