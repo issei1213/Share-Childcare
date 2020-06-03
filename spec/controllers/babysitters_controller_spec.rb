@@ -28,9 +28,9 @@ RSpec.describe BabysittersController, type: :controller do
     context "log in" do
       before do
         login user
-        post :create, params: { babysitter: babysitter_attributes }
       end
       it "HTTPステータスが200であることを確認" do
+        post :create, params: { babysitter: babysitter_attributes }
         expect(response.status).to eq(200)
       end
       it "Viewに推移する事を確認" do
