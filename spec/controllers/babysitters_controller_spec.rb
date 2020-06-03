@@ -30,10 +30,11 @@ RSpec.describe BabysittersController, type: :controller do
         login user
       end
       it "HTTPステータスが200であることを確認" do
-        post :create, params: { babysitter: babysitter_attributes }
+        
         expect(response.status).to eq(200)
       end
       it "Viewに推移する事を確認" do
+        post :create, params: { babysitter: babysitter_attributes }
         babysitter = Babysitter.last
         expect(response).to redirect_to(babysitter_path(babysitter.user_id))
       end
