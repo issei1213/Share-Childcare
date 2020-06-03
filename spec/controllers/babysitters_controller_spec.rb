@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe BabysittersController, type: :controller do
-  let(:user) { create(:user) }
-  let(:babysitter) { create(:babysitter) }
-  let(:babysitter_image) { create(:babysitter_image) }
+  let(:user) { create(:users) }
+  let(:babysitter) { create(:babysitters) }
+  let(:babysitter_image) { create(:babysitter_images) }
 
   describe "GET new" do
     context "log in" do
@@ -27,7 +27,7 @@ RSpec.describe BabysittersController, type: :controller do
       before do
         login user
         get :edit, params: { id: babysitter }
-        # babysitter.babysitter_images
+        babysitter.babysitter_images
       end
       it "HTTPステータスが200であることを確認" do
         expect(response.status).to eq(200)
