@@ -11,7 +11,7 @@ RSpec.describe BabysittersController, type: :controller do
         get :new
       end
       it "Viewに推移する事を確認" do
-        expect(response).to redirect_to new_babysitter_path
+        expect(response).to render_template :new
       end
     end
   end
