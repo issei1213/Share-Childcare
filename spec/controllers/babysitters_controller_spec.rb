@@ -21,6 +21,7 @@ RSpec.describe BabysittersController, type: :controller do
       end
     end
   end
+
   describe "GET create" do
     let(:babysitter) { create(:babysitter) }
     let(:babysitter_attributes){ attributes_for(:babysitter)}
@@ -41,6 +42,7 @@ RSpec.describe BabysittersController, type: :controller do
       end
     end
   end
+  
   describe "GET edit" do
     context "log in" do
       let(:babysitter) { create(:babysitter) }
