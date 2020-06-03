@@ -22,7 +22,7 @@ RSpec.describe BabysittersController, type: :controller do
     end
   end
 
-  describe "GET create" do
+  describe "POST create" do
     let(:babysitter) { create(:babysitter) }
     let(:babysitter_attributes){ attributes_for(:babysitter)}
     context "log in" do
@@ -31,6 +31,7 @@ RSpec.describe BabysittersController, type: :controller do
         post :create, params: { babysitter: babysitter_attributes }
       end
       it "HTTPステータスが200であることを確認" do
+        babysitter
         expect(response.status).to eq(200)
       end
       it "Viewに推移する事を確認" do
