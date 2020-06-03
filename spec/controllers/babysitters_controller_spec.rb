@@ -20,6 +20,8 @@ RSpec.describe BabysittersController, type: :controller do
         expect(assigns(:babysitter)).to be_a_new(Babysitter)
       end
     end
+  end
+  describe "GET edit" do
     context "log in" do
       before do
         login user
