@@ -28,19 +28,15 @@ RSpec.describe BabysittersController, type: :controller do
     context "log in" do
       before do
         login user
-      end
-      it "HTTPステータスが200であることを確認" do
-        
-        expect(response.status).to eq(200)
+        post :create, params: { babysitter: babysitter_attributes }
       end
       it "Viewに推移する事を確認" do
-        post :create, params: { babysitter: babysitter_attributes }
         babysitter = Babysitter.last
         expect(response).to redirect_to(babysitter_path(babysitter.user_id))
       end
-      # it "インスタンス変数を確認する" do
-      #   expect(assigns(:babysitter)).to be_a_new(Babysitter)
-      # end
+      it "モデルの増減することを確認" do
+        expect(post :create, params: { babysitter: babysitter_attributes }).to change(Babysitter, :count).by(1)
+      end
     end
   end
 
