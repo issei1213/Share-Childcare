@@ -35,7 +35,7 @@ RSpec.describe BabysittersController, type: :controller do
       end
       it "Viewに推移する事を確認" do
         babysitter = Babysitter.last
-        expect(response).to redirect_to(babysitter_path(babysitter))
+        expect(response).to redirect_to(babysitter_path(babysitter.user_id))
       end
       # it "インスタンス変数を確認する" do
       #   expect(assigns(:babysitter)).to be_a_new(Babysitter)
