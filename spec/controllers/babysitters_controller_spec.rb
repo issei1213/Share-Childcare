@@ -71,12 +71,12 @@ RSpec.describe BabysittersController, type: :controller do
         login user
         patch :update, params: { id: babysitter, babysitter: update_attributes }
       end
+      it "モデルの増減しないことを確認" do
+        expect{ patch :update, params: { id: babysitter, babysitter: update_attributes }}.to change(Babysitter, :count).by(0)
+      end
       it "Viewに推移する事を確認" do
         babysitter = Babysitter.last
         expect(response).to redirect_to(babysitter_path(babysitter))
-      end
-      it "モデルの増減することを確認" do
-        expect{ patch :update, params: { babysitter: update_attributes }}.to change(Babysitter, :count).by(0)
       end
     end
   end
