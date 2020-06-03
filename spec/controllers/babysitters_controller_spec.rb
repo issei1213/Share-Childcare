@@ -26,7 +26,7 @@ RSpec.describe BabysittersController, type: :controller do
     context "log in" do
       before do
         login user
-        get :edit, params: { id: babysitter, babysitter_image: attribute_for(:babysitter_image) }
+        get :edit, params: { id: babysitter, babysitter_image: attributes_for(:babysitter_image) }
         babysitter = babysitter.babysitter_image
       end
       it "HTTPステータスが200であることを確認" do
