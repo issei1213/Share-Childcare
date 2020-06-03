@@ -36,7 +36,7 @@ RSpec.describe BabysittersController, type: :controller do
         expect(response).to render_template :edit
       end
       it "インスタンス変数を確認する" do
-        babysitter
+        babysiter = current_user.babysitter
         expect(assigns(:babysitter)).to eq babysitter
       end
     end
