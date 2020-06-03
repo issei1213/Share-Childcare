@@ -27,6 +27,7 @@ RSpec.describe BabysittersController, type: :controller do
         login user
         get :edit, params: { id: babysitter }
         babysitter = create(:babysitter)
+        babysitter.babysitter_images
       end
       it "HTTPステータスが200であることを確認" do
         expect(response.status).to eq(200)
