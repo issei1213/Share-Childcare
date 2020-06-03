@@ -39,10 +39,8 @@ FactoryBot.define do
     baby_age_range_down_month   { Faker::Number.between(from: 1, to: 12) }
     experience_support_count    { Faker::Number.between(from: 1, to: 6) }
     experience_user_count       { Faker::Number.between(from: 1, to: 9) }
-    Babysitter.experience_years.keys.each do |year|
-      trait :"#{year}" do
-        status { year }
-      end
+    factory :babysitter do
+      experience_year :baby_age_range_down_month
     end
     introduction_content        { "テスト本文" }
     introduction_title          { "テストタイトル" }
