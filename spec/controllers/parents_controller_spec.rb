@@ -76,7 +76,7 @@ RSpec.describe ParentsController, type: :controller do
         expect(response).to redirect_to(parent_path(parent))
       end
       it "モデルの増減することを確認" do
-        expect{ post :create, params: { parent: update_attributes }}.to change(Parent, :count).by(0)
+        expect{ patch :update, params: { parent: update_attributes }}.to change(Parent, :count).by(0)
       end
     end
   end
