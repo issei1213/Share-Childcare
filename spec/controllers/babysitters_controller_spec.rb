@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe BabysittersController, type: :controller do
   let(:user) { create(:user) }
-  let(:babysitter) { create(:babysitter) }
-  let(:babysitter_image) { create(:babysitter_image) }
 
   describe "GET new" do
+    let(:babysitter) { create(:babysitter) }
     context "log in" do
       before do
         login user
@@ -23,6 +22,8 @@ RSpec.describe BabysittersController, type: :controller do
     end
   end
   describe "GET create" do
+    let(:babysitter) { create(:babysitter) }
+    let(:babysitter_attributes){ attributes_for(:babysitter)}
     context "log in" do
       before do
         login user
