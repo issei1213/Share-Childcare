@@ -19,8 +19,6 @@ class BabysittersController < ApplicationController
   end
 
   def edit
-
-    @babysitter.babysitter_images
   end
 
   def update
