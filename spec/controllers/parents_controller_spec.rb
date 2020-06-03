@@ -80,6 +80,25 @@ RSpec.describe ParentsController, type: :controller do
       end
     end
   end
+
+  describe "GET show" do
+    context "log in" do
+      let(:parent) { create(:parent, user_id: user.id) }
+      before do
+        login user
+        get :show, params: { id: parent.id, user_id: user.id}
+      end
+      it "HTTPステータスが200であることを確認" do
+        expect(response.status).to eq(200)
+      end
+      it "Viewに推移する事を確認" do
+        expect(response).to render_template :show
+      end
+      it "インスタンス変数を確認する" do
+        expect(assigns(:parent)).to eq parent
+      end
+    end
+  end
 end
 
 
