@@ -76,7 +76,7 @@ RSpec.describe BabysittersController, type: :controller do
         expect(response).to redirect_to(babysitter_path(babysitter))
       end
       it "モデルの増減することを確認" do
-        expect{ post :create, params: { babysitter: update_attributes }}.to change(Babysitter, :count).by(0)
+        expect{ patch :update, params: { babysitter: update_attributes }}.to change(Babysitter, :count).by(0)
       end
     end
   end
