@@ -31,8 +31,8 @@ RSpec.describe ParentsController, type: :controller do
         post :create, params: { parent: parent_attributes }
       end
       it "Viewに推移する事を確認" do
-        parent = Parent.find_by(user_id: user.id)
-        expect(response).to redirect_to(parent_path(parent))
+        parent = Parent.last
+        expect(response).to redirect_to(parent_path(parent.user_id))
       end
       it "モデルの増減することを確認" do
         expect{ post :create, params: { parent: parent_attributes }}.to change(Parent, :count).by(1)
