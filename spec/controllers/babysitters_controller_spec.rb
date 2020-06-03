@@ -10,8 +10,14 @@ RSpec.describe BabysittersController, type: :controller do
         login user
         get :new
       end
+      it "HTTPステータスが200であることを確認" do
+        expect(response.status).to eq(200)
+      end
       it "Viewに推移する事を確認" do
         expect(response).to render_template :new
+      end
+      it "インスタンス変数を確認する" do
+        expect(assigns(:babysitter)).to be_a_new(Babysitter)
       end
     end
   end
