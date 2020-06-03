@@ -36,6 +36,7 @@ RSpec.describe BabysittersController, type: :controller do
       end
       it "インスタンス変数を確認する" do
         babysitter
+        babysitter_image
         expect(assigns(:babysitter)).to eq babysitter
       end
     end
