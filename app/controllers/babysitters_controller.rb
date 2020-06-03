@@ -40,7 +40,7 @@ class BabysittersController < ApplicationController
   end
 
   def babysitter_find
-    @babysitter = current_user.babysitter
+    @babysitter = Babysitter.find(current_user.id)
   end
 
   def move_to_show
