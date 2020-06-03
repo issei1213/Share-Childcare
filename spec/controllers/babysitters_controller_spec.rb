@@ -83,7 +83,7 @@ RSpec.describe BabysittersController, type: :controller do
 
   describe "GET show" do
     context "log in" do
-      let(:babysitter) { create(:babysitter) }
+      let(:babysitter) { create(:babysitter, user_id: user.id) }
       before do
         user
         login user
