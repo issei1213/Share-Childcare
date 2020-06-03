@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe BabysittersController, type: :controller do
+  let(:user) { create(:user) }
   let(:babysitter) { create(:babysitter) }
 
   describe "GET new" do
