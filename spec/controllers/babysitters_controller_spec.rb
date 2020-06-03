@@ -7,7 +7,7 @@ RSpec.describe BabysittersController, type: :controller do
     context "log in" do
       before do
         login user
-        get :step1
+        get :new
       end
       it "Viewに推移する事を確認" do
         expect(response).to redirect_to new_babysitter_path
