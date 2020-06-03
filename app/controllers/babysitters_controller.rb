@@ -40,7 +40,7 @@ class BabysittersController < ApplicationController
   end
 
   def babysitter_find
-    @babysitter = Babysitter.find(current_user.id)
+    @babysitter = Babysitter.find(params[:id])
   end
 
   def move_to_show
