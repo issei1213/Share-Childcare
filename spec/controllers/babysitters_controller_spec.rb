@@ -58,6 +58,28 @@ RSpec.describe BabysittersController, type: :controller do
       end
     end
   end
+
+  describe "PATCH update" do
+    let!(:babysitter) { create(:babysitter) }
+    let(:update_attributes) do
+      {
+        baby_age_range_down_month: 3
+      }
+    end
+    context "log in" do
+      before do
+        login user
+        patch :update, params: { id: babysitter, babysitter: update_attributes }
+      end
+      it "Viewに推移する事を確認" do
+        babysitter = Babysitter.last
+        expect(response).to redirect_to(babysitter_path(babysitter.user_id))
+      end
+      it "モデルの増減することを確認" do
+        expect{ post :create, params: { babysitter: babysitter_attributes }}.to change(Babysitter, :count).by(1)
+      end
+    end
+  end
 end
 
 
