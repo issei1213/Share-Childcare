@@ -32,7 +32,7 @@ RSpec.describe ParentsController, type: :controller do
       end
       it "Viewに推移する事を確認" do
         parent = Babysitter.last
-        expect(response).to redirect_to(parent_path(parent.user_id))
+        expect(response).to redirect_to(parent_path(parent))
       end
       it "モデルの増減することを確認" do
         expect{ post :create, params: { parent: parent_attributes }}.to change(Parent, :count).by(1)
@@ -63,7 +63,7 @@ RSpec.describe ParentsController, type: :controller do
     let!(:parent) { create(:parent) }
     let(:update_attributes) do
       {
-        baby_age_range_down_month: 3
+        order_money_hour: 2000
       }
     end
     context "log in" do
