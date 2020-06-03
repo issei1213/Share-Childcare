@@ -24,9 +24,11 @@ RSpec.describe BabysittersController, type: :controller do
   end
   describe "GET edit" do
     context "log in" do
+      let(:babysitter) { create(:babysitter) }
       before do
         login user
-        get :edit, params: { id: babysitter }
+        get :edit
+        params: { id: babysitter }
       end
       it "HTTPステータスが200であることを確認" do
         expect(response.status).to eq(200)
@@ -36,7 +38,6 @@ RSpec.describe BabysittersController, type: :controller do
       end
       it "インスタンス変数を確認する" do
         babysitter
-        babysitter_image
         expect(assigns(:babysitter)).to eq babysitter
       end
     end
