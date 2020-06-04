@@ -1,5 +1,5 @@
 class BabysittersController < ApplicationController
-  before_action :babysitter_find, only: [:edit, :update, :show]
+  before_action :babysitter_find, only: [:edit, :show]
   before_action :move_to_show, only: [:new]
   before_action :move_to_new, only: [:show]
 
@@ -22,6 +22,7 @@ class BabysittersController < ApplicationController
   end
 
   def update
+    @babysitter = Babysitter.find(params[:id])
     if @babysitter.update(babysitter_params)
       redirect_to babysitter_path, notice: "変更しました。"
     else
