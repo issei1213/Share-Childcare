@@ -16,8 +16,9 @@ development:
 test:
   <<: *default
   database: Share_Childcare_test
-  password: 
-  host: <%= ENV['MYSQL_ROOT_HOST'] || '127.0.0.1' %>
+  # password: 
+  host: db
+  # host: <%= ENV['MYSQL_ROOT_HOST'] || '127.0.0.1' %>
 
 production:
   <<: *default

@@ -42,10 +42,10 @@ RSpec.describe BabysittersController, type: :controller do
 
   describe "GET edit" do
     context "log in" do
-      let(:babysitter) { create(:babysitter) }
+      let!(:babysitter) { create(:babysitter) }
       before do
         login user
-        get :edit, params: { id: babysitter, user_id: user }
+        get :edit, params: { id: babysitter }
       end
       it "HTTPステータスが200であることを確認" do
         expect(response.status).to eq(200)
@@ -54,7 +54,7 @@ RSpec.describe BabysittersController, type: :controller do
         expect(response).to render_template :edit
       end
       it "インスタンス変数を確認する" do
-        expect(assigns(:babysitter)).to eq babysitter
+        expect(assigns :babysitter).to eq babysitter
       end
     end
   end

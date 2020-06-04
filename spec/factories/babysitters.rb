@@ -32,7 +32,7 @@
 #
 FactoryBot.define do
   factory :babysitter do
-    user
+    user                        { id  }
     baby_age_range_top_year     { Faker::Number.between(from: 0, to: 6) }
     baby_age_range_top_month    { Faker::Number.between(from: 1, to: 12) }
     baby_age_range_down_year    { Faker::Number.between(from: 0, to: 6) }
