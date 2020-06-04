@@ -19,8 +19,6 @@ class BabysittersController < ApplicationController
   end
 
   def edit
-
-    @babysitter.babysitter_images
   end
 
   def update
@@ -42,7 +40,7 @@ class BabysittersController < ApplicationController
   end
 
   def babysitter_find
-    @babysitter = current_user.babysitter
+    @babysitter = Babysitter.find(params[:id])
   end
 
   def move_to_show
@@ -51,5 +49,8 @@ class BabysittersController < ApplicationController
 
   def move_to_new
     redirect_to new_babysitter_path unless user_signed_in? && Babysitter.where(user_id: current_user.id).present?
+  end
+
+  def move_to_root
   end
 end

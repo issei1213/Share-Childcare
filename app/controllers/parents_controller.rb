@@ -41,7 +41,7 @@ class ParentsController < ApplicationController
   end
 
   def parent_find
-    @parent = current_user.parent
+    @parent = Parent.find(params[:id])
   end
 
   def move_to_show
