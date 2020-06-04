@@ -22,7 +22,6 @@ class ParentsController < ApplicationController
   end
 
   def update
-    binding.pry
     @parent = Parent.find(params[:id])
     if @parent.update(parent_params)
       redirect_to parent_path(current_user.id), notice: "変更しました。"
