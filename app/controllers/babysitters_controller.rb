@@ -40,7 +40,7 @@ class BabysittersController < ApplicationController
   end
 
   def babysitter_find
-    @babysitter = Babysitter.find(params[:id])
+    @babysitter = Babysitter.find_by(user_id: params[:id])
   end
 
   def move_to_show
@@ -51,6 +51,4 @@ class BabysittersController < ApplicationController
     redirect_to new_babysitter_path unless user_signed_in? && Babysitter.where(user_id: current_user.id).present?
   end
 
-  def move_to_root
-  end
 end

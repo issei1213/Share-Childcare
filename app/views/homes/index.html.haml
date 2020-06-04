@@ -31,28 +31,26 @@
               -#   %button.btn.btn-secondary.my-2.my-sm-0{:type => "submit"} 検索
 
   .container
-    %header.jumbotron.my-4
-      %h1.display-3 A Warm Welcome!
-      %p.lead Lorem ipsum dolor sit amet
-      %a.btn.btn-primary.btn-lg{href: "#"} Call to action!
     .row.text-center
-      .col-lg-3.col-md-6.mb-4
-        .card.h-100
-          %img.card-img-top{alt: "", src: "https://picsum.photos/500/325"}/
-          .card-body
-            %h4.card-title ニックネーム
-            %p.card-text 紹介文
-          %table.table
-            %thead
-            %tbody
-              %tr
-                %th{scope: "col"} 時給
-                %td= "¥1,000"
-              %tr
-                %th{scope: "col"} 市区町村
-                %td= "福岡市博多区"
-          .card-footer
-            %a.btn.btn-primary{:href => "#"} 詳細
+      - @users.each do |user|
+        .col-lg-3.col-md-6.mb-4
+          .card
+            .center-block
+              = image_tag user.babysitter.babysitter_images.first.name.to_s, class: "card-img-to", size: "150x150"
+            .card-body
+              %h4.card-title= user.nickname
+              %p.card-text= user.babysitter.introduction_title
+            %table.table
+              %thead
+              %tbody
+                %tr
+                  %th{scope: "col"} 時給
+                  %td= user.babysitter.money_hour
+                %tr
+                  %th{scope: "col"} 市区町村
+                  %td= "#{user.prefecture}#{user.city}"
+            .card-footer
+              %a.btn.btn-primary{:href => "#"} 詳細
 
 - else
   .container
