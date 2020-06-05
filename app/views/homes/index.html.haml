@@ -20,7 +20,7 @@
                   .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
                     = link_to "共通情報", signup_path(current_user.id), class: "dropdown-item"
                     = link_to "保護者情報", parent_path(current_user.id), class: "dropdown-item"
-                    = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "dropdown-item"
+                    = link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "dropdown-item"
 
                 %li.nav-item
                   = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link", data: { confirm: "ログアウトします。よろしいでしょうか。" }
@@ -31,6 +31,10 @@
               -#   %button.btn.btn-secondary.my-2.my-sm-0{:type => "submit"} 検索
 
   .container
+    .row
+      .mb-3.text-left
+      = paginate @users
+      = page_entries_info @users
     .row.text-center
       - @users.each do |user|
         .col-lg-3.col-md-6.mb-4
