@@ -1,5 +1,5 @@
 class BabysittersController < ApplicationController
-  before_action :babysitter_find, only: [:edit, :update, :show]
+  before_action :babysitter_find, only: [:edit, :show]
   before_action :move_to_show, only: [:new]
   before_action :move_to_new, only: [:show]
 
@@ -22,6 +22,7 @@ class BabysittersController < ApplicationController
   end
 
   def update
+    @babysitter = Babysitter.find(params[:id])
     if @babysitter.update(babysitter_params)
       redirect_to babysitter_path, notice: "変更しました。"
     else
@@ -40,7 +41,7 @@ class BabysittersController < ApplicationController
   end
 
   def babysitter_find
-    @babysitter = Babysitter.find(params[:id])
+    @babysitter = Babysitter.find_by(user_id: params[:id])
   end
 
   def move_to_show
@@ -51,6 +52,4 @@ class BabysittersController < ApplicationController
     redirect_to new_babysitter_path unless user_signed_in? && Babysitter.where(user_id: current_user.id).present?
   end
 
-  def move_to_root
-  end
 end
