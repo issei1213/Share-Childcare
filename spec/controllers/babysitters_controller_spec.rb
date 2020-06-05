@@ -42,7 +42,7 @@ RSpec.describe BabysittersController, type: :controller do
 
   describe "GET edit" do
     context "log in" do
-      let!(:babysitter) { create(:babysitter) }
+      let(:babysitter) { create(:babysitter) }
       before do
         login user
         get :edit, params: { id: babysitter }
