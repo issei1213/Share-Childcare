@@ -13,6 +13,7 @@
 //   });
 // });
 $(document).on('turbolinks:load', function(){
+  console.log("OK")
   $('.slick').slick({
     autoplay:true,  //←自動再生
     dots:true      //←ドットの描写
