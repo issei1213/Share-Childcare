@@ -42,10 +42,10 @@ RSpec.describe BabysittersController, type: :controller do
 
   describe "GET edit" do
     context "log in" do
-      let(:babysitter) { create(:babysitter) }
+      let(:babysitter) { create(:babysitter, user_id: user.id) }
       before do
         login user
-        get :edit, params: { id: babysitter }
+        get :edit, params: { id: babysitter, user_id: user.id }
       end
       it "HTTPステータスが200であることを確認" do
         expect(response.status).to eq(200)
