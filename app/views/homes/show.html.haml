@@ -19,14 +19,12 @@
                   = link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "dropdown-item"
               %li.nav-item
                 = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link", data: { confirm: "ログアウトします。よろしいでしょうか。" }
-
   .row
     .col
       .card.mt-4
         .d-flex
           = image_tag @babysitter.babysitter_images.first.name.to_s, class: "card-img-top img-fluid"
           = image_tag @babysitter.babysitter_images.second.name.to_s, class: "card-img-top img-fluid" if @babysitter.babysitter_images.length >= 2
-        -# %img.card-img-top.img-fluid{:alt => "", :src => "http://placehold.it/900x400"}/
         .card-body
           %h3.card-title= @babysitter.user.nickname
           %h4= @babysitter.introduction_title
@@ -92,17 +90,21 @@
               %tr
                 %td= "可能時間帯"
                 %td= "#{@babysitter.profile_receiving_time_top} 時 〜 #{@babysitter.profile_receiving_time_down} 時"
+          %button.btn.btn-success{"data-target" => "#exampleModalCenter", "data-toggle" => "modal", :type => "button"} 依頼する
 
-
-
-          -# %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.
-          -# %small.text-muted Posted by Anonymous on 3/1/17
-          -# %hr/
-          -# %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.
-          -# %small.text-muted Posted by Anonymous on 3/1/17
-          -# %hr/
-          -# %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.
-          -# %small.text-muted Posted by Anonymous on 3/1/17
-          -# %hr/
-          %a.btn.btn-success{:href => "#"} 依頼する
+-# 依頼ボタン用のモーダル
+#exampleModalCenter.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalCenterTitle", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-dialog-centered{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalCenterTitle.modal-title 依頼確認
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        = "依頼を開始します。"
+        %br
+        = "依頼する場合は、「依頼するボタン」を押してください。"
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= "閉じる"
+        = link_to "依頼する", "/", class: "btn btn-success"
 
