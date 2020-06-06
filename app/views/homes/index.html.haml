@@ -32,9 +32,9 @@
 
   .container
     .row
-      .mb-3.text-left
-      = paginate @users
-      = page_entries_info @users
+      .mb-3
+        = paginate @users
+        = page_entries_info @users
     .row.text-center
       - @users.each do |user|
         .col-lg-3.col-md-6.mb-4
