@@ -19,8 +19,8 @@
                     = "マイページ"
                   .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
                     = link_to "共通情報", signup_path(current_user.id), class: "dropdown-item"
-                    = link_to "保護者情報", parent_path(current_user.id), class: "dropdown-item"
-                    = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "dropdown-item"
+                    = link_to "保護者情報", parent_path(id: current_user.parent.id, user_id: current_user.id), class: "dropdown-item"
+                    = link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "dropdown-item"
 
                 %li.nav-item
                   = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link", data: { confirm: "ログアウトします。よろしいでしょうか。" }
@@ -31,6 +31,10 @@
               -#   %button.btn.btn-secondary.my-2.my-sm-0{:type => "submit"} 検索
 
   .container
+    .row
+      .mb-3
+        = paginate @users
+        = page_entries_info @users
     .row.text-center
       - @users.each do |user|
         .col-lg-3.col-md-6.mb-4
@@ -58,7 +62,7 @@
       %nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
         .container.signup-step
           .navbar-brand.js-scroll-trigger
-            %img.d-block.ml-auto{alt: "", height: "40px", width: "200px", src: "../images/logo_clear.png", class: "img-fluid top-image"}/
+            %img.d-block.ml-auto{alt: "", height: "40px", width: "200px", src: "../images/logo_clear.png", class: "img-fluid top-image"}
           %button.navbar-toggler{aria: {controls: "navbarResponsive", expanded: "false", label: "Toggle navigation"}, data: {target: "#navbarResponsive", toggle: "collapse"}, type: "button"}
             %span.navbar-toggler-icon
           #navbarResponsive.collapse.navbar-collapse

@@ -24,7 +24,7 @@ RSpec.describe ParentsController, type: :controller do
 
   describe "POST create" do
     let(:parent) { create(:parent) }
-    let(:parent_attributes){ attributes_for(:parent)}
+    let(:parent_attributes){ attributes_for(:parent) }
     context "log in" do
       before do
         login user
@@ -42,10 +42,10 @@ RSpec.describe ParentsController, type: :controller do
 
   describe "GET edit" do
     context "log in" do
-      let(:parent) { create(:parent) }
+      let(:parent) { create(:parent, user_id: user.id)}
       before do
         login user
-        get :edit, params: { id: parent }
+        get :edit, params: { id: parent, user_id: user.id }
       end
       it "HTTPステータスが200であることを確認" do
         expect(response.status).to eq(200)
