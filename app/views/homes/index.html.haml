@@ -40,7 +40,7 @@
         .col-lg-3.col-md-6.mb-4
           .card
             .center-block
-              = image_tag user.babysitter.babysitter_images.first.name.to_s, class: "card-img-to", size: "150x150"
+              = image_tag user.babysitter.babysitter_images.first.name.to_s, class: "card-img-top"
             .card-body
               %h4.card-title= user.nickname
               %p.card-text= user.babysitter.introduction_title
@@ -54,7 +54,8 @@
                   %th{scope: "col"} 市区町村
                   %td= "#{user.prefecture}#{user.city}"
             .card-footer
-              %a.btn.btn-primary{:href => "#"} 詳細
+              = link_to "詳細", home_path(user.babysitter.id), class: "btn btn-primary"
+              -# %a.btn.btn-primary{:href => "#"} 詳細
 
 - else
   .container
