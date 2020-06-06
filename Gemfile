@@ -53,7 +53,7 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'cocoon'
 gem 'kaminari'
-
+gem 'jquery-turbolinks'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
