@@ -97,13 +97,60 @@
   .modal-dialog.modal-dialog-centered{:role => "document"}
     .modal-content
       .modal-header
-        %h5#exampleModalCenterTitle.modal-title 依頼確認
+        %h5#exampleModalCenterTitle.modal-title 依頼フォーム
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} ×
       .modal-body
-        = "依頼を開始します。"
-        %br
-        = "依頼する場合は、「依頼するボタン」を押してください。"
+        .col-md-12.order-md-1
+          = form_with model: @order, html: { class: "needs-validation", novalidate: true }, loacl: true do |f|
+            .row
+              .col
+                = f.label "依頼日時", class: "bmd-label-floating"
+                .input-group
+                  = f.select :year, { "2020": "2020", "2021": "2021", "2022": "2022" }, {include_blank: "---"}, class: "form-control", required: true
+                  .input-group-prepend
+                    %span.input-group-text 年
+                  = f.select :month, { "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12"}, {include_blank: "---"}, class: "form-control", required: true
+                  .input-group-prepend
+                    %span.input-group-text 月
+                  = f.select :date, { "0": "0", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6"} , {include_blank: "---"}, class: "form-control", required: true
+                  .input-group-prepend
+                    %span.input-group-text 日
+                  = f.select :hour_top, { "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12", "13": "13", "14": "14", "15": "15", "16": "16", "17": "17", "18": "18", "19": "19", "20": "20", "21": "21", "22": "22", "23": "23"} , {include_blank: "---"}, class: "form-control", required: true
+                  .input-group-prepend
+                    %span.input-group-text 時
+                  = f.select :hour_down, { "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12", "13": "13", "14": "14", "15": "15", "16": "16", "17": "17", "18": "18", "19": "19", "20": "20", "21": "21", "22": "22", "23": "23"} , {include_blank: "---"}, class: "form-control", required: true
+                  .input-group-prepend
+                    %span.input-group-text 時
+                  .invalid-feedback
+                    依頼時間を選択してください
+
+
+          -# %form.needs-validation{:novalidate => ""}  
+          -#   .row
+          -#     .col-md-6.mb-3
+          -#       %label{:for => "firstName"} First name
+          -#       %input#firstName.form-control{:placeholder => "", :required => "", :type => "text", :value => ""}/
+          -#       .invalid-feedback
+          -#         Valid first name is required.
+          -#     .col-md-6.mb-3
+          -#       %label{:for => "lastName"} Last name
+          -#       %input#lastName.form-control{:placeholder => "", :required => "", :type => "text", :value => ""}/
+          -#       .invalid-feedback
+          -#         Valid last name is required.
+          -#   .mb-3
+          -#     %label{:for => "username"} Username
+          -#     .input-group
+          -#       .input-group-prepend
+          -#         %span.input-group-text @
+          -#       %input#username.form-control{:placeholder => "Username", :required => "", :type => "text"}/
+          -#       .invalid-feedback{:style => "width: 100%;"}
+          -#         Your username is required.
+
+
+
+
+
       .modal-footer
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= "閉じる"
         = link_to "依頼する", "/", class: "btn btn-success"
