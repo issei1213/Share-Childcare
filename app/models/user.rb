@@ -30,6 +30,7 @@
 class User < ApplicationRecord
   has_one :babysitter
   has_one :parent
+  has_many :orders
 
   devise :database_authenticatable, :registerable,:recoverable, :rememberable, :validatable
 

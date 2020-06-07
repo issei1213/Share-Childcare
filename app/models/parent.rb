@@ -24,6 +24,7 @@ class Parent < ApplicationRecord
   belongs_to :user
   has_many :baby_infomations, inverse_of: :parent
   accepts_nested_attributes_for :baby_infomations, reject_if: :all_blank, allow_destroy: true
+  has_many :orders
 
   validates :order_city, :order_money_hour, :order_money_option, :order_prefecture, presence: true
 end

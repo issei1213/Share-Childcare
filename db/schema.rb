@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_143344) do
+ActiveRecord::Schema.define(version: 2020_06_07_084130) do
 
   create_table "baby_infomations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "parent_id"
@@ -55,6 +55,25 @@ ActiveRecord::Schema.define(version: 2020_06_01_143344) do
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "babysitters_id"
+    t.bigint "parents_id"
+    t.integer "status"
+    t.integer "year"
+    t.integer "month"
+    t.integer "date"
+    t.integer "hour_top"
+    t.integer "minute_top"
+    t.integer "hour_down"
+    t.integer "minute_down"
+    t.string "memo"
+    t.string "prefecture"
+    t.string "city"
+    t.integer "money_hour"
+    t.integer "money_option"
+    t.index ["babysitters_id"], name: "index_orders_on_babysitters_id"
+    t.index ["parents_id"], name: "index_orders_on_parents_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "parents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -95,5 +114,8 @@ ActiveRecord::Schema.define(version: 2020_06_01_143344) do
   add_foreign_key "baby_infomations", "parents"
   add_foreign_key "babysitter_images", "babysitters"
   add_foreign_key "babysitters", "users"
+  add_foreign_key "orders", "babysitters", column: "babysitters_id"
+  add_foreign_key "orders", "parents", column: "parents_id"
+  add_foreign_key "orders", "users"
   add_foreign_key "parents", "users"
 end
