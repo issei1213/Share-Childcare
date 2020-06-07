@@ -3,19 +3,17 @@
 # Table name: orders
 #
 #  id             :bigint           not null, primary key
-#  city           :string(255)
-#  date           :integer
-#  hour_down      :integer
-#  hour_top       :integer
+#  city           :string(255)      not null
+#  date           :integer          not null
+#  hour_down      :integer          not null
+#  hour_top       :integer          not null
 #  memo           :string(255)
-#  minute_down    :integer
-#  minute_top     :integer
-#  money_hour     :integer
-#  money_option   :integer
-#  month          :integer
-#  prefecture     :string(255)
-#  status         :integer
-#  year           :integer
+#  money_hour     :integer          not null
+#  money_option   :integer          not null
+#  month          :integer          not null
+#  prefecture     :string(255)      not null
+#  status         :integer          not null
+#  year           :integer          not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  babysitters_id :bigint

@@ -58,19 +58,17 @@ ActiveRecord::Schema.define(version: 2020_06_07_084130) do
     t.bigint "user_id"
     t.bigint "babysitters_id"
     t.bigint "parents_id"
-    t.integer "status"
-    t.integer "year"
-    t.integer "month"
-    t.integer "date"
-    t.integer "hour_top"
-    t.integer "minute_top"
-    t.integer "hour_down"
-    t.integer "minute_down"
+    t.integer "status", null: false
+    t.integer "year", null: false
+    t.integer "month", null: false
+    t.integer "date", null: false
+    t.integer "hour_top", null: false
+    t.integer "hour_down", null: false
     t.string "memo"
-    t.string "prefecture"
-    t.string "city"
-    t.integer "money_hour"
-    t.integer "money_option"
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.integer "money_hour", null: false
+    t.integer "money_option", null: false
     t.index ["babysitters_id"], name: "index_orders_on_babysitters_id"
     t.index ["parents_id"], name: "index_orders_on_parents_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
