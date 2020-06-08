@@ -8,9 +8,9 @@
         %li.nav-item
           = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
         %li.nav-item.active
-          = link_to "保護者情報", parent_path(current_user.id), class: "nav-link"
+          = link_to "保護者情報", parent_path(id: current_user.parent.id, user_id: current_user.id), class: "nav-link"
         %li.nav-item
-          = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "nav-link"
+          = link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "nav-link"
         %li.nav-item
           = link_to "ホーム画面", root_path, class: "nav-link"
   .main-panel
