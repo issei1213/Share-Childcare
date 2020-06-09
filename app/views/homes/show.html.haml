@@ -102,7 +102,7 @@
           %span{"aria-hidden" => "true"} ×
       .modal-body
         .col-md-12.order-md-1
-          = form_with model: @order, html: { class: "needs-validation", novalidate: true }, loacl: true do |f|
+          = form_with model: [@order, @parent], html: { class: "needs-validation", novalidate: true }, loacl: true do |f|
             .row
               .col
                 = f.label "依頼日時", class: "bmd-label-floating"
@@ -118,54 +118,42 @@
                     %span.input-group-text 日
                   = f.select :hour_top, { "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12", "13": "13", "14": "14", "15": "15", "16": "16", "17": "17", "18": "18", "19": "19", "20": "20", "21": "21", "22": "22", "23": "23"} , {include_blank: "---"}, class: "form-control", required: true
                   .input-group-prepend
-                    %span.input-group-text 時
+                    %span.input-group-text 時 ~ 
                   = f.select :hour_down, { "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12", "13": "13", "14": "14", "15": "15", "16": "16", "17": "17", "18": "18", "19": "19", "20": "20", "21": "21", "22": "22", "23": "23"} , {include_blank: "---"}, class: "form-control", required: true
                   .input-group-prepend
                     %span.input-group-text 時
                   .invalid-feedback
                     依頼時間を選択してください
             .row
-              .col
+              .col-md-5.mt-3
+                = f.label "希望時給"
+                .input-group
+                  = f.text_field :money_hour, class: "form-control", required: true
+                  .input-group-prepend
+                    %span.input-group-text 円
+              .col-md-5.mt-3
+                = f.label "希望オプション金額"
+                .input-group
+                  = f.text_field :money_optiin, class: "form-control", required: true
+                  .input-group-prepend
+                    %span.input-group-text 円                
+                .invalid-feedback
+                  金額を選択してください
+            .row
+              .col.mt-3
                 = f.label "補足", class: "bmd-label-floating"
                 .input-group
                   = f.text_area :memo, class: "form-control", rows: 3
             .row
-              .col-
-                = f.label "依頼場所(登録時データ引用)", class: "bmd-label-floating"
-                .input-group
-                  .col-mb-3
-                    = f.select :prefecture, { 北海道: "北海道" ,青森県: "青森県" ,岩手県: "岩手県" ,宮城県: "宮城県" ,秋田県: "秋田県" ,山形県: "山形県" ,福島県: "福島県" ,茨城県: "茨城県" ,栃木県: "栃木県" ,群馬県: "群馬県" ,埼玉県: "埼玉県" ,千葉県: "千葉県" ,東京都: "東京都" ,神奈川県: "神奈川県 ",新潟県: "新潟県" ,富山県: "富山県" ,石川県: "石川県" ,福井県: "福井県" ,山梨県: "山梨県" ,長野県: "長野県" ,岐阜県: "岐阜県" ,静岡県: "静岡県" ,愛知県: "愛知県" ,三重県: "三重県" ,滋賀県: "滋賀県" ,京都府: "京都府" ,大阪府: "大阪府" ,兵庫県: "兵庫県" ,奈良県: "奈良県" ,和歌山県: "和歌山県 ",鳥取県: "鳥取県" ,島根県: "島根県" ,岡山県: "岡山県" ,広島県: "広島県" ,山口県: "山口県" ,徳島県: "徳島県" ,香川県: "香川県" ,愛媛県: "愛媛県" ,高知県: "高知県" ,福岡県: "福岡県" ,佐賀県: "佐賀県" ,長崎県: "長崎県" ,熊本県: "熊本県" ,大分県: "大分県" ,宮崎県: "宮崎県" ,鹿児島県: "鹿児島県 ",沖縄県: "沖縄県" }, {include_blank: "---", selected: @parent.user.prefecture}, class: "form-control", required: true
-                  .col-md-6
-                    = f.text_field :city, class: "form-control", required: true, value: @parent.user.city
-                  .invalid-feedback
-                    都道府県を選択してください
-
-
-
-          -# %form.needs-validation{:novalidate => ""}  
-          -#   .row
-          -#     .col-md-6.mb-3
-          -#       %label{:for => "firstName"} First name
-          -#       %input#firstName.form-control{:placeholder => "", :required => "", :type => "text", :value => ""}/
-          -#       .invalid-feedback
-          -#         Valid first name is required.
-          -#     .col-md-6.mb-3
-          -#       %label{:for => "lastName"} Last name
-          -#       %input#lastName.form-control{:placeholder => "", :required => "", :type => "text", :value => ""}/
-          -#       .invalid-feedback
-          -#         Valid last name is required.
-          -#   .mb-3
-          -#     %label{:for => "username"} Username
-          -#     .input-group
-          -#       .input-group-prepend
-          -#         %span.input-group-text @
-          -#       %input#username.form-control{:placeholder => "Username", :required => "", :type => "text"}/
-          -#       .invalid-feedback{:style => "width: 100%;"}
-          -#         Your username is required.
-
-
-
-
+              .col.mt-3
+                = f.label "お預けするお子様情報", class: "bmd-label-floating"
+              #baby_infomations
+                .form-group
+                  .input-group
+                    = f.fields_for :baby_infomations do |baby|
+                      = render "baby_infomation_fields", f: baby
+                    -# .links
+                    -#   = link_to_add_association "枠を追加", f, :baby_infomations, class: "btn btn-outline-success btn-sm ml-3"
 
       .modal-footer
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= "閉じる"

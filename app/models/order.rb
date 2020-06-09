@@ -3,7 +3,6 @@
 # Table name: orders
 #
 #  id             :bigint           not null, primary key
-#  city           :string(255)      not null
 #  date           :integer          not null
 #  hour_down      :integer          not null
 #  hour_top       :integer          not null
@@ -11,7 +10,6 @@
 #  money_hour     :integer          not null
 #  money_option   :integer          not null
 #  month          :integer          not null
-#  prefecture     :string(255)      not null
 #  status         :integer          not null
 #  year           :integer          not null
 #  created_at     :datetime         not null

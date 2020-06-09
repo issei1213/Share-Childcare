@@ -65,8 +65,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_084130) do
     t.integer "hour_top", null: false
     t.integer "hour_down", null: false
     t.string "memo"
-    t.string "prefecture", null: false
-    t.string "city", null: false
     t.integer "money_hour", null: false
     t.integer "money_option", null: false
     t.index ["babysitters_id"], name: "index_orders_on_babysitters_id"

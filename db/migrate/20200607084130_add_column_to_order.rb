@@ -10,8 +10,6 @@ class AddColumnToOrder < ActiveRecord::Migration[5.2]
     add_column    :orders,  :hour_top,     :integer,          null: false
     add_column    :orders,  :hour_down,    :integer,          null: false
     add_column    :orders,  :memo,         :string
-    add_column    :orders,  :prefecture,   :string,           null: false
-    add_column    :orders,  :city,         :string,           null: false
     add_column    :orders,  :money_hour,   :integer,          null: false
     add_column    :orders,  :money_option, :integer,          null: false
   end

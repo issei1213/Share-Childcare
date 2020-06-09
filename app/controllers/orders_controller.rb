@@ -8,4 +8,6 @@ class OrdersController < ApplicationController
     @order = Order.all
   end
 
+  def create
+  end
 end
