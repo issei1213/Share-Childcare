@@ -102,7 +102,7 @@
           %span{"aria-hidden" => "true"} ×
       .modal-body
         .col-md-12.order-md-1
-          = form_with model: [@order, @parent], html: { class: "needs-validation", novalidate: true }, loacl: true do |f|
+          = form_with model: [@order, @parent], url: orders_path, method: :POST, html: { class: "needs-validation", novalidate: true }, loacl: true do |f|
             .row
               .col
                 = f.label "依頼日時", class: "bmd-label-floating"
@@ -131,14 +131,16 @@
                   = f.text_field :money_hour, class: "form-control", required: true
                   .input-group-prepend
                     %span.input-group-text 円
+                  .invalid-feedback
+                    金額を選択してください
               .col-md-5.mt-3
                 = f.label "希望オプション金額"
                 .input-group
                   = f.text_field :money_optiin, class: "form-control", required: true
                   .input-group-prepend
                     %span.input-group-text 円                
-                .invalid-feedback
-                  金額を選択してください
+                  .invalid-feedback
+                    金額を選択してください
             .row
               .col.mt-3
                 = f.label "補足", class: "bmd-label-floating"
@@ -167,9 +169,7 @@
                       .invalid-feedback
                         同意してください
 
-
-
-      .modal-footer
-        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= "閉じる"
-        = link_to "依頼する", "/", class: "btn btn-success"
+            .modal-foote
+              %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= "閉じる"
+              = f.submit "依頼する", class: "btn btn-success"
 
