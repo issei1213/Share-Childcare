@@ -154,6 +154,20 @@
                       = render "baby_infomation_fields", f: baby
                     -# .links
                     -#   = link_to_add_association "枠を追加", f, :baby_infomations, class: "btn btn-outline-success btn-sm ml-3"
+            .row
+              .col
+                %h5= "注意事項"
+                %h6= "ベビーシッターへあなたの住所が公開されます。"
+                %h6= "よろしければ、同意するにチェックをして下さい。"
+                .form-group
+                  .form-check
+                    .custom-control.custom-checkbox
+                      = f.check_box 'page[freezeflag]', {}, true, false
+                      = f.label "同意する", class: "form-check-label"
+                      .invalid-feedback
+                        同意してください
+
+
 
       .modal-footer
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= "閉じる"
