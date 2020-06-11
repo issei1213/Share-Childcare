@@ -34,4 +34,6 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :parent
   belongs_to :babysitter
+
+  enum status: { orderd: 1, approved: 2 , canceld: 3}
 end

@@ -102,7 +102,7 @@
           %span{"aria-hidden" => "true"} ×
       .modal-body
         .col-md-12.order-md-1
-          = form_with model: [@order, @parent], url: orders_path, method: :POST, html: { class: "needs-validation", novalidate: true }, loacl: true do |f|
+          = form_with model: @order, url: orders_path, method: :POST, html: { class: "needs-validation", novalidate: true }, loacl: true do |f|
             .row
               .col
                 = f.label "依頼日時", class: "bmd-label-floating"
@@ -136,7 +136,7 @@
               .col-md-5.mt-3
                 = f.label "希望オプション金額"
                 .input-group
-                  = f.text_field :money_optiin, class: "form-control", required: true
+                  = f.text_field :money_option, class: "form-control", required: true
                   .input-group-prepend
                     %span.input-group-text 円                
                   .invalid-feedback
@@ -146,16 +146,17 @@
                 = f.label "補足", class: "bmd-label-floating"
                 .input-group
                   = f.text_area :memo, class: "form-control", rows: 3
-            .row
-              .col.mt-3
-                = f.label "お預けするお子様情報", class: "bmd-label-floating"
-              #baby_infomations
-                .form-group
-                  .input-group
-                    = f.fields_for :baby_infomations do |baby|
-                      = render "baby_infomation_fields", f: baby
-                    -# .links
-                    -#   = link_to_add_association "枠を追加", f, :baby_infomations, class: "btn btn-outline-success btn-sm ml-3"
+            -# .row
+            -#   .col.mt-3
+            -#     = f.label "お預けするお子様情報", class: "bmd-label-floating"
+            -#   #baby_infomations
+            -#     .form-group
+            -#       .input-group
+            -#         = f.fields_for :baby_infomations do |baby|
+            -#           = render "baby_infomation_fields", f: baby
+            -#         -# .links
+            -#         -#   = link_to_add_association "枠を追加", f, :baby_infomations, class: "btn btn-outline-success btn-sm ml-3"
+
             .row
               .col
                 %h5= "注意事項"

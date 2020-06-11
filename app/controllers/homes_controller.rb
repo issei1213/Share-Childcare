@@ -8,5 +8,6 @@ class HomesController < ApplicationController
   def show
     @babysitter = Babysitter.find(params[:user_id])
     @parent = Parent.find(params[:parent_id])
+    @order = Order.new
   end
 end
