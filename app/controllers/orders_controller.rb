@@ -9,7 +9,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params.merge(status: "orderd"))
+    # binding.pry
+    @order = Parent.find(params[:order][:parent_id]).orders.new(order_params.merge(status: "orderd"))
     if @order.save!
       redirect_to root_path
     else
@@ -21,6 +22,8 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:year, :month, :date, :hour_top, :hour_down, :money_hour, :money_optiin, :memo)
+    params.require(:order).permit(:year, :month, :date, :hour_top, :hour_down, :money_hour, :money_option, :memo, :babysitter_id, :page, :parent_id).merge(user_id: current_user.id)
   end
+
+
 end

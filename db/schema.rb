@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 2020_06_07_084130) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.bigint "babysitters_id"
-    t.bigint "parents_id"
+    t.bigint "babysitter_id"
+    t.bigint "parent_id"
     t.integer "status", null: false
     t.integer "year", null: false
     t.integer "month", null: false
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 2020_06_07_084130) do
     t.string "memo"
     t.integer "money_hour", null: false
     t.integer "money_option", null: false
-    t.index ["babysitters_id"], name: "index_orders_on_babysitters_id"
-    t.index ["parents_id"], name: "index_orders_on_parents_id"
+    t.index ["babysitter_id"], name: "index_orders_on_babysitter_id"
+    t.index ["parent_id"], name: "index_orders_on_parent_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -110,8 +110,8 @@ ActiveRecord::Schema.define(version: 2020_06_07_084130) do
   add_foreign_key "baby_infomations", "parents"
   add_foreign_key "babysitter_images", "babysitters"
   add_foreign_key "babysitters", "users"
-  add_foreign_key "orders", "babysitters", column: "babysitters_id"
-  add_foreign_key "orders", "parents", column: "parents_id"
+  add_foreign_key "orders", "babysitters"
+  add_foreign_key "orders", "parents"
   add_foreign_key "orders", "users"
   add_foreign_key "parents", "users"
 end

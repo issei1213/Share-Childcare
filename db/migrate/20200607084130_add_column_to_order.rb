@@ -1,8 +1,8 @@
 class AddColumnToOrder < ActiveRecord::Migration[5.2]
   def change
     add_reference :orders,  :user,         foreign_key: true
-    add_reference :orders,  :babysitters,  foreign_key: true
-    add_reference :orders,  :parents,      foreign_key: true
+    add_reference :orders,  :babysitter,  foreign_key: true
+    add_reference :orders,  :parent,      foreign_key: true
     add_column    :orders,  :status,       :integer,          null: false
     add_column    :orders,  :year,         :integer,          null: false
     add_column    :orders,  :month,        :integer,          null: false
