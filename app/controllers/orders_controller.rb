@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params.merge(status: "orderd"))
-    if @order.save
+    if @order.save!
       redirect_to root_path
     else
       flash[:error_messages] = @order.errors.full_messages

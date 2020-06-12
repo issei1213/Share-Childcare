@@ -169,7 +169,8 @@
                       = f.label "同意する", class: "form-check-label"
                       .invalid-feedback
                         同意してください
-
+                      = f.text_filed :user_id, class: "hidden", value: "#{current_user.id}"
+                      = f,text_filed :parent_id, class: "hidden", value: "#{}"
             .modal-foote
               %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= "閉じる"
               = f.submit "依頼する", class: "btn btn-success"
