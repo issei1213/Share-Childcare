@@ -163,15 +163,16 @@
                 %h6= "ベビーシッターへあなたの住所が公開されます。"
                 %h6= "よろしければ、同意するにチェックをして下さい。"
                 .form-group
-                  .form-check
-                    .custom-control.custom-checkbox
-                      = f.check_box 'page[freezeflag]', {}, true, false
-                      = f.label "同意する", class: "form-check-label"
+                  .input-group
+                    .form-check
+                      .custom-control.custom-checkbox
+                        = f.check_box 'page[freezeflag]', { required: true }, true, false
+                        = f.label "同意する", class: "form-check-label"
                       .invalid-feedback
                         同意してください
-                      = f.hidden_field :babysitter_id, value: "#{@babysitter.id}"
-                      = f.hidden_field :parent_id, value: "#{@parent.id}"
-                      -# = f.hidden_field :user_id, value: "#{@current_user.id}"
+                        = f.hidden_field :babysitter_id, value: "#{@babysitter.id}"
+                        = f.hidden_field :parent_id, value: "#{@parent.id}"
+                        -# = f.hidden_field :user_id, value: "#{@current_user.id}"
             .modal-foote
               %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"}= "閉じる"
               = f.submit "依頼する", class: "btn btn-success"
