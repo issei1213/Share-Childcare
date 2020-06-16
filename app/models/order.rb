@@ -35,7 +35,8 @@ class Order < ApplicationRecord
   belongs_to :parent
   belongs_to :babysitter
 
-  validates :date, :hour_down, :hour_top, :month, :status, :year
+  validates :date, :hour_down, :hour_top, :month, :status, :year, presence: true
+  
 
   enum status: { orderd: 1, approved: 2 , canceld: 3}
 end

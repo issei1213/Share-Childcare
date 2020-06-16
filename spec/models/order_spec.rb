@@ -33,12 +33,11 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  RSpec.describe Babysitter, type: :model do
-    context "can save" do
-      it "全カラムが存在すれば登録できる事" do
-        babysitter = build(:order)
-        babysitter.valid?
-        expect(order).to be_valid
-      end
+  context "can save" do
+    it "全カラムが存在すれば登録できる事" do
+      order = build(:order)
+      order.valid?
+      expect(order).to be_valid
     end
+  end
 end
