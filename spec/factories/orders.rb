@@ -32,6 +32,18 @@
 #
 FactoryBot.define do
   factory :order do
+    date          { Faker::Number.between(from: 2000, to: 2038) }
+    hour_down     { Faker::Number.between(from: 1, to: 24) }
+    hour_top      { Faker::Number.between(from: 1, to: 24) }
+    memo          { "テストメモ"}
+    money_hour    { Faker::Number.between(from: 1, to: 99999) }
+    money_option  { Faker::Number.between(from: 1, to: 99999) }
+    month         { Faker::Number.between(from: 1, to: 12) }
+    status        { Faker::Number.between(from: 1, to: 3) }
+    year          { "orderd" }
+    babysitter
+    parent
+    user
     
   end
 end
