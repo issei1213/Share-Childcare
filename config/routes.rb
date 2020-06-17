@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :babysitters
   resources :parents
   resources :homes
+  resources :orders
   resources :signups do
     collection do
       get 'step1', to: 'signups#step1'

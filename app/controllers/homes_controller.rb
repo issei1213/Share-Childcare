@@ -6,6 +6,8 @@ class HomesController < ApplicationController
   end
 
   def show
-    @babysitter = Babysitter.find(params[:id])
+    @babysitter = Babysitter.find(params[:babysitter_id])
+    @parent = Parent.find(params[:parent_id])
+    @order = Order.new
   end
 end

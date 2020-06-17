@@ -1,0 +1,14 @@
+.col-md-12
+  .form-group.nested-fields
+    .input-group
+      .col-md-4
+        = f.label :name, "名前"
+        = f.text_field :name, class: "form-control", readonly: ""
+      .col-md-3
+        = f.label :age, "年齢"
+        = f.text_field :age, class: "form-control", readonly: ""
+      .col-md-3
+        = f.label :sex, "性別"
+        = f.select :sex, BabyInfomation.sexes_i18n.invert, {include_blank: "---"}, { class: "form-control", raedonly: "" }
+      -# .col-md-2
+      -#   = link_to_remove_association "削除", f, class: "btn btn-danger btn-sm mt-4"

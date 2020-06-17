@@ -61,4 +61,4 @@
                       %td= "#{baby.age} 才"
                       
               .card-body.table-responsive
-                = link_to "編集", edit_parent_path, class: "btn btn-primary"
+                = link_to "編集", edit_parent_path(user_id: @parent.user.id), class: "btn btn-primary"

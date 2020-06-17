@@ -24,7 +24,7 @@ class ParentsController < ApplicationController
   def update
     @parent = Parent.find(params[:id])
     if @parent.update(parent_params)
-      redirect_to parent_path(current_user.id), notice: "変更しました。"
+      redirect_to parent_path(user_id: @parent.user.id), notice: "変更しました。"
     else
       flash[:error_messages] = @parent.errors.full_messages
       render :edit

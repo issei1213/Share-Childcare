@@ -76,7 +76,7 @@ RSpec.describe ParentsController, type: :controller do
       end
       it "Viewに推移する事を確認" do
         parent = Parent.last
-        expect(response).to redirect_to(parent_path(parent.user_id))
+        expect(response).to redirect_to(parent_path(user_id: parent.user_id))
       end
     end
   end

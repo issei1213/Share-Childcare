@@ -13,6 +13,12 @@ ja:
       sex:
         man: 男の子
         woman: 女の子
+    order:
+      status:
+        orderd: 依頼済
+        approved: 承認済
+        canceld: キャンセル
+
   activerecord:
     attributes:
       parent:
@@ -21,6 +27,7 @@ ja:
       sex:
         man: 男の子
         woman: 女の子
+      
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
