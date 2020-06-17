@@ -40,4 +40,49 @@ RSpec.describe Order, type: :model do
       expect(order).to be_valid
     end
   end
+
+  context "can not save" do
+    it "dateが空では登録できないこと" do
+      order = build(:order, date: "")
+      order.valid?
+      expect(order.errors[:date]).to include("を入力してください") 
+    end
+
+    it "hour_downが空では登録できないこと" do
+      order = build(:order, hour_down: "")
+      order.valid?
+      expect(order.errors[:hour_down]).to include("を入力してください") 
+    end
+    it "hour_topが空では登録できないこと" do
+      order = build(:order, hour_top: "")
+      order.valid?
+      expect(order.errors[:hour_top]).to include("を入力してください") 
+    end
+    it "money_hourが空では登録できないこと" do
+      order = build(:order, money_hour: "")
+      order.valid?
+      expect(order.errors[:money_hour]).to include("を入力してください") 
+    end
+    it "money_optionが空では登録できないこと" do
+      order = build(:order, money_option: "")
+      order.valid?
+      expect(order.errors[:money_option]).to include("を入力してください") 
+    end
+    it "monthが空では登録できないこと" do
+      order = build(:order, month: "")
+      order.valid?
+      expect(order.errors[:month]).to include("を入力してください") 
+    end
+    it "statusが空では登録できないこと" do
+      order = build(:order, status: "")
+      order.valid?
+      expect(order.errors[:status]).to include("を入力してください") 
+    end
+    it "yearが空では登録できないこと" do
+      order = build(:order, year: "")
+      order.valid?
+      expect(order.errors[:year]).to include("を入力してください") 
+    end
+    
+  end
 end
