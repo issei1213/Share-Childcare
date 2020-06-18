@@ -54,6 +54,7 @@
                   %th{scope: "col"} 市区町村
                   %td= "#{user.prefecture}#{user.city}"
             .card-footer
+            
               = link_to "詳細", home_path(id: user ,babysitter_id: user.babysitter.id, parent_id: current_user.parent.id), class: "btn btn-primary"
               -# %a.btn.btn-primary{:href => "#"} 詳細
 
