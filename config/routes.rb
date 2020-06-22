@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :parents
   resources :homes
   resources :orders
+  resources :notifications, only: :index
   resources :signups do
     collection do
       get 'step1', to: 'signups#step1'
