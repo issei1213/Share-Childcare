@@ -22,18 +22,23 @@
         .col-md-12
           .card
             .card-header.card-header-warning
-              %h4.card-title 共通情報
-              %p.card-category= "最終更新日 #{I18n.l(current_user.updated_at, format: :long)}"
             .card-body.table-responsive
-              %table.table.table-hover
-                %thead.text-warning
-                  %th
-                    項目
-                  %th
-                    内容
-                %tbody
-                  %tr
-                    %td
-                      氏名（かな）
-                    %td
-                      = "#{current_user.first_name} #{current_user.last_name}( #{current_user.first_name_kana} #{current_user.last_name_kana})"
+              / 自分の投稿に対するいいね、コメントは通知に表示しない
+              - notifications = @notifications.where.not(visitor_id: current_user.id)
+              - if notifications.exists?
+                = render notifications
+                = paginate notifications
+              - else
+                %p= "通知はありません"
+              -# %table.table.table-hover
+              -#   %thead.text-warning
+              -#     %th
+              -#       項目
+              -#     %th
+              -#       内容
+              -#   %tbody
+              -#     %tr
+              -#       %td
+              -#         氏名（かな）
+              -#       %td
+              -#         = "#{current_user.first_name} #{current_user.last_name}( #{current_user.first_name_kana} #{current_user.last_name_kana})"
