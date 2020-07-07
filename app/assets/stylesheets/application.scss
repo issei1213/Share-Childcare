@@ -1,67 +1,18 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- */
+*= require _nico
+*= require_self
+*/
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "modules/index/top";
 @import "signup_stepbar";
 @import "valiable";
 @import "custom";
-@import "bootstrap";
-
-// @import "material-dashboard/variables";
-// @import "material-dashboard/mixins";
-// @import "material-dashboard/core-bootstrap";
-
-// // Core Components
-// @import "material-dashboard/buttons";
-// @import "material-dashboard/checkboxes";
-// @import "material-dashboard/radios";
-// @import "material-dashboard/forms";
-// @import "material-dashboard/input-group";
-// @import "material-dashboard/images";
-// @import "material-dashboard/navbar";
-// @import "material-dashboard/alerts";
-// @import "material-dashboard/headers";
-// @import "material-dashboard/type";
-// @import "material-dashboard/tabs";
-// @import "material-dashboard/tooltip";
-// @import "material-dashboard/popover";
-// @import "material-dashboard/dropdown";
-// @import "material-dashboard/togglebutton";
-// @import "material-dashboard/ripples";
-// @import "material-dashboard/footers";
-// @import "material-dashboard/sidebar-and-main-panel";
-// @import "material-dashboard/fixed-plugin";
-// @import "material-dashboard/tables";
-// @import "material-dashboard/misc";
-// @import "material-dashboard/social-buttons";
-
-// @import "material-dashboard/cards";
-// @import "material-dashboard/cards/card-stats";
-// @import "material-dashboard/cards/card-profile";
-// @import "material-dashboard/cards/card-plain";
-
-// //plugin scss
-// @import "material-dashboard/plugins/animate";
-// @import "material-dashboard/plugins/chartist";
-// @import "material-dashboard/plugins/perfect-scrollbar";
-
-// @import "material-dashboard/responsive";
 
 
 // slider
 @import "slick-theme"; 
 @import "slick";
+

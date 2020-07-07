@@ -1,78 +1,14 @@
-.wrapper
-  .sidebar{"data-background-color" => "white", "data-color" => "purple" }
-    .logo
-      %a.simple-text
-        マイページ
-    .sidebar-wrapper
-      %ul.nav
-        %li.nav-item
-          = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
-        %li.nav-item.active
-          = link_to "保護者情報", parent_path(id: current_user.parent.id, user_id: current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "ホーム画面", root_path, class: "nav-link"
-  .main-panel
-    .container-fluid
+%nav.navbar.navbar-dark.bg-dark.flex-md-nowrap.p-0.shadow
+  .navbar-brand.col-sm-3.col-md-2.mr-0
+    設定メニュー
+.container-fluid
+  .row
+    -# ナビバー
+    = render "shared/configuration-nav-bar.html"
+    %main.col-md-10.ml-sm-auto.col-lg-10.px-4{:role => "main"}
       .row
         .col-md-12
           = render 'shared/error_message'
       .row
         .col-md-12
-          = form_with model: @parent, html: { class: "needs-validation", novalidate: true }, local: true do |f|
-            .card
-              .card-header.card-header-primary
-                %h4.card-title 保護者情報情報編集
-              .card-body
-                .row
-                  .col-md-2
-                    .form-group
-                      = f.label :order_money_hour, "希望時給", class: "bmd-label-floating"
-                      .input-group
-                        = f.text_field :order_money_hour, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
-                        .input-group-append
-                          %span#basic-addon2.input-group-text 円
-                        .invalid-feedback
-                          希望時給を入力してください
-                  .col-md-2
-                    .form-group
-                      = f.label :order_money_option, "希望オプション料金", class: "bmd-label-floating"
-                      .input-group
-                        = f.text_field :order_money_option, class: "form-control", required: true, aria: {label: "Recipient's username", describedby: "basic-addon2" }
-                        .input-group-append
-                          %span#basic-addon2.input-group-text 円
-                        .invalid-feedback
-                          希望オプション料金を入力してください
-                  .col-md-3
-                    .form-group
-                      = f.label :order_prefecture, "都道府県"
-                      = f.select :order_prefecture,{ 北海道: "北海道" ,青森県: "青森県" ,岩手県: "岩手県" ,宮城県: "宮城県" ,秋田県: "秋田県" ,山形県: "山形県" ,福島県: "福島県" ,茨城県: "茨城県" ,栃木県: "栃木県" ,群馬県: "群馬県" ,埼玉県: "埼玉県" ,千葉県: "千葉県" ,東京都: "東京都" ,神奈川県: "神奈川県 ",新潟県: "新潟県" ,富山県: "富山県" ,石川県: "石川県" ,福井県: "福井県" ,山梨県: "山梨県" ,長野県: "長野県" ,岐阜県: "岐阜県" ,静岡県: "静岡県" ,愛知県: "愛知県" ,三重県: "三重県" ,滋賀県: "滋賀県" ,京都府: "京都府" ,大阪府: "大阪府" ,兵庫県: "兵庫県" ,奈良県: "奈良県" ,和歌山県: "和歌山県 ",鳥取県: "鳥取県" ,島根県: "島根県" ,岡山県: "岡山県" ,広島県: "広島県" ,山口県: "山口県" ,徳島県: "徳島県" ,香川県: "香川県" ,愛媛県: "愛媛県" ,高知県: "高知県" ,福岡県: "福岡県" ,佐賀県: "佐賀県" ,長崎県: "長崎県" ,熊本県: "熊本県" ,大分県: "大分県" ,宮崎県: "宮崎県" ,鹿児島県: "鹿児島県 ",沖縄県: "沖縄県" }, {include_blank: "---"}, class: "form-control", required: true
-                      .invalid-feedback
-                        都道府県を選択してください
-                  .col-md-4
-                    .form-group
-                      = f.label :order_city, "市区町村"
-                      = f.text_field :order_city, class: "form-control", placeholder: "福岡市博多区", required: true
-                      .invalid-feedback
-                        市区町村を入力してください
-                .row
-                  .col-md-12
-                    .form-group
-                      = f.label :order_memo, "補足"
-                      = f.text_field :order_memo, class: "form-control", required: true
-                      .invalid-feedback
-                        補足を入力してください
-              .card-footer.card-header-primary
-                %h4.card-title お子様情報
-              .card-body
-                .row
-                  #baby_infomations
-                    .form-group
-                      .input-group
-                        = f.fields_for :baby_infomations do |baby|
-                          = render "baby_infomation_fields", f: baby
-                        .links
-                          = link_to_add_association "枠を追加", f, :baby_infomations, class: "btn btn-outline-success btn-sm ml-3"
-                .action      
-                  = f.submit "登録する", class: "btn btn-primary pull-right"
+          = render partial: "form", locals: { parent: @parent}
