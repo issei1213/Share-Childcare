@@ -1,20 +1,12 @@
-.wrapper
-  .sidebar{"data-background-color" => "white", "data-color" => "purple" }
-    .logo
-      %a.simple-text
-        マイページ
-    .sidebar-wrapper
-      %ul.nav
-        %li.nav-item.active
-          = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "保護者情報", parent_path(id: current_user.parent.id, user_id: current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "ホーム画面", root_path, class: "nav-link"
-  .main-panel
-    .container-fluid
+%nav.navbar.navbar-dark.bg-dark.flex-md-nowrap.p-0.shadow
+  .navbar-brand.col-sm-3.col-md-2.mr-0
+    マイページ
+.container-fluid.h-100
+  .row
+    -# ナビバー
+    = render "shared/configuration-nav-bar.html"
+    -# 保護者情報
+    %main.col-md-10.ml-sm-auto.col-lg-10.px-4{:role => "main"}
       .row
         .col-md-12
           = render "shared/alert_message"
@@ -34,9 +26,14 @@
                 %tbody
                   %tr
                     %td
-                      氏名（かな）
+                      氏名
                     %td
-                      = "#{current_user.first_name} #{current_user.last_name}( #{current_user.first_name_kana} #{current_user.last_name_kana})"
+                      = "#{current_user.first_name} #{current_user.last_name}"
+                  %tr
+                    %td
+                      かな
+                    %td
+                      = "#{current_user.first_name_kana} #{current_user.last_name_kana}"
                   %tr
                     %td
                       ニックネーム

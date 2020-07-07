@@ -1,21 +1,12 @@
-.wrapper
-  .sidebar{"data-background-color" => "white", "data-color" => "purple" }
-    .logo
-      %a.simple-text
-        マイページ
-    .sidebar-wrapper
-      %ul.nav
-        %li.nav-item
-          = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "保護者情報", parent_path(current_user.id), class: "nav-link"
-        %li.nav-item.active
-          = link_to "ベビーシッター情報", babysitter_path(current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "ホーム画面", root_path, class: "nav-link"
-
-  .main-panel
-    .container-fluid
+%nav.navbar.navbar-dark.bg-dark.flex-md-nowrap.p-0.shadow
+  .navbar-brand.col-sm-3.col-md-2.mr-0
+    マイページ
+.container-fluid
+  .row
+    -# ナビバー
+    = render "shared/configuration-nav-bar.html"
+    -# ベビーシッター情報
+    %main.col-md-10.ml-sm-auto.col-lg-10.px-4{:role => "main"}
       .row
         .col-md-12
           = render 'shared/error_message'
@@ -23,6 +14,6 @@
         .col-md-12
           .card
             .card-header.card-header-primary
-              %h4.card-title ベビーシッター情報登録
+              %h4.card-title ベビーシッター情報(新規登録)
             .card-body
               = render partial: "form", locals: { babysitter: @babysitter }
