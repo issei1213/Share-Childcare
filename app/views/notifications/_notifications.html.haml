@@ -1,33 +1,49 @@
-- visitor = notification.visitor
-- visited = notification.visited
-.col-md-6.mx-auto
-  .form-inline
-    span
-      = link_to user_path(visitor) do
-        = image_tag avatar_url(visitor).to_s, class: "icon_mini"
-        strong
-          = visitor.name
-      = 'さんが'
+.table-responsive.table-hover
+  %table.table
+    %caption List of users
+    %thead
+      %tr.d-flex
+        %th.col-12{:colspan => "2"} お知らせ
+    %tbody
+      - @notifications.each do |notification|
 
-      - case notification.action
-      - when 'follow' then
-        = "あなたをフォローしました"
-      - when 'like' then
-        = link_to 'あなたの投稿', notification.post, style: "font-weight: bold;"
-        = "にいいねしました"
-      - when 'comment' then
-        - if notification.post.user_id == visited.id
-          = link_to "あなたの投稿", notification.post, style: "font-weight: bold;"
+        - if notification.visited_id == current_user.id
+          %tr.d-flex
+            %td.col-1{:scope => "row"}
+              - case notification.checked
+              - when true then
+                %i.fas.fa-envelope-open-text
+              - when false then
+                %i.fas.fa-envelope
+            %td.col-8
+              -# 依頼された時
+              - case notification.action
+              - when "ordered" then
+                = link_to "#", class: "text-info" do
+                  = "#{notification.visitor.nickname}さんに依頼されました。依頼内容を確認し、返答してください。"
+                  %i.fas.fa-greater-than
+            %td.col-3.fas.fa-clock.font-weight-light.pt-3
+              = "#{I18n.l(notification.created_at, format: :long)}"
+
+        - elsif notification.visitor_id == current_user.id
+          %tr.d-flex
+            %td.col-1{:scope => "row"}
+              - case notification.checked
+              - when true then
+                %i.fas.fa-envelope-open-text
+              - when false then
+                %i.fas.fa-envelope
+            %td.col-8
+              -# 依頼した時
+              - case notification.action
+              - when "ordered" then
+                = link_to "#", class: "text-info" do
+                  = "#{notification.visited.nickname}さんに依頼しました。"
+                  %i.fas.fa-greater-than
+            %td.col-3.fas.fa-clock.font-weight-light.pt-3
+              = "#{I18n.l(notification.created_at, format: :long)}"
         - else
-          span
-            = link_to post_path(notification.post) do
-              = image_tag avatar_url(notification.post.user).to_s, class: "icon_mini" 
-              strong
-                = notification.post.user.name + 'さんの投稿'
-        = "にコメントしました"
-        p.text-muted.mb-0
-          = Comment.find_by(id: notification.comment_id)&.comment
+          %td.col-1{:colspan => "2"}
+            お知らせはありません
 
-  .small.text-muted.text-right
-    = time_ago_in_words(notification.created_at).upcase
-  hr
+
