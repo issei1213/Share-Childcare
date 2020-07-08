@@ -53,15 +53,13 @@ ActiveRecord::Schema.define(version: 2020_06_18_134302) do
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "visitor_id", null: false
-    t.integer "visited_id", null: false
-    t.integer "order_id"
-    t.integer "comment_id"
+    t.bigint "visitor_id", null: false
+    t.bigint "visited_id", null: false
+    t.bigint "order_id"
     t.string "action", default: "", null: false
-    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.boolean "checked", default: false, null: false
     t.index ["order_id"], name: "index_notifications_on_order_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
@@ -125,6 +123,9 @@ ActiveRecord::Schema.define(version: 2020_06_18_134302) do
   add_foreign_key "baby_infomations", "parents"
   add_foreign_key "babysitter_images", "babysitters"
   add_foreign_key "babysitters", "users"
+  add_foreign_key "notifications", "orders"
+  add_foreign_key "notifications", "users", column: "visited_id"
+  add_foreign_key "notifications", "users", column: "visitor_id"
   add_foreign_key "orders", "babysitters"
   add_foreign_key "orders", "parents"
   add_foreign_key "orders", "users"

@@ -7,17 +7,21 @@
 #  checked    :boolean          default(FALSE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  comment_id :integer
-#  order_id   :integer
-#  visited_id :integer          not null
-#  visitor_id :integer          not null
+#  order_id   :bigint
+#  visited_id :bigint           not null
+#  visitor_id :bigint           not null
 #
 # Indexes
 #
-#  index_notifications_on_comment_id  (comment_id)
 #  index_notifications_on_order_id    (order_id)
 #  index_notifications_on_visited_id  (visited_id)
 #  index_notifications_on_visitor_id  (visitor_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (order_id => orders.id)
+#  fk_rails_...  (visited_id => users.id)
+#  fk_rails_...  (visitor_id => users.id)
 #
 require 'rails_helper'
 

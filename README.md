@@ -1,24 +1,58 @@
-# README
+# アプリ名
+## Share Childcare
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要実装機能
+  育児専用のマッチングアプリケーション
 
-Things you may want to cover:
+## 制作背景
+  スクールのカリキュラム以外で学習した内容を、本アプリ作成時に使用し開発を実施。また、育児専用のマッチングアプリとし、今まで作成してきなかったカテゴリのアプリを開発を試みた。
 
-* Ruby version
+## 実装機能
+- ユーザー管理機能
+- 依頼機能
+- 通知機能
+- チャット機能
+- コメント・評価機能(実装予定 )
 
-* System dependencies
 
-* Configuration
+## 本番環境（デプロイ先とテストアカウント＆ID）
+- GitHub:https://github.com/issei1213/Share-Childcare
+- デプロイ先:http://share-childcare.aws-and-infra.online/
+- テストアカウント: Email: test@gmail.com / Password: aaaa1111
 
-* Database creation
+## DEMO
+<!-- ## トップ画面
 
-* Database initialization
 
-* How to run the test suite
+## 投稿画面
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## 編集画面
 
-* ...
+
+## ユーザ登録画面 -->
+
+
+
+## 工夫したポイント
+ - CI/CDツール使用し、自動テスト・デプロイ実施
+ - 独自ドメインを取得しRoute53を使用したり、EBSで負荷分散を考慮し開発実施
+
+
+
+## 使用技術（開発環境）
+  - 言語：Haml,SCSS,Ruby,jQuery
+  - フレームワーク：Ruby on Rails
+  - DB：mysql
+  - 開発環境：Docker
+  - 本番環境：AWS
+
+<!-- ## 課題や今後実装したい機能
+  - 画像投稿機能
+  - インクリメンタルサーチのプルダウンで場合分け
+  - タグ登録時のplugin機能
+  - いいね機能のデザイン変更・非同期通信
+  - 投稿時の5W1H入力
+  - コメント機能（非同期通信） -->
+
+## DB設計
