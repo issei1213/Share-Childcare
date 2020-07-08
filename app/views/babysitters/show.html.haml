@@ -1,20 +1,13 @@
-.wrapper
-  .sidebar{"data-background-color" => "white", "data-color" => "purple" }
-    .logo
-      %a.simple-text
-        マイページ
-    .sidebar-wrapper
-      %ul.nav
-        %li.nav-item
-          = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "保護者情報", parent_path(id: current_user.parent.id, user_id: current_user.id), class: "nav-link"
-        %li.nav-item.active
-          = link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "ホーム画面", root_path, class: "nav-link"
-  .main-panel
-    .container-fluid
+%nav.navbar.navbar-dark.bg-dark.flex-md-nowrap.p-0.shadow
+  .navbar-brand.col-sm-3.col-md-2.mr-0
+    マイページ
+
+.container-fluid
+  .row
+    -# ナビバー
+    = render "shared/configuration-nav-bar.html"
+    -# ベビーシッター情報
+    %main.col-md-10.ml-sm-auto.col-lg-10.px-4{:role => "main"}
       .row
         .col-md-12
           = render "shared/alert_message"
@@ -89,8 +82,8 @@
                       - @babysitter.babysitter_images.each do |image|
                         = image_tag "#{image.name.to_s}"
             .card-body.table-responsive
-              = link_to "編集", edit_babysitter_path, class: "btn btn-primary"
+              = link_to "編集", edit_babysitter_path(user_id: current_user.id), class: "btn btn-primary"
 
 
 
-  -# = @babysitter.baby_age_range_top_month
+    -# = @babysitter.baby_age_range_top_month

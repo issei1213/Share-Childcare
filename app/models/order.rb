@@ -34,9 +34,21 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :parent
   belongs_to :babysitter
+  has_many :notifications, dependent: :destroy
 
   validates :date, :hour_down, :hour_top, :month, :status, :year, :money_hour, :money_option, presence: true
 
-
   enum status: { orderd: 1, approved: 2 , canceld: 3}
+
+  # 通知機能
+  def create_notification_order!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and order_id = ? and action = ? ",current_user.id, user_id, id, "orderd"])
+    if temp.blank?
+      notification = current_user.active_notifications.new(order_id: id, visited_id: babysitter_id, action: 'ordered')
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
+  end
 end
