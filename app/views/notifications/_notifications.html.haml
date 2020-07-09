@@ -39,13 +39,21 @@
               -# 依頼した時
               - case notification.action
               - when "ordered" then
-                = link_to "#", class: "text-info" do
-                  = "#{notification.visited.nickname}さんに依頼しました。"
+                -# 依頼内容の詳細表示
+                = link_to order_path(id: notification.order_id), remote: true, class: "text-info", data: { toggle: "modal", target: "#exampleModal" } do
+                  = "#{notification.visited.nickname}さんに依頼しました。詳細を確認する時はこちらで確認ください。"
                   %i.fas.fa-greater-than
             %td.col-3.fas.fa-clock.font-weight-light.pt-3
               = "#{I18n.l(notification.created_at, format: :long)}"
-        - else
+        - else 
           %td.col-1{:colspan => "2"}
             お知らせはありません
+
+%order-show-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+
+
+
+
+
 
 
