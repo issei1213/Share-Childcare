@@ -20,13 +20,62 @@ ja:
         canceld: キャンセル
 
   activerecord:
+    models:
+      order: 注文
+      user: ユーザー
+      babysitter: 保護者
+      notification: お知らせ
+
     attributes:
+      user:
+        block: ブロック  #g
+        building: 建物  #g
+        city: 市  #g
+        email: Eメール  #g
+        encrypted_password: 暗号化されたパスワード  #g
+        first_name: ファーストネーム  #g
+        first_name_kana: 名かな  #g
+        last_name: 苗字  #g
+        last_name_kana: 姓かな  #g
+        nickname: ニックネーム  #g
+        phone_number: 電話番号  #g
+        postcode: 郵便番号  #g
+        prefecture: 県  #g
+        remember_created_at: 作成日を記憶する  #g
+        reset_password_sent_at: に送信されたパスワードをリセット  #g
+        reset_password_token: パスワードトークンをリセットする  #g
+      babysitter:
+        number_of_baby: 受入可能人数
+        baby_age_range_down_month: 受入可能年齢
+        baby_age_range_down_year: 受入可能年齢
+        baby_age_range_top_month: 受入可能年齢
+        baby_age_range_top_year: 受入可能年齢
+        babysitter_year: 子育て経験
+        experience_support_count: サポート回数
+        experience_user_count: 累計ユーザー数
+        experience_year: 子育て経験
+        introduction_content: 紹介文
+        introduction_title: タイトル
+        money_hour: 時給
+        money_option: オプション料金
+        profile_license: 資格
+        profile_receiving_time_down: 可能時間帯
+        profile_receiving_time_top: 可能時間帯
+      parent:
+        order_city: 市区町村
+        order_prefecture: 都道府県
+        order_memo: 補足
+        order_money_hour: 希望時給
+        order_money_option: 希望オプション料金
+      baby_infomation:
+        age: 年齢
+        name: 名前
+        sex: 性別
+      babysitter_image:
+        name: 本人画像
       parent:
         order_money_hour: 希望時給
         order_money_option: 希望オプション金額
-      sex:
-        man: 男の子
-        woman: 女の子
       
     errors:
       messages:

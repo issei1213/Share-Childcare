@@ -1,6 +1,8 @@
 .table-responsive.table-hover
   %table.table
-    %caption List of users
+    %caption
+      = paginate @notifications
+      = page_entries_info @notifications
     %thead
       %tr.d-flex
         %th.col-12{:colspan => "2"} お知らせ
