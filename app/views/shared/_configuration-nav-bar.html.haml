@@ -1,11 +1,19 @@
 %nav.col-md-2.d-none.d-md-block.bg-light.sidebar
   .sidebar-sticky
-    %ul.nav.flex-column.list-group.list-group-flush
+    %ul.nav.flex-column.list-group.list-group-flush.mt-3
+      %i.fa.fa-bars
+        マイメニュー
       %li.nav-item
-        = active_link_to "共通情報", signup_path(current_user.id), class: "nav-link list-group-item"
+        = active_link_to "お知らせ", notifications_path, class: "nav-link fas fa-bell w-100 list-group-item"
+
+    %ul.nav.flex-column.list-group.list-group-flush.mt-3
+      %i.fa.fa-cog
+        設定メニュー
+      %li.nav-item
+        = active_link_to "共通情報", signup_path(current_user.id), class: "nav-link fa fa-cogs w-100 list-group-item"
       %li.nav-item.active
-        = active_link_to "保護者情報", parent_path(id: current_user.parent.id, user_id: current_user.id), class: "nav-link list-group-item"
+        = active_link_to "保護者情報", parent_path(id: current_user.parent.id, user_id: current_user.id), class: "nav-link fas fa-baby-carriage list-group-item w-100"
       %li.nav-item
-        = active_link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "nav-link list-group-item"
+        = active_link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "nav-link fab fa-hire-a-helper w-100 font-weight-bold list-group-item"
       %li.nav-item
-        = active_link_to "ホーム画面", root_path, class: "nav-link list-group-item", active: [[:home],[:index]]
+        = active_link_to "ホーム画面", root_path, class: "nav-link fas fa-home w-100 list-group-item", active: [[:home],[:index]]

@@ -1,44 +1,16 @@
-.wrapper
-  .sidebar{"data-background-color" => "white", "data-color" => "purple" }
-    .logo
-      %a.simple-text
-        マイページ
-    .sidebar-wrapper
-      %ul.nav
-        %li.nav-item.active
-          = link_to "共通情報", signup_path(current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "保護者情報", parent_path(id: current_user.parent.id, user_id: current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "nav-link"
-        %li.nav-item
-          = link_to "ホーム画面", root_path, class: "nav-link"
-  .main-panel
-    .container-fluid
+%nav.navbar.navbar-dark.bg-dark.flex-md-nowrap.p-0.shadow
+  .navbar-brand.col-sm-3.col-md-2.mr-0
+    マイページ
+
+.container-fluid
+  .row
+    -# ナビバー
+    = render "shared/configuration-nav-bar.html"
+    -# ベビーシッター情報
+    %main.col-md-10.ml-sm-auto.col-lg-10.px-4{:role => "main"}
       .row
         .col-md-12
           = render "shared/alert_message"
       .row
         .col-md-12
-          .card
-            .card-header.card-header-warning
-            .card-body.table-responsive
-              / 自分の投稿に対するいいね、コメントは通知に表示しない
-              - notifications = @notifications.where.not(visitor_id: current_user.id)
-              - if notifications.exists?
-                = render notifications
-                = paginate notifications
-              - else
-                %p= "通知はありません"
-              -# %table.table.table-hover
-              -#   %thead.text-warning
-              -#     %th
-              -#       項目
-              -#     %th
-              -#       内容
-              -#   %tbody
-              -#     %tr
-              -#       %td
-              -#         氏名（かな）
-              -#       %td
-              -#         = "#{current_user.first_name} #{current_user.last_name}( #{current_user.first_name_kana} #{current_user.last_name_kana})"
+          = render "notifications"
