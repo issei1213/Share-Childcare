@@ -22,7 +22,7 @@
               - case notification.action
               - when "ordered" then
                 = link_to "#", class: "text-info" do
-                  = "#{notification.visitor.nickname}さんに依頼されました。依頼内容を確認し、返答してください。"
+                  = "「#{notification.visitor.nickname}」さんから依頼されました。依頼内容を確認し、返答してください。 (オーダーID:#{notification.order_id})"
                   %i.fas.fa-greater-than
             %td.col-3.fas.fa-clock.font-weight-light.pt-3
               = "#{I18n.l(notification.created_at, format: :long)}"
@@ -38,10 +38,19 @@
             %td.col-8
               -# 依頼した時
               - case notification.action
-              - when "ordered" then
                 -# 依頼内容の詳細表示
-                = link_to order_path(id: notification.order_id), remote: true, class: "text-info", data: { toggle: "modal", target: "#exampleModal" } do
-                  = "#{notification.visited.nickname}さんに依頼しました。詳細を確認する時はこちらで確認ください。"
+              - when "ordered" then
+                = link_to order_path(id: notification.order_id), remote: true, class: "text-info" do
+                  = "「#{notification.visited.nickname}」さんに依頼しました。 (オーダーID:#{notification.order_id})"
+                  %i.fas.fa-greater-than
+                -# 詳細ページ(モーダル)
+                #order-show-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+                -# 編集ページ(モーダル)
+                #order-edit-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"} 
+                -# 依頼内容の詳細表示(修正後)
+              - when "ordered-updated" then
+                = link_to order_path(id: notification.order_id), remote: true, class: "text-info" do
+                  = "「#{notification.visited.nickname}」さんの依頼を修正しました。 (オーダーID:#{notification.order_id})"
                   %i.fas.fa-greater-than
             %td.col-3.fas.fa-clock.font-weight-light.pt-3
               = "#{I18n.l(notification.created_at, format: :long)}"
@@ -49,7 +58,7 @@
           %td.col-1{:colspan => "2"}
             お知らせはありません
 
-%order-show-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+
 
 
 
