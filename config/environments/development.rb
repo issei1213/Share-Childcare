@@ -59,5 +59,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::FileUpdateChecker
 
+  config.cache_classes = false
+  config.reload_classes_only_on_change = false
+
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 end

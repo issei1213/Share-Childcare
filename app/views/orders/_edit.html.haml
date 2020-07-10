@@ -1,0 +1,9 @@
+.modal-dialog.modal-dialog-centered.modal-lg
+  .modal-content
+    .modal-header
+      %h5#exampleModalCenterTitle.modal-title 依頼フォーム
+      %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+    .modal-body
+      .col-md-12.order-md-1
+        = render partial: "form", locals: { order: @order }

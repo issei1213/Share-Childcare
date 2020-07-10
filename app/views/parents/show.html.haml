@@ -33,7 +33,7 @@
                     %td= "#{@parent.order_prefecture} #{@parent.order_city}"
                   %tr
                     %td メモ
-                    %td= "#{@parent.order_memo}"
+                    %td= simple_format(h(@parent.order_memo))
 
             .card-footer.card-header-warning
               %h4.card-title 赤ちゃん情報(依頼時に使用)
@@ -47,10 +47,13 @@
                 %tbody
                   - @parent.baby_infomations.each_with_index do |baby, index|
                     %tr
-                      %td= index+1
-                      %td= baby.name
-                      %td= baby.sex_i18n
-                      %td= "#{baby.age} 才"
+                      %td
+                        = "#{baby.name} くん" if baby.sex == "man"
+                        = "#{baby.name} ちゃん" if baby.sex == "woman"
+                      %td
+                        = baby.sex_i18n
+                      %td
+                        = "#{baby.age} 才"
                       
               .card-body.table-responsive
                 = link_to "編集", edit_parent_path(user_id: @parent.user.id), class: "btn btn-primary"
