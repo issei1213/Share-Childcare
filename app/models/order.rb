@@ -40,11 +40,11 @@ class Order < ApplicationRecord
 
   enum status: { orderd: 1, approved: 2 , canceld: 3}
 
-  # 通知メソッド(依頼登録時)
-  def create_notification_order!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and order_id = ? and action = ? ",current_user.id, user_id, id, "orderd"])
+  # 通知メソッド
+  def notification_order!(action, current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and order_id = ? and action = ? ", parent_id, babysitter_id, id, action])
     if temp.blank?
-      notification = current_user.active_notifications.new(order_id: id, visited_id: babysitter_id, action: 'ordered')
+      notification = current_user.active_notifications.new(order_id: id, visited_id: babysitter_id, action: action)
       if notification.visitor_id == notification.visited_id
         notification.checked = true
       end
@@ -57,15 +57,4 @@ class Order < ApplicationRecord
     notification.update({ checked: true }) if notification.where(checked: false)
   end
 
-  # 通知メソッド(依頼登録時)
-  # def create_notification_order!(current_user)
-  #   temp = Notification.where(["visitor_id = ? and visited_id = ? and order_id = ? and action = ? ",current_user.id, user_id, id, "orderd"])
-  #   if temp.blank?
-  #     notification = current_user.active_notifications.new(order_id: id, visited_id: babysitter_id, action: 'ordered-updated')
-  #     if notification.visitor_id == notification.visited_id
-  #       notification.checked = true
-  #     end
-  #     notification.save if notification.valid?
-  #   end
-  # end
 end
