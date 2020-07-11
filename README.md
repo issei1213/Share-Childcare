@@ -68,5 +68,6 @@
 ## DB設計
 ![Share Childcare](https://user-images.githubusercontent.com/59830008/87223997-6d1b6000-c3bc-11ea-884d-8688ea808975.jpg)
 ## システム構成図
-![Share Childcare (1)](https://user-images.githubusercontent.com/59830008/87228442-42410400-c3dc-11ea-8e04-70589ec9e941.jpg)
+![ShareChildren_システム構成図 (1)](https://user-images.githubusercontent.com/59830008/87224229-91783c00-c3be-11ea-8aed-e5112093fbd5.jpg)
+
 
