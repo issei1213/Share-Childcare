@@ -1,5 +1,5 @@
-# アプリ名
-## Share Childcare
+## アプリ名
+  Share Childcare
 
 ## 概要実装機能
   育児専用のマッチングアプリケーション
