@@ -62,6 +62,7 @@
   - コメント機能（非同期通信） -->
 
 ## DB設計
+![Share Childcare](https://user-images.githubusercontent.com/59830008/87223997-6d1b6000-c3bc-11ea-884d-8688ea808975.jpg)
 ## 使用技術詳細
 ![使用技術詳細](https://user-images.githubusercontent.com/59830008/87223357-355de980-c3b7-11ea-91d7-5c02f5c81741.jpg)
 ## システム構成図
