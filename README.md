@@ -62,3 +62,4 @@
 ## DB設計
 ## 使用技術
 ## システム構成図
+![ShareChildren_システム構成図](https://user-images.githubusercontent.com/59830008/87223307-acdf4900-c3b6-11ea-8c56-3994887875a9.jpg)
