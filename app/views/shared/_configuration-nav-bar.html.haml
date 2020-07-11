@@ -16,13 +16,23 @@
           %i.fa.fa-cogs
             共通情報
       %li.nav-item.active
-        = active_link_to parent_path(id: current_user.parent.id, user_id: current_user.id), class: "nav-link list-group-item" do
-          %i.fas.fa-baby-carriage
-            保護者情報
+        - if current_user.parent.present?
+          = active_link_to parent_path(id: current_user.parent.id, user_id: current_user.id), class: "nav-link list-group-item" do
+            %i.fas.fa-baby-carriage
+              保護者情報
+        - else
+          = active_link_to new_parent_path, class: "nav-link list-group-item" do
+            %i.fas.fa-baby-carriage
+              保護者情報
       %li.nav-item
-        = active_link_to babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "nav-link font-weight-bold list-group-item" do
-          %i.fab.fa-hire-a-helper
-            ベビーシッター情報
+        - if current_user.babysitter.present?
+          = active_link_to babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "nav-link font-weight-bold list-group-item" do
+            %i.fab.fa-hire-a-helper
+              ベビーシッター情報
+        - else
+          = active_link_to new_babysitter_path, class: "nav-link font-weight-bold list-group-item" do
+            %i.fab.fa-hire-a-helper
+              ベビーシッター情報
       %li.nav-item
         = active_link_to root_path, class: "nav-link list-group-item", active: [[:home],[:index]] do
           %i.fas.fa-home

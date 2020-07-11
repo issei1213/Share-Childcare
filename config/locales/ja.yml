@@ -17,7 +17,7 @@ ja:
       status:
         orderd: 依頼済
         approved: 承認済
-        canceld: キャンセル
+        canceled: キャンセル
 
   activerecord:
     models:

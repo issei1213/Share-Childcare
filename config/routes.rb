@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   resources :babysitters
   resources :parents
   resources :homes
-  resources :orders
+  resources :orders do
+    member do
+      patch :approve
+      patch :cancel
+    end
+  end
   resources :notifications, only: :index
   resources :signups do
     collection do

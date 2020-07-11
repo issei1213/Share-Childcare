@@ -14,14 +14,17 @@
               %ul.navbar-nav.mr-auto
                 %li.nav-item.nav-link
                   = "#{current_user.nickname}さん:ID.#{current_user.id}"
-                %li.nav-item.dropdown
-                  %a#navbarDropdown.nav-link.dropdown-toggle{aria: {expanded: "false", haspopup: "true"},data: {toggle:"dropdown"}, href: "#", role: "button"}
+                %li.nav-item
+                  = link_to signup_path(current_user.id), class: "nav-link" do
                     %i.fa.fa-cog
                       設定メニュー
-                  .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-                    = link_to "共通情報", signup_path(current_user.id), class: "dropdown-item fa fa-cogs"
-                    = link_to "保護者情報", parent_path(id: current_user.parent.id, user_id: current_user.id), class: "dropdown-item fas fa-baby-carriage"
-                    = link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "dropdown-item fab fa-hire-a-helper font-weight-bold"
+                  -# %a#navbarDropdown.nav-link.dropdown-toggle{aria: {expanded: "false", haspopup: "true"},data: {toggle:"dropdown"}, href: "#", role: "button"}
+                  -#   %i.fa.fa-cog
+                  -#     設定メニュー
+                  -# .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+                  -#   = link_to "共通情報", signup_path(current_user.id), class: "dropdown-item fa fa-cogs"
+                  -#   = link_to "保護者情報", parent_path(id: current_user.parent.id, user_id: current_user.id), class: "dropdown-item fas fa-baby-carriage"
+                  -#   = link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "dropdown-item fab fa-hire-a-helper font-weight-bold"
                 %li.nav-item
                   = link_to notifications_path, class: "nav-link" do
                     %i.fas.fa-bell
@@ -71,9 +74,10 @@
                   %th{scope: "col"} 市区町村
                   %td= "#{user.prefecture}#{user.city}"
             .card-footer
-            
-              = link_to "詳細", home_path(id: user ,babysitter_id: user.babysitter.id, parent_id: current_user.parent.id), class: "btn btn-primary"
-              -# %a.btn.btn-primary{:href => "#"} 詳細
+              - if current_user.parent.present?
+                = link_to "詳細", home_path(id: user ,babysitter_id: user.babysitter.id, parent_id: current_user.parent.id), class: "btn btn-primary"
+              - else
+                = link_to "保護者登録", new_parent_path, class: "btn btn-primary"
 
 - else
   %nav.navbar.navbar-expand-lg.navbar-light.bg-light

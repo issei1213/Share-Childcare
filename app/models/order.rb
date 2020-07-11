@@ -38,7 +38,7 @@ class Order < ApplicationRecord
 
   validates :date, :hour_down, :hour_top, :month, :status, :year, :money_hour, :money_option, presence: true
 
-  enum status: { orderd: 1, approved: 2 , canceld: 3}
+  enum status: { ordered: 1, approved: 2 , canceled: 3}
 
   # 通知メソッド
   def notification_order!(action, current_user)
@@ -46,7 +46,7 @@ class Order < ApplicationRecord
     if temp.blank?
       notification = current_user.active_notifications.new(order_id: id, visited_id: babysitter_id, action: action)
       if notification.visitor_id == notification.visited_id
-        notification.checked = true
+        notification.checked = true 
       end
       notification.save if notification.valid?
     end
@@ -56,5 +56,6 @@ class Order < ApplicationRecord
   def update_notification_checked!(notification)
     notification.update({ checked: true }) if notification.where(checked: false)
   end
+
 
 end

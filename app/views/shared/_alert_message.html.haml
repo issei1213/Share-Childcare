@@ -1,2 +1,7 @@
 - if flash.notice.present?
-  .alert.alert-success= flash.notice
+  .alert.alert-success
+    = flash.notice
+
+- elsif flash[:error].present?
+  .alert.alert-danger
+    = flash[:error]
