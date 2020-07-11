@@ -60,6 +60,7 @@
   - コメント機能（非同期通信） -->
 
 ## DB設計
-## 使用技術
+## 使用技術詳細
+[使用技術詳細.pdf](https://github.com/issei1213/Share-Childcare/files/4906701/default.pdf)
 ## システム構成図
 ![ShareChildren_システム構成図](https://user-images.githubusercontent.com/59830008/87223307-acdf4900-c3b6-11ea-8c56-3994887875a9.jpg)
