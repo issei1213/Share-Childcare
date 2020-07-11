@@ -4,54 +4,146 @@
       %h5#exampleModalLabel.modal-title 詳細ページ
       %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
         %span{"aria-hidden" => "true"} ×
-    .modal-body
-      %table.table.table-hover.table-striped
-        %thead
-          %tr
-            %th{:colspan => "2"}
-              %i.far.fa-clipboard
-                依頼情報
-        %tbody
-          %tr
-            %th
-              依頼日時
-            %td
-              = "#{@order.year}年 #{@order.month}月 #{@order.date}日 #{@order.hour_top}時〜#{@order.hour_down}時"
-          %tr
-            %th
-              希望時給
-            %td
-              = "#{@order.money_hour} 円"
-          %tr
-            %th
-              オプション金額
-            %td
-              = "#{@order.money_option} 円"
-          %tr
-            %th
-              補足
-            %td
-              = simple_format(h(@order.memo))
+      -# 依頼を実施した時
+    - if (@order.notifications.last.visitor_id == current_user.id) && (@order.notifications.last.action == "ordered")
+      .modal-body
+        %table.table.table-hover.table-striped
+          %thead
+            %tr
+              %th{:colspan => "2"}
+                %i.far.fa-clipboard
+                  依頼情報
+          %tbody
+            %tr
+              %th
+                依頼日時
+              %td
+                = "#{@order.year}年 #{@order.month}月 #{@order.date}日 #{@order.hour_top}時〜#{@order.hour_down}時"
+            %tr
+              %th
+                希望時給
+              %td
+                = "#{@order.money_hour} 円"
+            %tr
+              %th
+                オプション金額
+              %td
+                = "#{@order.money_option} 円"
+            %tr
+              %th
+                補足
+              %td
+                = simple_format(h(@order.memo))
+        %table.table.table-hover.table-striped
+          %thead
+            %tr
+              %th{:colspan => "3"}
+                %i.fas.fa-baby
+                  お子様情報
+          %tbody
+            - @order.parent.baby_infomations.each_with_index do |baby, index|
+              %tr
+                %td
+                  = "#{baby.name} くん" if baby.sex == "man"
+                  = "#{baby.name} ちゃん" if baby.sex == "woman"
+                %td
+                  = baby.sex_i18n
+                %td
+                  = "#{baby.age} 才"
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} 閉じる
+        = link_to "変更", edit_order_path(babysitter_id: @order.babysitter_id, parent_id: @order.parent_id), remote: true, class: "btn btn-success"
+        = link_to "削除", order_path(@order), method: :delete, class: "btn btn-danger", data: { confirm: "依頼を削除します。よろしいでしょうか。" }
 
-      %table.table.table-hover.table-striped
-        %thead
-          %tr
-            %th{:colspan => "3"}
-              %i.fas.fa-baby
-                お子様情報
-        %tbody
-          - @order.parent.baby_infomations.each_with_index do |baby, index|
+      -# 依頼を受けた時
+    - elsif (@order.notifications.last.visited_id == current_user.id) && (@order.notifications.last.action == "ordered")
+      .modal-body
+        %table.table.table-hover.table-striped
+          %thead
+            %tr
+              %th{:colspan => "2"}
+                %i.far.fa-clipboard
+                  依頼情報
+          %tbody
+            %tr
+              %th
+                依頼日時
+              %td
+                = "#{@order.year}年 #{@order.month}月 #{@order.date}日 #{@order.hour_top}時〜#{@order.hour_down}時"
+            %tr
+              %th
+                希望時給
+              %td
+                = "#{@order.money_hour} 円"
+            %tr
+              %th
+                オプション金額
+              %td
+                = "#{@order.money_option} 円"
+            %tr
+              %th
+                補足
+              %td
+                = simple_format(h(@order.memo))
+        %table.table.table-hover.table-striped
+          %thead
+            %tr
+              %th{:colspan => "3"}
+                %i.fas.fa-user
+                  保護者情報
+          %tbody
             %tr
               %td
-                = "#{baby.name} くん" if baby.sex == "man"
-                = "#{baby.name} ちゃん" if baby.sex == "woman"
+                氏名
               %td
-                = baby.sex_i18n
+                = "#{@order.user.first_name} #{@order.user.last_name}"
+            %tr
               %td
-                = "#{baby.age} 才"
+                かな
+              %td
+                = "#{@order.user.first_name_kana} #{@order.user.last_name_kana}"
+            %tr
+              %td
+                郵便番号
+              %td
+                = "#{@order.user.postcode}"
+            %tr
+              %td
+                住所
+              %td
+                = "#{@order.user.prefecture} #{@order.user.city} #{@order.user.city} #{@order.user.block} #{@order.user.building}"
+            %tr
+              %td
+                メールアドレス
+              %td
+                = "#{@order.user.email}"
+            %tr
+              %td
+                電話番号
+              %td
+                = "#{@order.user.phone_number}"
 
-    .modal-footer
-      %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} 閉じる
-      = link_to "変更", edit_order_path(babysitter_id: @order.babysitter_id, parent_id: @order.parent_id), remote: true, class: "btn btn-success"
-      = link_to "削除", order_path(@order), method: :delete, class: "btn btn-danger", data: { confirm: "依頼を削除します。よろしいでしょうか。" }
-
+        %table.table.table-hover.table-striped
+          %thead
+            %tr
+              %th{:colspan => "3"}
+                %i.fas.fa-baby
+                  お子様情報
+          %tbody
+            - @order.parent.baby_infomations.each_with_index do |baby, index|
+              %tr
+                %td
+                  = "#{baby.name} くん" if baby.sex == "man"
+                  = "#{baby.name} ちゃん" if baby.sex == "woman"
+                %td
+                  = baby.sex_i18n
+                %td
+                  = "#{baby.age} 才"
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} 閉じる
+        = link_to approve_order_path(@order), method: :patch, class: "btn btn-success", data: { confirm: "依頼を承諾します。よろしいでしょうか。" } do
+          承諾
+          %i.fas.fa-thumbs-up
+        = link_to cancel_order_path(@order), method: :patch, class: "btn btn-danger", data: { confirm: "依頼をキャンセルします。よろしいでしょうか。" } do
+          キャンセル
+          %i.fas.fa-thumbs-down
