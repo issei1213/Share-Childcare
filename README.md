@@ -63,4 +63,4 @@
 ## 使用技術詳細
 ![使用技術詳細](https://user-images.githubusercontent.com/59830008/87223357-355de980-c3b7-11ea-91d7-5c02f5c81741.jpg)
 ## システム構成図
-![ShareChildren_システム構成図](https://user-images.githubusercontent.com/59830008/87223307-acdf4900-c3b6-11ea-8c56-3994887875a9.jpg)
+![使用技術詳細（1ページ）](https://user-images.githubusercontent.com/59830008/87223384-840b8380-c3b7-11ea-8dcb-201aa50ff8c9.jpg)
