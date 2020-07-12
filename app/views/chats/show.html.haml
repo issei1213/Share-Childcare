@@ -11,7 +11,7 @@
 
   .chats-group
     -# 依頼内容(初期表示)
-    .row
+    .row.order-content
       .col-auto.mr-auto
         .balloon-left
           .faceicon
@@ -56,8 +56,9 @@
                 testtesttesttest
               %p
                 testegwetetetere
-              %small.text-right
-                2020/7/7 21:15
+              %small
+                .text-right
+                  2020/7/7 21:15
           .faceicon
             .succeed
               %img{:alt => "", :src => "https://picsum.photos/id/237/35/35"}
@@ -80,8 +81,9 @@
                 testtesttesttest
               %p
                 testegwetetetere
-              %small.text-right
-                2020/7/7 21:15
+              %small
+                .text-left
+                  2020/7/7 21:15
 
   -#投稿フォーム
 %nav.navbar.fixed-bottom.navbar-expand-lg.navbar-light{:style => "background-color: #cccccc;"}
