@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       patch :cancel
     end
 
-    resources :chats, only: [:show, :create]
+    resources :chats, only: [:index, :create]
   end
   resources :notifications, only: :index
   resources :signups do

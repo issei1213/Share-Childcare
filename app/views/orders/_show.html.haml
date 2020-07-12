@@ -140,10 +140,18 @@
                 %td
                   = "#{baby.age} 才"
       .modal-footer
-        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} 閉じる
-        = link_to approve_order_path(@order), method: :patch, class: "btn btn-success", data: { confirm: "依頼を承諾します。よろしいでしょうか。" } do
-          承諾
-          %i.fas.fa-thumbs-up
-        = link_to cancel_order_path(@order), method: :patch, class: "btn btn-danger", data: { confirm: "依頼をキャンセルします。よろしいでしょうか。" } do
-          キャンセル
-          %i.fas.fa-thumbs-down
+        - case @order.status
+        - when "ordered"
+          %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} 閉じる
+          = link_to approve_order_path(@order), method: :patch, class: "btn btn-success", data: { confirm: "依頼を承諾します。よろしいでしょうか。" } do
+            承諾
+            %i.fas.fa-thumbs-up
+          = link_to cancel_order_path(@order), method: :patch, class: "btn btn-danger", data: { confirm: "依頼をキャンセルします。よろしいでしょうか。" } do
+            キャンセル
+            %i.fas.fa-thumbs-down
+        - when "approved"
+          = link_to order_chats_path(@order), class: "btn btn-primary" do
+            = "チャットルーム"
+            %i.fas.fa-greater-than
+        - when "canceled"
+          = "この依頼はキャンセル済です。"

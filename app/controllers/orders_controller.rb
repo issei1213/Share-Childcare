@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Parent.find(params[:order][:parent_id]).orders.new(order_params.merge(status: "orderd"))
+    @order = Parent.find(params[:order][:parent_id]).orders.new(order_params.merge(status: "ordered"))
     if @order.save
       @order.notification_order!("ordered", current_user)
       redirect_to notifications_path, notice: "依頼しました。ベビーシッターから連絡があるまで暫くお待ちください。"

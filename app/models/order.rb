@@ -35,6 +35,7 @@ class Order < ApplicationRecord
   belongs_to :parent
   belongs_to :babysitter
   has_many :notifications, dependent: :destroy
+  has_many :chats, dependent: :destroy
 
   validates :date, :hour_down, :hour_top, :month, :status, :year, :money_hour, :money_option, presence: true
 
@@ -44,7 +45,7 @@ class Order < ApplicationRecord
   def notification_order!(action, current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and order_id = ? and action = ? ", parent_id, babysitter_id, id, action])
     if temp.blank?
-      notification = current_user.active_notifications.new(order_id: id, visited_id: babysitter_id, action: action)
+      notification = current_user.active_notifications.new(order_id: id, visited_id: babysitter.user_id, action: action)
       if notification.visitor_id == notification.visited_id
         notification.checked = true 
       end
