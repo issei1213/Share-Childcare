@@ -21,28 +21,25 @@
                 issei
           .chatting
             .says
-              依頼概要
-              %table.table-borderless
+              %table.table-borderless.table-hover
                 %tbody
                   %tr
                     %th
-                      依頼日時
+                      依頼日時:
                     %td
                       7/7
                   %tr
                     %th
-                      金額
+                      金額:
                     %td
                       ¥1000
                   %tr
                     %th
-                      補足
+                      補足:
                     %td
                       test
                   %tr
-                    %th
-                      詳細
-                    %td
+                    %th{colspan: 2}
                       = link_to "#" do
                         詳細はこちら
                         %i.fas.fa-greater-than
