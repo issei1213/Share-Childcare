@@ -56,6 +56,7 @@ class OrdersController < ApplicationController
     if @order.status == "ordered"
       @order.update(status: "canceled")
       @order.notification_order!("ordered-canceled", current_user)
+      @order.update_notification_checked!(@order.notifications)
       redirect_to notifications_path, notice: "依頼をキャンセルしました。"
     else
       flash[:error] = "この依頼は回答済みです。"
