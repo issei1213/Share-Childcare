@@ -41,7 +41,7 @@ class Order < ApplicationRecord
 
   enum status: { ordered: 1, approved: 2 , canceled: 3}
 
-  # 通知メソッド
+  # 通知メソッド(create/update)
   def notification_order!(action, current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and order_id = ? and action = ? ", parent_id, babysitter_id, id, action])
     if temp.blank?
@@ -51,6 +51,15 @@ class Order < ApplicationRecord
       end
       notification.save if notification.valid?
     end
+  end
+
+  # 通知メソッド(approve/cancel)
+  def notification_order_answer!(action, current_user)
+      visitor_user = current_user.active_notifications.new(order_id: id, visited_id: parent.user_id, action: action)
+      visited_user = current_user.passive_notifications.new(order_id: id, visitor_id: parent.user_id, action: action)
+
+      visitor_user.save if visitor_user.valid?
+      visited_user.save if visited_user.valid?
   end
 
   # 既読メソッド

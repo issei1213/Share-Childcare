@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
   def approve
     if @order.status == "ordered"
       @order.update(status: "approved")
-      @order.notification_order!("ordered-approved", current_user)
+      @order.notification_order_answer!("ordered-approved", current_user)
       redirect_to notifications_path, notice: "依頼を承諾しました。チャットルームを開放します。"
     else
       flash[:error] = "この依頼は回答済みです。"

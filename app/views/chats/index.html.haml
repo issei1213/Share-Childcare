@@ -82,7 +82,7 @@
     -# チャット一覧
     - @chats.each do |chat|
       - if chat.user_id == current_user.id
-        .row
+        .row.chat{data: {message: {id: chat.id}}}
           .col-auto.ml-auto
             .balloon-right
               .chatting
@@ -99,7 +99,7 @@
                   -#   issei
 
       - else
-        .row
+        .row.chat{data: {message: {id: chat.id}}}
           .col-auto.mr-auto
             .balloon-left
               .faceicon
