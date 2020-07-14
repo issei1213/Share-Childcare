@@ -94,18 +94,18 @@
                       = I18n.l(chat.created_at, format: :short)
               .faceicon
                 .succeed
-                  %img{:alt => "", :src => "https://picsum.photos/id/237/35/35"}
-                  -# .p                
-                  -#   issei
-
+                  -# %img{:alt => "", :src => "https://picsum.photos/id/237/35/35"}
+                  -# %small
+                  -#   = chat.user.nickname
         - else
           .col-auto.mr-auto
             .balloon-left
               .faceicon
                 .succeed
-                  %img{:alt => "", :src => "https://picsum.photos/id/237/35/35"}
-                  -# .p
-                  -#   issei
+                  -# %img{:alt => "", :src => "https://picsum.photos/id/237/35/35"}
+                  %p
+                    %small
+                      = chat.user.nickname
               .chatting
                 .says
                   %p
