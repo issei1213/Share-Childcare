@@ -9,8 +9,10 @@ Rails.application.routes.draw do
       patch :approve
       patch :cancel
     end
-
     resources :chats, only: [:index, :create]
+    namespace :api do 
+      resources :chats, only: :index, defaults: { format: "json" }
+    end
   end
   resources :notifications, only: :index
   resources :signups do

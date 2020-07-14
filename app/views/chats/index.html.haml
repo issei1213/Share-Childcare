@@ -81,8 +81,8 @@
 
     -# チャット一覧
     - @chats.each do |chat|
-      - if chat.user_id == current_user.id
-        .row.chat{data: {message: {id: chat.id}}}
+      .row.chat{data: {comment: {id: chat.id}}}
+        - if chat.user_id == current_user.id
           .col-auto.ml-auto
             .balloon-right
               .chatting
@@ -98,8 +98,7 @@
                   -# .p                
                   -#   issei
 
-      - else
-        .row.chat{data: {message: {id: chat.id}}}
+        - else
           .col-auto.mr-auto
             .balloon-left
               .faceicon

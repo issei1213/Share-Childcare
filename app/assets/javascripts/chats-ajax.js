@@ -3,7 +3,7 @@ $(function(){
   function buildHTML(chat){
     var html =
       `
-      <div class="row">
+      <div class="row chat" data-comment-id=${chat.id}>
         <div class="col-auto ml-auto">
           <div class="balloon-right">
             <div class="chatting">
@@ -25,8 +25,9 @@ $(function(){
         </div>
       </div>
       `
-    return html;
-  }
+      return html;
+    }
+
 
   $('#chat-form-ajax').on('submit', function(e){
     e.preventDefault();
@@ -40,45 +41,45 @@ $(function(){
       processData: false,
       contentType: false
     })
-    .done(function(data){
-      var html = buildHTML(data);
+    .done(function(comment){
+      var html = buildHTML(comment);
       $('.chats-group').append(html);
       $('html,body').animate({ scrollTop: $('.chats-group')[0].scrollHeight});
       $('#form-send-button').prop("disabled", false);
       $('#chat-form-ajax')[0].reset();
     })
-    .fail(function(data) {
-      console.log(data)
+    .fail(function() {
       alert('通信エラーが発生しました。ブラウザを更新してください。');
     });
   });  
 
-  // var reloadMessages = function() {
-  //   var last_comment_id = $('.comment:last').data("comment-id");
-  //   var url = $(location).attr("pathname")
-  //   $.ajax({
-  //     url: `${url}/api/comments`,
-  //     type: 'get',
-  //     dataType: 'json',
-  //     data: {id: last_comment_id}
-  //   })
-  //   .done(function(comments) {
-  //     if (comments.length !== 0) {
-  //       var insertHTML = '';
-  //       $.each(comments, function(i, comment) {
-  //         insertHTML += buildHTML(comment)
-  //       });
-  //       $('.js-ajax-card').append(insertHTML);
-  //       $('html,body').animate({ scrollTop: $('.js-ajax-card')[0].scrollHeight});
-  //     }
-  //   })
-  //   .fail(function() {
-  //     alert('error');
-  //   });
-  // };
+  var reloadMessages = function() {
+    var last_comment_id = $('.chat:last').data("comment-id");
+    var url = $(location).attr("pathname");
+    console.log(last_comment_id)
+    $.ajax({
+      url: "api/chats",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_comment_id}
+    })
+    .done(function(chats) {
+      if (chats.length !== 0) {
+        var insertHTML = '';
+        $.each(chats, function(i, chat) {
+          insertHTML += buildHTML(chat)
+        });
+        $('.chats-group').append(insertHTML);
+        $('html,body').animate({ scrollTop: $('.chats-group')[0].scrollHeight});
+      }
+    })
+    .fail(function() {
+      alert('通信エラーが発生しました。ブラウザを更新してください。');
+    });
+  };
 
   // ７秒毎にreloadMessagesメソッドを動かす
-  if (document.location.href.match(/\/boards\/\d+/)) {
+  if (document.location.href.match(/\/orders\/\d+/)) {
     setInterval(reloadMessages, 7000);
   }
 });
