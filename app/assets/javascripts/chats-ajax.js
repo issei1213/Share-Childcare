@@ -18,7 +18,6 @@ $(function(){
               </div>
               <div class="faceicon">
                 <div class="succeed">
-                  <img alt="" src="https://picsum.photos/id/237/35/35">
                 </div>
               </div>
             </div>
@@ -109,6 +108,6 @@ $(function(){
 
   // ７秒毎にreloadMessagesメソッドを動かす
   if (document.location.href.match(/\/orders\/\d+/)) {
-    setInterval(reloadMessages, 7000);
+    setInterval(reloadMessages, 8000);
   }
 });
