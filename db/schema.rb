@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_12_063514) do
+ActiveRecord::Schema.define(version: 2020_07_15_085454) do
 
   create_table "baby_infomations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "parent_id"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 2020_07_12_063514) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "checked", default: false, null: false
+    t.bigint "chat_id"
+    t.index ["chat_id"], name: "index_notifications_on_chat_id"
     t.index ["order_id"], name: "index_notifications_on_order_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
@@ -135,6 +137,7 @@ ActiveRecord::Schema.define(version: 2020_07_12_063514) do
   add_foreign_key "babysitters", "users"
   add_foreign_key "chats", "orders"
   add_foreign_key "chats", "users"
+  add_foreign_key "notifications", "chats"
   add_foreign_key "notifications", "orders"
   add_foreign_key "notifications", "users", column: "visited_id"
   add_foreign_key "notifications", "users", column: "visitor_id"

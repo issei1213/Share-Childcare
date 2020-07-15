@@ -13,7 +13,7 @@ class ChatsController < ApplicationController
         format.html { redirect_to order_chats_path(@order), notice: 'メッセージが送信されました'  }
         format.json
       end
-      # @chat.create_notification_chat!(current_user, @chat.id)
+      @chat.create_notification_chat!(current_user, @chat.id)
     else
       flash[:error_messages] = @comment.errors.full_messages
       render index
