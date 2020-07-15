@@ -4,5 +4,5 @@ json.array! @chats do |chat|
   json.id chat.id
   json.current_user_id current_user.id
   json.comment_user_id chat.user_id
-  # json.user_name chat.user.nickname
+  json.user_nickname chat.user.nickname
 end

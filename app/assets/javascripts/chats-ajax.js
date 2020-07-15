@@ -34,7 +34,11 @@ $(function(){
             <div class="balloon-left">
               <div class="faceicon">
                 <div class="succeed">
-                  <img alt="" src="https://picsum.photos/id/237/35/35">
+                  <p>
+                    <small>
+                      ${chat.user_nickname}
+                    </small>
+                  </p>
                 </div>
               </div>
               <div class="chatting">
