@@ -3,7 +3,9 @@ class ChatsController < ApplicationController
     @order = Order.find(params[:order_id])
     @chats = @order.chats.includes(:user)
     @chat = @order.chats.new
-    @order.save_notification_checked!(current_user)
+    # @order.save_notification_checked!(current_user)
+    save_notification_checked(current_user, @chats)
+
   end
 
   def create
@@ -24,5 +26,14 @@ class ChatsController < ApplicationController
   private
   def chat_params
     params.require(:chat).permit(:comment).merge(user_id: current_user.id)
+  end
+
+  def save_notification_checked(current_user, chats)
+    chats.each do |chat|
+      notification = Notification.where("visitor_id = ? and chat_id = ? and action = ? ", current_user.id, chat.id, "commented")
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+    end
   end
 end
