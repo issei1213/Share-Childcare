@@ -3,6 +3,7 @@ class ChatsController < ApplicationController
     @order = Order.find(params[:order_id])
     @chats = @order.chats.includes(:user)
     @chat = @order.chats.new
+    @order.save_notification_checked!(current_user)
   end
 
   def create
@@ -24,5 +25,4 @@ class ChatsController < ApplicationController
   def chat_params
     params.require(:chat).permit(:comment).merge(user_id: current_user.id)
   end
-
 end

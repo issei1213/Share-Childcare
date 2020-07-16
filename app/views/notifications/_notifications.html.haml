@@ -46,16 +46,17 @@
                 %i.fas.fa-greater-than
 
             - when "ordered-canceled"
-              -# 依頼をキャンセルした時
-              - if notification.visitor_id == current_user.id
-                .text-info
-                  = "【承諾】「#{notification.visitor.nickname}」さんの依頼をキャンセルしました。"
-                -# 依頼がキャンセルされた時
-              - elsif notification.visited_id == current_user.id
-                %button.btn.btn-danger.btn-sm.btn-more-small{:disabled => "disabled", :type => "button"} 
-                  必須
-                .text-info
-                  = "【キャンセル】「#{notification.visited.nickname}」さんへの依頼がキャンセルされました。"
+              %button.btn.btn-danger.btn-sm.btn-more-small{:disabled => "disabled", :type => "button"} 
+                必須
+              .text-info
+                = "【キャンセル】「#{notification.visited.nickname}」さんへの依頼がキャンセルされました。"
+            
+            - when "commented"
+              .text-info
+              = link_to order_chats_path(notification.order_id), class: "text-info" do
+                = "【コメント】チャットルームにコメントされました。"
+                %i.fas.fa-greater-than
+
 
           %td.col-3.fas.fa-clock.font-weight-light.pt-3
             = "#{I18n.l(notification.created_at, format: :long)}"
