@@ -6,49 +6,7 @@
     .row
       .col-lg-12
         .bs-component
-          %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
-            = link_to "Share Childcare", root_path, class: "navbar-brand"
-            %button.navbar-toggler{aria: {controls: "navbarColor01", expanded: "false", expanded: "false", label: "Toggle navigation"}, data: {target: "#navbarColor01", toggle: "collapse"}, type: "button"}
-              %span.navbar-toggler-icon
-            #navbarColor01.collapse.navbar-collapse
-              %ul.navbar-nav.mr-auto
-                %li.nav-item.nav-link
-                  = "#{current_user.nickname}さん:ID.#{current_user.id}"
-                %li.nav-item
-                  = link_to signup_path(current_user.id), class: "nav-link" do
-                    %i.fa.fa-cog
-                      設定メニュー
-                  -# %a#navbarDropdown.nav-link.dropdown-toggle{aria: {expanded: "false", haspopup: "true"},data: {toggle:"dropdown"}, href: "#", role: "button"}
-                  -#   %i.fa.fa-cog
-                  -#     設定メニュー
-                  -# .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-                  -#   = link_to "共通情報", signup_path(current_user.id), class: "dropdown-item fa fa-cogs"
-                  -#   = link_to "保護者情報", parent_path(id: current_user.parent.id, user_id: current_user.id), class: "dropdown-item fas fa-baby-carriage"
-                  -#   = link_to "ベビーシッター情報", babysitter_path(id: current_user.babysitter.id, user_id: current_user.id), class: "dropdown-item fab fa-hire-a-helper font-weight-bold"
-                %li.nav-item
-                  = link_to notifications_path, class: "nav-link" do
-                    %i.fas.fa-bell
-                      お知らせ
-
-                  -# 実装予定
-                  -# - if unchecked_notifications.any?
-                  -#   = link_to notifications_path, class: "nav-link font-weight-bold" do
-                  -#     %span.fa-stack
-                  -#       %i.fas.fa-bell.fa-stack-1x
-                  -#       %i.fas.fa-circle.n-circle.fa-stack-1x
-                  -#     お知らせ
-                  -# - else
-                  -#   = link_to notifications_path, class: "nav-link" do
-                  -#     %i.fas.fa-bell
-                  -#       お知らせ
-
-                %li.nav-item
-                  = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link", data: { confirm: "ログアウトします。よろしいでしょうか。" }
-
-              -# 実装予定
-              -# %form.form-inline.my-2.my-lg-0
-              -#   %input.form-control.mr-sm-2{:placeholder => "Search", :type => "text"}/
-              -#   %button.btn.btn-secondary.my-2.my-sm-0{:type => "submit"} 検索
+          = render "shared/root-nav-bar.html.haml"
 
   .container
     .row
@@ -108,13 +66,13 @@
                 %img{src: "/images/top-image1.jpg", class: "img-fluid top-image"}
                 %img{src: "/images/top-image2.jpg", class: "img-fluid top-image"}
                 %img{src: "/images/top-image3.jpg", class: "img-fluid top-image"}
-          %section#about
-            .container
-              .row
-                .col-lg-8.mx-auto
-                  %h2 本APLについて
-                  %ul
-                    %li Clickable nav links that smooth scroll to page sections
-                    %li Responsive behavior when clicking nav links perfect for a one page website
-                    %li Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar
-                    %li Minimal custom CSS so you are free to explore your own unique design options
+          -# %section#about
+          -#   .container
+          -#     .row
+          -#       .col-lg-8.mx-auto
+          -#         %h2 本APLについて
+          -#         %ul
+          -#           %li Clickable nav links that smooth scroll to page sections
+          -#           %li Responsive behavior when clicking nav links perfect for a one page website
+          -#           %li Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar
+          -#           %li Minimal custom CSS so you are free to explore your own unique design options

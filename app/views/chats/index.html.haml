@@ -1,0 +1,127 @@
+.container
+  .row
+    .col-md-12
+      = render "shared/alert_message"
+  .row
+    .col-md-12
+      .bs-component
+        = render "shared/root-nav-bar.html.haml"
+
+  -# チャット一覧 
+
+  .chats-group
+    -# 依頼内容(初期表示)
+    - if @order.parent.user.id != current_user.id
+      .row
+        .col-auto.mr-auto
+          .balloon-left
+            .faceicon
+              .succeed
+                %img{:alt => "", :src => "https://picsum.photos/id/237/35/35"}
+                -# .p
+                -#   = "#{@order.user.nickname}さん"
+            .chatting
+              .says
+                %table.table-borderless.table-hover
+                  %tbody
+                    %tr
+                      %th
+                        依頼日時：
+                      %td
+                        = "#{@order.year}年 #{@order.month}月 #{@order.date}日 #{@order.hour_top}時〜#{@order.hour_down}時"
+                    %tr
+                      %th
+                        時給金額 ／ オプション金額：
+                      %td
+                        = "#{@order.money_hour} 円 ／ #{@order.money_option} 円"
+                    %tr
+                      %th
+                        補足：
+                      %td
+                        = simple_format(h(@order.memo))
+                    %tr
+                      %th{colspan: 2}
+                        = link_to order_path(@order.id), remote: true do
+                          詳細はこちら
+                          %i.fas.fa-greater-than
+    - else
+      .row
+        .col-auto.ml-auto
+          .balloon-right
+            .chatting
+              .mycomment
+                %table.table-borderless.table-hover
+                  %tbody
+                    %tr
+                      %th
+                        依頼日時：
+                      %td
+                        = "#{@order.year}年 #{@order.month}月 #{@order.date}日 #{@order.hour_top}時〜#{@order.hour_down}時"
+                    %tr
+                      %th
+                        時給金額 ／ オプション金額：
+                      %td
+                        = "#{@order.money_hour} 円 ／ #{@order.money_option} 円"
+                    %tr
+                      %th
+                        補足：
+                      %td
+                        = simple_format(h(@order.memo))
+                    %tr
+                      %th{colspan: 2}
+                        = link_to order_path(@order.id), remote: true do
+                          詳細はこちら
+                          %i.fas.fa-greater-than
+
+            .faceicon
+              .succeed
+                %img{:alt => "", :src => "https://picsum.photos/id/237/35/35"}
+                -# .p
+                -#   = "#{@order.user.nickname}さん"
+
+    -# チャット一覧
+    - @chats.each do |chat|
+      .row.chat{data: {comment: {id: chat.id}}}
+        - if chat.user_id == current_user.id
+          .col-auto.ml-auto
+            .balloon-right
+              .chatting
+                .mycomment
+                  %p
+                    = simple_format(chat.comment)
+                  %small
+                    .text-right
+                      = I18n.l(chat.created_at, format: :short)
+              .faceicon
+                .succeed
+                  -# %img{:alt => "", :src => "https://picsum.photos/id/237/35/35"}
+                  -# %small
+                  -#   = chat.user.nickname
+        - else
+          .col-auto.mr-auto
+            .balloon-left
+              .faceicon
+                .succeed
+                  -# %img{:alt => "", :src => "https://picsum.photos/id/237/35/35"}
+                  %p
+                    %small
+                      = chat.user.nickname
+              .chatting
+                .says
+                  %p
+                    = simple_format(chat.comment)
+                  %small
+                    .text-left
+                      = I18n.l(chat.created_at, format: :short)
+
+  -# 詳細ページ(モーダル)
+  #order-show-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  #order-edit-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+
+  -#投稿フォーム
+%nav.navbar.fixed-bottom.navbar-expand-lg.navbar-light{:style => "background-color: #cccccc;"}
+  = form_with model: [@order, @chat], local: true, html: { class: "needs-validation form-inline justify-content-center form-width-100", novalidate: true, id: "chat-form-ajax" } do |f|
+    = f.text_area :comment, rows: 2, class: "form-control w-75", required: true
+    = f.submit "SEND", class: "btn btn-primary w-10 ml-3", id: "form-send-button"
+
+    

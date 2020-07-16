@@ -1,5 +1,5 @@
 class ParentsController < ApplicationController
-  before_action :parent_find, only: [:edit, :show]
+  before_action :parent_find, only: [:edit, :update, :show]
   before_action :move_to_show, only: [:new]
   before_action :move_to_new, only: [:show]
 
@@ -11,7 +11,7 @@ class ParentsController < ApplicationController
   def create
     @parent = Parent.new(parent_params)
     if @parent.save!
-      redirect_to parent_path(current_user.id), notice: "登録しました。"
+      redirect_to parent_path(@parent), notice: "登録しました。"
     else
       flash[:error_messages] = @parent.errors.full_messages
       render :new
@@ -22,7 +22,6 @@ class ParentsController < ApplicationController
   end
 
   def update
-    @parent = Parent.find(params[:id])
     if @parent.update(parent_params)
       redirect_to parent_path(user_id: @parent.user.id), notice: "変更しました。"
     else
@@ -41,7 +40,7 @@ class ParentsController < ApplicationController
   end
 
   def parent_find
-    @parent = Parent.find_by(user_id: params[:user_id])
+    @parent = Parent.find(params[:id])
   end
 
   def move_to_show

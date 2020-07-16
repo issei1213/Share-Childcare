@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_134302) do
+ActiveRecord::Schema.define(version: 2020_07_15_085454) do
 
   create_table "baby_infomations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "parent_id"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 2020_06_18_134302) do
     t.index ["user_id"], name: "index_babysitters_on_user_id"
   end
 
+  create_table "chats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "order_id", null: false
+    t.string "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_chats_on_order_id"
+    t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "visitor_id", null: false
     t.bigint "visited_id", null: false
@@ -60,6 +70,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_134302) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "checked", default: false, null: false
+    t.bigint "chat_id"
+    t.index ["chat_id"], name: "index_notifications_on_chat_id"
     t.index ["order_id"], name: "index_notifications_on_order_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
@@ -123,6 +135,9 @@ ActiveRecord::Schema.define(version: 2020_06_18_134302) do
   add_foreign_key "baby_infomations", "parents"
   add_foreign_key "babysitter_images", "babysitters"
   add_foreign_key "babysitters", "users"
+  add_foreign_key "chats", "orders"
+  add_foreign_key "chats", "users"
+  add_foreign_key "notifications", "chats"
   add_foreign_key "notifications", "orders"
   add_foreign_key "notifications", "users", column: "visited_id"
   add_foreign_key "notifications", "users", column: "visitor_id"

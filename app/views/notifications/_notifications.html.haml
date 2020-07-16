@@ -5,7 +5,14 @@
       = page_entries_info @notifications
     %thead
       %tr.d-flex
-        %th.col-12{:colspan => "2"} お知らせ
+        %th.col-1
+          フラグ
+        %th.col-1
+          依頼ID
+        %th.col-7
+          お知らせ
+        %th.col-3
+          時間
     %tbody
       - @notifications.each do |notification|
         %tr.d-flex
@@ -15,73 +22,41 @@
               %i.fas.fa-envelope-open-text
             - when false then
               %i.fas.fa-envelope
-          %td.col-8
+          %td.col-1{:scope => "row"}
+            = notification.order_id
+            
+          %td.col-7
             - case notification.action
             - when "ordered"
-              -# 依頼をした時(詳細表示)
-              - if notification.visitor_id == current_user.id
-                = link_to order_path(id: notification.order_id), remote: true, class: "text-info" do
-                  = "【新規】「#{notification.visited.nickname}」さんに依頼しました。 (ID:#{notification.order_id})"
-                  %i.fas.fa-greater-than
-                -# 詳細ページ(モーダル)
-                #order-show-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
-
-                -# 依頼を受けた時(詳細表示)
-              - elsif notification.visited_id == current_user.id
-                %button.btn.btn-danger.btn-sm.btn-more-small{:disabled => "disabled", :type => "button"} 
-                  必須
-                = link_to order_path(id: notification.order_id), remote: true, class: "text-info" do
-                  = "【受託】「#{notification.visitor.nickname}」さんから依頼されました。依頼内容を確認し、返答してください。 (ID:#{notification.order_id})"
-                  %i.fas.fa-greater-than
-                -# 詳細ページ(モーダル)
-                #order-show-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+              %button.btn.btn-danger.btn-sm.btn-more-small{:disabled => "disabled", :type => "button"} 
+                必須
+              = link_to order_path(id: notification.order_id), remote: true, class: "text-info" do
+                = "【受託】「#{notification.visitor.nickname}」さんから依頼されました。依頼内容を確認し、返答してください。"
+                %i.fas.fa-greater-than
 
             - when "ordered-updated"
-              -# 依頼を変更した時(詳細表示)
-              - if notification.visitor_id == current_user.id
-                = link_to order_path(id: notification.order_id), remote: true, class: "text-info" do
-                  = "【変更】「#{notification.visited.nickname}」さんの依頼を変更しました。 (ID:#{notification.order_id})"
-                  %i.fas.fa-greater-than
-                -# 編集ページ(モーダル)
-                #order-edit-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"} 
-
-                -# 依頼が変更された時(詳細表示)
-              - elsif notification.visited_id == current_user.id
-                - if notification.visited_id == notification.order.parent_id
-                  .text-info
-                    = "【変更】「#{notification.visited.nickname}」さんからの依頼が変更されました。 (ID:#{notification.order_id})"
-                  -# 詳細ページ(モーダル)
-                  #order-show-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
-
+              = link_to "#", remote: true, class: "text-info" do
+                = "【変更】「#{notification.visited.nickname}」さんからの依頼が変更されました。"
+                %i.fas.fa-greater-than
             - when "ordered-approved"
-              -# 依頼を承認した時
-              - if notification.visitor_id == current_user.id
-                %button.btn.btn-danger.btn-sm.btn-more-small{:disabled => "disabled", :type => "button"} 
-                  必須
-                = link_to "#", class: "text-info" do
-                  = "【承諾】「#{notification.visitor.nickname}」さんの依頼を承諾しました。チャットルームを開放します。 (ID:#{notification.order_id})"
-                  %i.fas.fa-greater-than
-                -# 依頼が承認された時
-              - elsif notification.visited_id == current_user.id
-                %button.btn.btn-danger.btn-sm.btn-more-small{:disabled => "disabled", :type => "button"} 
-                  必須
-                = link_to "#", class: "text-info" do
-                  = "【承諾】「#{notification.visited.nickname}」さんへの依頼が承諾されました 。チャットルームを開放します。 (ID:#{notification.order_id})"
-                  %i.fas.fa-greater-than
+              %button.btn.btn-danger.btn-sm.btn-more-small{:disabled => "disabled", :type => "button"} 
+                必須
+              = link_to order_chats_path(notification.order_id), class: "text-info" do
+                = "【承諾】チャットルームが開放されました。 (ID:#{notification.order_id})"
+                %i.fas.fa-greater-than
 
             - when "ordered-canceled"
-              -# 依頼をキャンセルした時
-              - if notification.visitor_id == current_user.id
-                = link_to "#", class: "text-info" do
-                  = "【承諾】「#{notification.visitor.nickname}」さんの依頼をキャンセルしました。(ID:#{notification.order_id})"
-                  %i.fas.fa-greater-than
-                -# 依頼がキャンセルされた時
-              - elsif notification.visited_id == current_user.id
-                %button.btn.btn-danger.btn-sm.btn-more-small{:disabled => "disabled", :type => "button"} 
-                  必須
-                .text-info
-                  = "【キャンセル】「#{notification.visited.nickname}」さんへの依頼がキャンセルされました。(ID:#{notification.order_id})"
-                  %i.fas.fa-greater-than
+              %button.btn.btn-danger.btn-sm.btn-more-small{:disabled => "disabled", :type => "button"} 
+                必須
+              .text-info
+                = "【キャンセル】「#{notification.visited.nickname}」さんへの依頼がキャンセルされました。"
+            
+            - when "commented"
+              .text-info
+              = link_to order_chats_path(notification.order_id), class: "text-info" do
+                = "【コメント】チャットルームにコメントされました。"
+                %i.fas.fa-greater-than
+
 
           %td.col-3.fas.fa-clock.font-weight-light.pt-3
             = "#{I18n.l(notification.created_at, format: :long)}"
@@ -113,7 +88,7 @@
         -#         - if notification.visited_id == notification.order.parent_id
         -#           .text-info
         -#             = "【変更】「#{notification.visited.nickname}」さんの依頼が変更されました。 (ID:#{notification.order_id})"
-        -#           -# 詳細ページ(モーダル)
+        -#           -# 詳細ページ(モーダル)  
         -#           #order-show-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
         -#           -# 依頼を承認した時
         -#       - when "ordered-approved"

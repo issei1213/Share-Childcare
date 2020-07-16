@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Parent.find(params[:order][:parent_id]).orders.new(order_params.merge(status: "orderd"))
+    @order = Parent.find(params[:order][:parent_id]).orders.new(order_params.merge(status: "ordered"))
     if @order.save
       @order.notification_order!("ordered", current_user)
       redirect_to notifications_path, notice: "依頼しました。ベビーシッターから連絡があるまで暫くお待ちください。"
@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
   def approve
     if @order.status == "ordered"
       @order.update(status: "approved")
-      @order.notification_order!("ordered-approved", current_user)
+      @order.notification_order_answer!("ordered-approved", current_user)
       redirect_to notifications_path, notice: "依頼を承諾しました。チャットルームを開放します。"
     else
       flash[:error] = "この依頼は回答済みです。"
@@ -56,6 +56,7 @@ class OrdersController < ApplicationController
     if @order.status == "ordered"
       @order.update(status: "canceled")
       @order.notification_order!("ordered-canceled", current_user)
+      @order.update_notification_checked!(@order.notifications)
       redirect_to notifications_path, notice: "依頼をキャンセルしました。"
     else
       flash[:error] = "この依頼は回答済みです。"

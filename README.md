@@ -66,7 +66,7 @@
 ## 使用技術詳細
 ![使用技術詳細](https://user-images.githubusercontent.com/59830008/87224046-f6329700-c3bc-11ea-85cf-f89120052812.jpg)
 ## DB設計
-![Share Childcare](https://user-images.githubusercontent.com/59830008/87223997-6d1b6000-c3bc-11ea-884d-8688ea808975.jpg)
+![Share Childcare (2)](https://user-images.githubusercontent.com/59830008/87239608-18bfc100-c44c-11ea-83b5-5df16738e618.jpg)
 ## システム構成図
 ![ShareChildren_システム構成図 (1)](https://user-images.githubusercontent.com/59830008/87224229-91783c00-c3be-11ea-8aed-e5112093fbd5.jpg)
 
