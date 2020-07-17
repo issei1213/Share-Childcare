@@ -3,7 +3,7 @@ class ChatsController < ApplicationController
     @order = Order.find(params[:order_id])
     @chats = @order.chats.includes(:user)
     @chat = @order.chats.new
-    # @order.save_notification_checked!(current_user)
+    @order.save_notification_checked!(current_user)
     # save_notification_checked(current_user, @chats)
 
   end

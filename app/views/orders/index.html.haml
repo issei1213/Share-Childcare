@@ -1,0 +1,49 @@
+%nav.navbar.navbar-dark.bg-dark.flex-md-nowrap.p-0.shadow
+  .navbar-brand.col-sm-3.col-md-2.mr-0
+    マイページ
+
+
+.container-fluid
+  .row
+    -# ナビバー
+    = render "shared/configuration-nav-bar.html"
+
+  
+    %ul.nav.nav-fill.nav-tabs
+      %li.nav-item
+        %a.nav-link{:href => "#"} 保護者
+      %li.nav-item
+        %a.nav-link{:href => "#"} ベビーシッター
+
+    .tab-content
+      .tab-pane.fade.show
+        .table-responsive.table-hover
+          %table.table
+            %caption
+              -# = paginate @notifications
+              -# = page_entries_info @notifications
+            %thead
+              %tr.d-flex
+                %th.col-1
+                  フラグ
+                %th.col-1
+                  依頼ID
+                %th.col-7
+                  お知らせ
+                %th.col-3
+                  時間
+            %tbody
+              %tr.d-flex
+                %td.col-1{:scope => "row"}
+                  %i.fas.fa-envelope-open-text
+                  -# %i.fas.fa-envelope
+                %td.col-1{:scope => "row"}
+                  2
+                %td.col-7
+                  = link_to "#", remote: true, class: "text-info" do
+                    = "【受託】さんから依頼されました。依頼内容を確認し、返答してください。"
+                    %i.fas.fa-greater-than
+
+
+                %td.col-3.fas.fa-clock.font-weight-light.pt-3
+                  = "#{I18n.l(Time.now, format: :long)}"

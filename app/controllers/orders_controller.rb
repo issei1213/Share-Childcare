@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   before_action :order_set_find, only: [:show, :edit, :update, :destroy, :approve, :cancel]
 
-
   def root
     @user = User.new
   end
