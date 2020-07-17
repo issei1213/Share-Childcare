@@ -19,7 +19,7 @@
 #  fk_rails_...  (order_id => orders.id)
 #  fk_rails_...  (user_id => users.id)
 #
-class Chat < ApplicationRecord
+class ::Chat < ApplicationRecord
   belongs_to :order, optional: true
   belongs_to :user
   has_many :notifications, dependent: :destroy

@@ -15,13 +15,13 @@ ja:
         woman: 女の子
     order:
       status:
-        orderd: 依頼済
+        ordered: 依頼済
         approved: 承認済
         canceled: キャンセル
 
   activerecord:
     models:
-      order: 注文
+      order: 依頼
       user: ユーザー
       babysitter: 保護者
       notification: お知らせ
@@ -76,6 +76,8 @@ ja:
       parent:
         order_money_hour: 希望時給
         order_money_option: 希望オプション金額
+      order:
+        
       
     errors:
       messages:

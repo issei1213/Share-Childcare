@@ -30,7 +30,7 @@
 #  fk_rails_...  (parent_id => parents.id)
 #  fk_rails_...  (user_id => users.id)
 #
-class Order < ApplicationRecord
+class ::Order < ApplicationRecord
   belongs_to :user
   belongs_to :parent
   belongs_to :babysitter
@@ -67,14 +67,14 @@ class Order < ApplicationRecord
     notification.update({ checked: true }) if notification.where(checked: false)
   end
 
-  def save_notification_checked!(current_user)
-    chats = Order.find(self.id).chats
-    chats.each do |chat|
-      # notification = Notification.where(visitor_id: current_user.id, chat_id: chat.id, action: "commented")
-      notification = Notification.where("visitor_id = ? and chat_id = ? and action = ? ", current_user.id, chat.id, "commented")
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
-    end
-  end
+  # def save_notification_checked!(current_user)
+  #   chats = Order.find(self.id).chats
+  #   chats.each do |chat|
+  #     # notification = Notification.where(visitor_id: current_user.id, chat_id: chat.id, action: "commented")
+  #     notification = Notification.where("visitor_id = ? and chat_id = ? and action = ? ", current_user.id, chat.id, "commented")
+  #     if notification.visitor_id == notification.visited_id
+  #       notification.checked = true
+  #     end
+  #   end
+  # end
 end

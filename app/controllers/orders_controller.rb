@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.all
+    @orders_parent = Order.where(["parent_id = ?", current_user.parent.id]).page(params[:page]).per(10)
+    @orders_babysitter = Order.where(["babysitter_id = ?", current_user.babysitter.id]).page(params[:page]).per(10)
   end
 
   def create

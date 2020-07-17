@@ -2,48 +2,84 @@
   .navbar-brand.col-sm-3.col-md-2.mr-0
     マイページ
 
-
 .container-fluid
   .row
     -# ナビバー
     = render "shared/configuration-nav-bar.html"
 
-  
-    %ul.nav.nav-fill.nav-tabs
-      %li.nav-item
-        %a.nav-link{:href => "#"} 保護者
-      %li.nav-item
-        %a.nav-link{:href => "#"} ベビーシッター
-
-    .tab-content
-      .tab-pane.fade.show
-        .table-responsive.table-hover
-          %table.table
-            %caption
-              -# = paginate @notifications
-              -# = page_entries_info @notifications
-            %thead
-              %tr.d-flex
-                %th.col-1
-                  フラグ
-                %th.col-1
-                  依頼ID
-                %th.col-7
-                  お知らせ
-                %th.col-3
-                  時間
-            %tbody
-              %tr.d-flex
-                %td.col-1{:scope => "row"}
-                  %i.fas.fa-envelope-open-text
-                  -# %i.fas.fa-envelope
-                %td.col-1{:scope => "row"}
-                  2
-                %td.col-7
-                  = link_to "#", remote: true, class: "text-info" do
-                    = "【受託】さんから依頼されました。依頼内容を確認し、返答してください。"
-                    %i.fas.fa-greater-than
+    -# 依頼リスト
+    .col-10
+      %ul.nav.nav-pills.nav-fill
+        %li.nav-item
+          %a.nav-link.active{"data-toggle" => "tab", :href => "#parent-order"} 保護者
+        %li.nav-item
+          %a.nav-link{"data-toggle" => "tab", :href => "#babysitter-order"} ベビーシッター
 
 
-                %td.col-3.fas.fa-clock.font-weight-light.pt-3
-                  = "#{I18n.l(Time.now, format: :long)}"
+      .tab-content
+        -# 保護者
+        #parent-order.tab-pane.active
+          .table-responsive.table-hover
+            %table.table
+              %caption
+                = paginate @orders_parent
+                = page_entries_info @orders_parent
+              %thead
+                %tr.d-flex
+                  %th.col-1
+                    依頼ID
+                  %th.col-2
+                    ステータス
+                  %th.col-5
+                    依頼先(ベビシッター)
+                  %th.col-4
+                    依頼日時
+              %tbody
+                - @orders_parent.each do |order|
+                  %tr.d-flex
+                    %td.col-1{:scope => "row"}
+                      = order.id
+                    %td.col-2{:scope => "row"}
+                      = order.status_i18n
+                    %td.col-5
+                      = link_to order_path(id: order), remote: true, class: "text-info" do
+                        = order.babysitter.user.nickname
+                        %i.fas.fa-greater-than
+                    %td.col-4.fas.fa-clock.font-weight-light.pt-3
+                      = "#{order.year}年 #{order.month}月 #{order.date}日 #{order.hour_top}時〜#{order.hour_down}時"
+                      -# = "#{I18n.l(Time.current, format: :long)}"
+        -# ベビーシッター
+        #babysitter-order.tab-pane
+          .table-responsive.table-hover
+            %table.table
+              %caption
+                = paginate @orders_babysitter
+                = page_entries_info @orders_babysitter
+              %thead
+                %tr.d-flex
+                  %th.col-1
+                    依頼ID
+                  %th.col-2
+                    ステータス
+                  %th.col-5
+                    依頼元(保護者)
+                  %th.col-4
+                    依頼日時
+              %tbody
+                - @orders_babysitter.each do |order|
+                  %tr.d-flex
+                    %td.col-1{:scope => "row"}
+                      = order.id
+                    %td.col-2{:scope => "row"}
+                      = order.status_i18n
+                    %td.col-5
+                      = link_to order_path(order), remote: true, class: "text-info" do
+                        = order.parent.user.nickname
+                        %i.fas.fa-greater-than
+                    %td.col-4.fas.fa-clock.font-weight-light.pt-3
+                      = "#{I18n.l(Time.current, format: :long)}"
+
+
+-# 詳細ページ(モーダル)
+#order-show-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+#order-edit-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
