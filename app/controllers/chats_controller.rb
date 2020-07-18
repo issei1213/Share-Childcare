@@ -23,7 +23,7 @@ class ChatsController < ApplicationController
   end
 
   def list
-    @orders = Order.where(["(parent_id = ? or babysitter_id = ?) and status = ?", current_user.parent.id, current_user.babysitter.id, 2])
+    @orders = Order.where(["(parent_id = ? or babysitter_id = ?) and status = ?", current_user.parent.id, current_user.babysitter.id, 2]).page(params[:page]).per(15)
   end
 
   private

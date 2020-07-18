@@ -11,30 +11,49 @@
       .table-responsive.table-hover
         %table.table
           %caption
-            -# = paginate @orders_parent
-            -# = page_entries_info @orders_parent
+            = paginate @orders
+            = page_entries_info @orders
           %thead
             %tr.d-flex
               %th.col-1
                 依頼ID
-              %th.col-3
+              %th.col-2
                 保護者
-              %th.col-3
+              %th.col-2
                 ベビシッター
               %th.col-4
+                最終コメント
+              %th.col-3
                 最終更新
+
           %tbody
             - @orders.each do |order|
               %tr.d-flex
                 = link_to order_chats_path(order_id: order.id) do
                   %td.col-1{:scope => "row"}
                     = order.id
-                  %td.col-3{:scope => "row"}
-                    = order.parent.user.nickname
-                  %td.col-3
-                    = order.babysitter.user.nickname
-                    %i.fas.fa-greater-than
-                  %td.col-4.fas.fa-clock.font-weight-light.pt-3
+                  %td.col-2{:scope => "row"}
+                    - if order.parent.user.id == current_user.id
+                      あなた
+                    - else
+                      = "「#{order.parent.user.nickname}」さん"
+                  %td.col-2
+                    - if order.babysitter.user.id == current_user.id
+                      あなた
+                    - else
+                      = "「#{order.babysitter.user.nickname}」さん"
+                  %td.col-4
+                    - if order.chats.present?
+                      = link_to order_chats_path(order) do
+                        = order.chats.last.comment.truncate(18)
+                        %i.fas.fa-user
+                          = order.chats.last.user.nickname
+                        %i.fas.fa-greater-than
+                    - else
+                      = link_to order_chats_path(order) do
+                        = "なし"
+                        %i.fas.fa-greater-than
+                  %td.col-3.fas.fa-clock.font-weight-light.pt-3
                     - if order.chats.present?
                       = "#{I18n.l(order.chats.last.created_at, format: :long)}"
                     - else
