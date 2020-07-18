@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :babysitters
   resources :parents
   resources :homes
+  get "chatslist", to: "chats#list"
   resources :orders do
     member do
       patch :approve

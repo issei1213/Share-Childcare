@@ -4,8 +4,7 @@ class ChatsController < ApplicationController
     @chats = @order.chats.includes(:user)
     @chat = @order.chats.new
     # @order.save_notification_checked!(current_user)
-    # save_notification_checked(current_user, @chats)
-
+    @order.save_notification_checked!(current_user)
   end
 
   def create
@@ -21,6 +20,10 @@ class ChatsController < ApplicationController
       flash[:error_messages] = @comment.errors.full_messages
       render index
     end
+  end
+
+  def list
+    @orders = Order.where(["(parent_id = ? or babysitter_id = ?) and status = ?", current_user.parent.id, current_user.babysitter.id, 2]).page(params[:page]).per(15)
   end
 
   private

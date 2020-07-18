@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
   before_action :order_set_find, only: [:show, :edit, :update, :destroy, :approve, :cancel]
 
-
   def root
     @user = User.new
   end
 
   def index
-    @order = Order.all
+    @orders_parent = Order.where(["parent_id = ?", current_user.parent.id]).page(params[:page]).per(10)
+    @orders_babysitter = Order.where(["babysitter_id = ?", current_user.babysitter.id]).page(params[:page]).per(10)
   end
 
   def create

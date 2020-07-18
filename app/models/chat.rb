@@ -41,13 +41,15 @@ class Chat < ApplicationRecord
     notification.save if notification.valid?
   end
 
-  # def save_notification_checked!(current_user)
-  #   chats = Order.find(self.id).chats
+  # def self.save_notification_checked!(current_user, chats)
+  #   notifications = Notification.where("visitor_id = ? and action = ? ", current_user.id, chat.id, "commented")
+
   #   chats.each do |chat|
-  #     # notification = Notification.where(visitor_id: current_user.id, chat_id: chat.id, action: "commented")
-  #     notification = Notification.where("visitor_id = ? and chat_id = ? and action = ? ", current_user.id, chat.id, "commented")
-  #     if notification.visitor_id == notification.visited_id
-  #       notification.checked = true
+  #     binding.pry
+  #     if chat.blank?
+  #       notification = ::Notification.find_by(chat_id: chat.id)
+  #       notification.checked = true if notification.visitor_id == notification.visited_id
+  #       notification.save if notification.valid?
   #     end
   #   end
   # end

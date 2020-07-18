@@ -7,6 +7,14 @@
         = active_link_to notifications_path, class: "nav-link list-group-item" do
           %i.fas.fa-bell
             お知らせ
+      %li.nav-item
+        = active_link_to orders_path, class: "nav-link list-group-item" do
+          %i.fas.fa-list
+            依頼リスト
+      %li.nav-item
+        = active_link_to chatslist_path, class: "nav-link list-group-item" do
+          %i.fas.fa-comments
+            チャットリスト
 
     %ul.nav.flex-column.list-group.list-group-flush.mt-3
       %i.fa.fa-cog
@@ -15,7 +23,7 @@
         = active_link_to signup_path(current_user.id), class: "nav-link list-group-item" do
           %i.fa.fa-cogs
             共通情報
-      %li.nav-item.active
+      %li.nav-item
         - if current_user.parent.present?
           = active_link_to parent_path(id: current_user.parent.id, user_id: current_user.id), class: "nav-link list-group-item" do
             %i.fas.fa-baby-carriage

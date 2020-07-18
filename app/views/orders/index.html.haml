@@ -1,0 +1,85 @@
+%nav.navbar.navbar-dark.bg-dark.flex-md-nowrap.p-0.shadow
+  .navbar-brand.col-sm-3.col-md-2.mr-0
+    マイページ
+
+.container-fluid
+  .row
+    -# ナビバー
+    = render "shared/configuration-nav-bar.html"
+
+    -# 依頼リスト
+    .col-10
+      %ul.nav.nav-pills.nav-fill
+        %li.nav-item
+          %a.nav-link.active{"data-toggle" => "tab", :href => "#parent-order"} 保護者
+        %li.nav-item
+          %a.nav-link{"data-toggle" => "tab", :href => "#babysitter-order"} ベビーシッター
+
+
+      .tab-content
+        -# 保護者
+        #parent-order.tab-pane.active
+          .table-responsive.table-hover
+            %table.table
+              %caption
+                = paginate @orders_parent
+                = page_entries_info @orders_parent
+              %thead
+                %tr.d-flex
+                  %th.col-1
+                    依頼ID
+                  %th.col-2
+                    ステータス
+                  %th.col-5
+                    依頼先(ベビシッター)
+                  %th.col-4
+                    依頼日時
+              %tbody
+                - @orders_parent.each do |order|
+                  %tr.d-flex
+                    %td.col-1{:scope => "row"}
+                      = order.id
+                    %td.col-2{:scope => "row"}
+                      = order.status_i18n
+                    %td.col-5
+                      = link_to order_path(id: order), remote: true, class: "text-info" do
+                        = order.babysitter.user.nickname
+                        %i.fas.fa-greater-than
+                    %td.col-4.fas.fa-clock.font-weight-light.pt-3
+                      = "#{order.year}年 #{order.month}月 #{order.date}日 #{order.hour_top}時〜#{order.hour_down}時"
+                      -# = "#{I18n.l(Time.current, format: :long)}"
+        -# ベビーシッター
+        #babysitter-order.tab-pane
+          .table-responsive.table-hover
+            %table.table
+              %caption
+                = paginate @orders_babysitter
+                = page_entries_info @orders_babysitter
+              %thead
+                %tr.d-flex
+                  %th.col-1
+                    依頼ID
+                  %th.col-2
+                    ステータス
+                  %th.col-5
+                    依頼元(保護者)
+                  %th.col-4
+                    依頼日時
+              %tbody
+                - @orders_babysitter.each do |order|
+                  %tr.d-flex
+                    %td.col-1{:scope => "row"}
+                      = order.id
+                    %td.col-2{:scope => "row"}
+                      = order.status_i18n
+                    %td.col-5
+                      = link_to order_path(order), remote: true, class: "text-info" do
+                        = order.parent.user.nickname
+                        %i.fas.fa-greater-than
+                    %td.col-4.fas.fa-clock.font-weight-light.pt-3
+                      = "#{I18n.l(Time.current, format: :long)}"
+
+
+-# 詳細ページ(モーダル)
+#order-show-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+#order-edit-action.modal.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
