@@ -57,7 +57,6 @@ class ::Order < ApplicationRecord
   def notification_order_answer!(action, current_user)
       visitor_user = current_user.active_notifications.new(order_id: id, visited_id: parent.user_id, action: action)
       visited_user = current_user.passive_notifications.new(order_id: id, visitor_id: parent.user_id, action: action)
-
       visitor_user.save if visitor_user.valid?
       visited_user.save if visited_user.valid?
   end
@@ -67,14 +66,15 @@ class ::Order < ApplicationRecord
     notification.update({ checked: true }) if notification.where(checked: false)
   end
 
-  # def save_notification_checked!(current_user)
-  #   chats = Order.find(self.id).chats
-  #   chats.each do |chat|
-  #     # notification = Notification.where(visitor_id: current_user.id, chat_id: chat.id, action: "commented")
-  #     notification = Notification.where("visitor_id = ? and chat_id = ? and action = ? ", current_user.id, chat.id, "commented")
-  #     if notification.visitor_id == notification.visited_id
-  #       notification.checked = true
-  #     end
-  #   end
-  # end
+  def save_notification_checked!(current_user)
+    notifications = Notification.where("visited_id = ? and order_id = ? and action = ? ", current_user.id, self.id, "commented")
+    notifications.each do |notification|
+      # notification = Notification.where(visitor_id: current_user.id, chat_id: chat.id, action: "commented")
+      # if notification.visitor_id == notification.visited_id
+      #   notification.checked = true
+      # end
+      notification.update(checked: true) if notification.valid?
+      # notification.save if notification.valid?
+    end
+  end
 end

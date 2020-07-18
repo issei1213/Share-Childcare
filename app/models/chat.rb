@@ -19,7 +19,7 @@
 #  fk_rails_...  (order_id => orders.id)
 #  fk_rails_...  (user_id => users.id)
 #
-class ::Chat < ApplicationRecord
+class Chat < ApplicationRecord
   belongs_to :order, optional: true
   belongs_to :user
   has_many :notifications, dependent: :destroy
@@ -41,13 +41,16 @@ class ::Chat < ApplicationRecord
     notification.save if notification.valid?
   end
 
-  def self.save_notification_checked!(current_user)
-    self.each do |chat|
-      # notification = Notification.where(visitor_id: current_user.id, chat_id: chat.id, action: "commented")
-      notification = Notification.where("visitor_id = ? and chat_id = ? and action = ? ", current_user.id, chat.id, "commented")
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
-    end
-  end
+  # def self.save_notification_checked!(current_user, chats)
+  #   notifications = Notification.where("visitor_id = ? and action = ? ", current_user.id, chat.id, "commented")
+
+  #   chats.each do |chat|
+  #     binding.pry
+  #     if chat.blank?
+  #       notification = ::Notification.find_by(chat_id: chat.id)
+  #       notification.checked = true if notification.visitor_id == notification.visited_id
+  #       notification.save if notification.valid?
+  #     end
+  #   end
+  # end
 end
