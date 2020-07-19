@@ -33,7 +33,7 @@
                   %td= "#{babysitter.user.prefecture}#{babysitter.user.city}"
             .card-footer
               - if current_user.parent.present?
-                = link_to "詳細", home_path(id: babysitter ,babysitter_id: babysitter.id, parent_id: current_user.parent.id), class: "btn btn-primary"
+                = link_to "詳細", home_path(id: babysitter, parent_id: current_user.parent.id), class: "btn btn-primary"
               - else
                 = link_to "保護者登録", new_parent_path, class: "btn btn-primary"
 
