@@ -24,6 +24,8 @@ class Chat < ApplicationRecord
   belongs_to :user
   has_many :notifications, dependent: :destroy
 
+  validates :comment, presence: true
+
   def create_notification_chat!(current_user, chat_id)
     temp_ids = Chat.select(:user_id).where(order_id: order_id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
