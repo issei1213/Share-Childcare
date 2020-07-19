@@ -121,7 +121,9 @@
   -#投稿フォーム
 %nav.navbar.fixed-bottom.navbar-expand-lg.navbar-light{:style => "background-color: #cccccc;"}
   = form_with model: [@order, @chat], local: true, html: { class: "needs-validation form-inline justify-content-center form-width-100", novalidate: true, id: "chat-form-ajax" } do |f|
-    = f.text_area :comment, rows: 2, class: "form-control w-75", required: true
+    .input-group.w-75
+      = f.text_area :comment, rows: 2, class: "form-control", required: true
+      .invalid-feedback
+        コメントを入力してください
     = f.submit "SEND", class: "btn btn-primary w-10 ml-3", id: "form-send-button"
 
-    

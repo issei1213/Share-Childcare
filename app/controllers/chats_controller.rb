@@ -3,7 +3,6 @@ class ChatsController < ApplicationController
     @order = Order.find(params[:order_id])
     @chats = @order.chats.includes(:user)
     @chat = @order.chats.new
-    # @order.save_notification_checked!(current_user)
     @order.save_notification_checked!(current_user)
   end
 
@@ -17,8 +16,7 @@ class ChatsController < ApplicationController
       end
       @chat.create_notification_chat!(current_user, @chat.id)
     else
-      flash[:error_messages] = @comment.errors.full_messages
-      render index
+      redirect_to order_chats_path(@order)
     end
   end
 
