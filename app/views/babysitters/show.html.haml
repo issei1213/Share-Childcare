@@ -80,8 +80,8 @@
                     %td 本人画像
                     %td
                       - @babysitter.babysitter_images.each do |image|
-                        = image_tag "#{image.name.to_s}"
-            .card-body.table-responsive
+                        = image_tag "#{image.name.to_s}", style: "height: 100px; width: 100px;"
+            .card-body
               = link_to "編集", edit_babysitter_path(user_id: current_user.id), class: "btn btn-primary"
 
 
