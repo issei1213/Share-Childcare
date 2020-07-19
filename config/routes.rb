@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :babysitters
   resources :parents
   resources :homes
-  get "chatslist", to: "chats#list"
+  resources :notifications, only: :index
   resources :orders do
     member do
       patch :approve
@@ -25,5 +25,6 @@ Rails.application.routes.draw do
       resources :chats, only: :index, defaults: { format: "json" }
     end
   end
-  resources :notifications, only: :index
+  get "chatslist", to: "chats#list"
+
 end
