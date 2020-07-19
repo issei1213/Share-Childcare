@@ -11,29 +11,29 @@
   .container
     .row
       .mb-3
-        = paginate @users
-        = page_entries_info @users
+        = paginate @babysitters
+        = page_entries_info @babysitters
     .row.text-center
-      - @users.each do |user|
+      - @babysitters.each do |babysitter|
         .col-lg-3.col-md-6.mb-4
           .card
             .center-block
-              = image_tag user.babysitter.babysitter_images.first.name.to_s, class: "card-img-top", style: "height: 200px; weight: auto;"
+              = image_tag babysitter.babysitter_images.first.name.to_s, class: "card-img-top", style: "height: 200px; weight: auto;"
             .card-body
-              %h4.card-title= user.nickname
-              %p.card-text= user.babysitter.introduction_title
+              %h4.card-title= babysitter.user.nickname
+              %p.card-text= babysitter.introduction_title
             %table.table
               %thead
               %tbody
                 %tr
                   %th{scope: "col"} 時給
-                  %td= user.babysitter.money_hour
+                  %td= babysitter.money_hour
                 %tr
                   %th{scope: "col"} 市区町村
-                  %td= "#{user.prefecture}#{user.city}"
+                  %td= "#{babysitter.user.prefecture}#{babysitter.user.city}"
             .card-footer
               - if current_user.parent.present?
-                = link_to "詳細", home_path(id: user ,babysitter_id: user.babysitter.id, parent_id: current_user.parent.id), class: "btn btn-primary"
+                = link_to "詳細", home_path(id: babysitter ,babysitter_id: babysitter.id, parent_id: current_user.parent.id), class: "btn btn-primary"
               - else
                 = link_to "保護者登録", new_parent_path, class: "btn btn-primary"
 
