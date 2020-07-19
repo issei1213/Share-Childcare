@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  root to: 'homes#index'
   resources :signups do
     collection do
       get 'step1', to: 'signups#step1'
@@ -9,8 +10,6 @@ Rails.application.routes.draw do
       get 'mypage', to: 'signups#mypage'
     end
   end
-
-  root to: 'homes#index'
   resources :babysitters
   resources :parents
   resources :homes
