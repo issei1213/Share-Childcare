@@ -3,7 +3,7 @@ class HomesController < ApplicationController
     if current_user.babysitter.present?
       @babysitters = Babysitter.where.not(id: current_user.babysitter.id).page(params[:page]).per(8)
     else
-      @babysitter = Babysitter.all.page(params[:page]).per(8)
+      @babysitters = Babysitter.all.page(params[:page]).per(8)
     end
   end
 
