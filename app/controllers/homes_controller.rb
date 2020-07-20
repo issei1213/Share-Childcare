@@ -1,6 +1,5 @@
 class HomesController < ApplicationController
   def index
-    binding.pry
     if current_user.babysitter.present?
       @babysitters = Babysitter.where.not(id: current_user.babysitter.id).page(params[:page]).per(8)
     else
