@@ -1,7 +1,9 @@
 class HomesController < ApplicationController
   def index
-    if user_signed_in? && current_user.babysitter.present?
+    if current_user.babysitter.present?
       @babysitters = Babysitter.where.not(id: current_user.babysitter.id).page(params[:page]).per(8)
+    else
+      @babysitter = Babysitter.where.not.page(params[:page]).per(8)
     end
   end
 
