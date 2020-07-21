@@ -21,7 +21,11 @@ class ChatsController < ApplicationController
   end
 
   def list
-    @orders = Order.where(["(parent_id = ? or babysitter_id = ?) and status = ?", current_user.parent.id, current_user.babysitter.id, 2]).page(params[:page]).per(15)
+    if current_user.parent.present? && current_user.babysitter.present?
+      @orders = Order.where(["(parent_id = ? or babysitter_id = ?) and status = ?", current_user.parent.id, current_user.babysitter.id, 2]).page(params[:page]).per(15)
+    else
+      @orders = Order.where(["created_at = ?", "2000-00-00 00:00:00"]).page(params[:page]).per(15)
+    end
   end
 
   private
@@ -29,12 +33,4 @@ class ChatsController < ApplicationController
     params.require(:chat).permit(:comment).merge(user_id: current_user.id)
   end
 
-  # def save_notification_checked(current_user, chats)
-  #   chats.each do |chat|
-  #     notification = Notification.where("visitor_id = ? and chat_id = ? and action = ? ", current_user.id, chat.id, "commented")
-  #     if notification.visitor_id == notification.visited_id
-  #       notification.checked = true
-  #     end
-  #   end
-  # end
 end
