@@ -10,8 +10,8 @@ class OrdersController < ApplicationController
       @orders_parent = Order.where(["parent_id = ?", current_user.parent.id]).page(params[:page]).per(10)
       @orders_babysitter = Order.where(["babysitter_id = ?", current_user.babysitter.id]).page(params[:page]).per(10)
     else
-      @orders_parent = Order.where(["created_at = ?", "2000-00-00 00:00:00"])
-      @orders_babysitter = Order.where(["created_at = ?", "2000-00-00 00:00:00"])
+      @orders_parent = Order.where(["created_at = ?", "2000-00-00 00:00:00"]).page(params[:page]).per(10)
+      @orders_babysitter = Order.where(["created_at = ?", "2000-00-00 00:00:00"]).page(params[:page]).per(10)
     end
   end
 
