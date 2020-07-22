@@ -1,5 +1,4 @@
 $(function(){
-
   // 画像用のinputを生成する関数
   const buildFileField = (num)=> {
     const html = `<div class="d-flex justify-content-start">

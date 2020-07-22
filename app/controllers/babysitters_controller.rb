@@ -9,6 +9,7 @@ class BabysittersController < ApplicationController
   end
 
   def create
+    # binding.pry
     @babysitter = Babysitter.new(babysitter_params)
     if @babysitter.save
       redirect_to babysitter_path(current_user.id), notice: "登録しました。"
@@ -41,7 +42,7 @@ class BabysittersController < ApplicationController
   end
 
   def babysitter_find
-    @babysitter = Babysitter.find(params[:id])
+    @babysitter = Babysitter.find(current_user.babysitter.id)
   end
 
   def move_to_show
