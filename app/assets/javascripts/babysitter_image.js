@@ -23,7 +23,7 @@ $(function(){
   // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
-  $('.hidden-destroy').hide();
+  // $('.hidden-destroy').hide();
 
 
   $('#image-box').on('change', '.js-file', function(e) {
@@ -49,7 +49,7 @@ $(function(){
     // 削除ボタンをクリックした時に、削除対象の要素数を代入する
   $('#image-box').on('click', '.js-remove', function() {
     // data-index = []の値を抽出
-    const targetIndex = $(this).parent().data('index');
+    const targetIndex = $(this).parent().parent().data('index');
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     // もしチェックボックスが存在すればチェックを入れる(これで削除対象になる。paramsにdestroy対象になる)
@@ -62,6 +62,5 @@ $(function(){
 
     // 画像入力欄が0個にならないようにしておく(画像フォーム入力が)
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
-    debugger
   });
 });
