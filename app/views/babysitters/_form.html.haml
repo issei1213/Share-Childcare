@@ -88,66 +88,38 @@
 
   .row
     .col-md-12
-      = f.label "本人写真", class: "bmd-label-floating"
 
-  .row
-    = f.fields_for :babysitter_images do |i|
-      .col-4
-        .imagePreview
-        .input-group
-          %label.input-group-btn
-            %span.btn.btn-primary
-              選択
-            = i.file_field :name, class: "uploadFile", style: "display: none"
-            -# %input.uploadFile{:style => "display:none", :type => "file"}
-          %input.form-control{readonly: "readonly", type: "text", name: "babysitter[babysitter_images_attributes][#{@babysitter.babysitter_images.count}][src]"}
-    -# 編集の時に画像を追加する
-    -# - if @babysitter.persisted?
-    -#   .js-file_group{"data-index" => "#{@babysitter.babysitter_images.count}"}
-    -#     = file_field_tag :src, name: "babysitter[babysitter_images_attributes][#{@babysitter.babysitter_images.count}][src]", class: 'js-file'
-    -#     .js-remove 削除
-
-      -# .col-4
-      -#   .imagePreview
-      -#   .input-group
-      -#     %label.input-group-btn
-      -#       %span.btn.btn-primary
-      -#         選択
-      -#         %input.uploadFile{:style => "display:none", :type => "file"}/
-      -#     %input.form-control{readonly: "readonly", type: "text"}
-
-      -# .col-4
-      -#   .imagePreview
-      -#   .input-group
-      -#     %label.input-group-btn
-      -#       %span.btn.btn-primary
-      -#         選択
-      -#         %input.uploadFile{:style => "display:none", :type => "file"}/
-      -#     %input.form-control{readonly: "readonly", type: "text"}
+      -# = f.fields_for :babysitter_images do |image|
+      -#   = image_tag(image.object.name.to_s) #画像があれば表示する
+      -#   = image.file_field :name
+      -#   = image.hidden_field :id, value: image.object.id  #編集時にはidが必要らしい
 
 
-      -# .input-group
-      -#   #image-box
-      -#     -# プレビュー表示
-      -#     #previews
-      -#       - if @babysitter.persisted?
-      -#         - @babysitter.babysitter_images.each_with_index do |image, i|
-      -#           = image_tag "#{image.name.to_s}", data: { index: i }, width: "100", height: '100', class: "ml-1"
-      -#     -# 追加
-      -#     = f.fields_for :babysitter_images do |image|
-      -#       .js-file_group{"data-index" => "#{image.index}"}
-      -#         .d-flex.justify-content-start
-      -#           = image.file_field :name, class: 'js-file form-control', required: true
-      -#           %span.js-remove.btn.btn-sm 削除
-      -#           -# .invalid-feedback
-      -#           -#   写真を1枚以上添付して下さい
-      -#       - if @babysitter.persisted?
-      -#         = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-      -#     - if @babysitter.persisted?
-      -#       .js-file_group{"data-index" => "#{@babysitter.babysitter_images.count}"}
-      -#         .d-flex.justify-content-start
-      -#           = file_field_tag :name, name: "babysitter[babysitter_images_attributes][#{@babysitter.babysitter_images.count}][name]", class: 'js-file form-control'
-      -#           .js-remove.btn.btn-sm 削除
+
+
+
+      .input-group
+        #image-box
+          -# プレビュー表示
+          #previews
+            - if @babysitter.persisted?
+              - @babysitter.babysitter_images.each_with_index do |image, i|
+                = image_tag "#{image.name.to_s}", data: { index: i }, width: "100", height: '100', class: "ml-1"
+          -# 追加
+          = f.fields_for :babysitter_images do |image|
+            .js-file_group{"data-index" => "#{image.index}"}
+              .d-flex.justify-content-start
+                = image.file_field :name, class: 'js-file form-control'
+                %span.js-remove.btn.btn-sm 削除
+                -# .invalid-feedback
+                -#   写真を1枚以上添付して下さい
+            - if @babysitter.persisted?
+              = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+          - if @babysitter.persisted?
+            .js-file_group{"data-index" => "#{@babysitter.babysitter_images.count}"}
+              .d-flex.justify-content-start
+                = file_field_tag :name, name: "babysitter[babysitter_images_attributes][#{@babysitter.babysitter_images.count}][name]", class: 'js-file form-control'
+                .js-remove.btn.btn-sm 削除
 
   .row
     .col-4
