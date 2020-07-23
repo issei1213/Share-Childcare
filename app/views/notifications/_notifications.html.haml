@@ -42,7 +42,7 @@
               %button.btn.btn-danger.btn-sm.btn-more-small{:disabled => "disabled", :type => "button"} 
                 必須
               = link_to order_chats_path(notification.order_id), class: "text-info" do
-                = "【承諾】チャットルームが開放されました。 (ID:#{notification.order_id})"
+                = "承認されたので、チャットルームが開放します。 (ID:#{notification.order_id})"
                 %i.fas.fa-greater-than
 
             - when "ordered-canceled"

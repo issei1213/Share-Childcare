@@ -67,14 +67,9 @@ class ::Order < ApplicationRecord
   end
 
   def save_notification_checked!(current_user)
-    notifications = Notification.where("visited_id = ? and order_id = ? and action = ? ", current_user.id, self.id, "commented")
+    notifications = Notification.where("visited_id = ? and order_id = ? and action = (? or ?) ", current_user.id, self.id, "commented", "ordered-approved")
     notifications.each do |notification|
-      # notification = Notification.where(visitor_id: current_user.id, chat_id: chat.id, action: "commented")
-      # if notification.visitor_id == notification.visited_id
-      #   notification.checked = true
-      # end
       notification.update(checked: true) if notification.valid?
-      # notification.save if notification.valid?
     end
   end
 end
