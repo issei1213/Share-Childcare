@@ -76,6 +76,9 @@ GEM
     bootstrap-honoka-rails (4.0.0.5)
       bootstrap (~> 4.0.0)
     builder (3.2.4)
+    bullet (6.1.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.1.1)
     capistrano (3.13.0)
       airbrussh (>= 1.0.0)
@@ -242,6 +245,8 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    polyamorous (2.3.2)
+      activerecord (>= 5.2.1)
     popper_js (1.16.0)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -289,6 +294,11 @@ GEM
       thor (>= 0.19.0, < 2.0)
     raindrops (0.19.1)
     rake (13.0.1)
+    ransack (2.3.2)
+      activerecord (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      i18n
+      polyamorous (= 2.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -363,6 +373,7 @@ GEM
     unicorn (5.4.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
+    uniform_notifier (1.13.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -386,6 +397,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.1.0)
   bootstrap-honoka-rails (~> 4.0.0)
+  bullet
   byebug
   capistrano
   capistrano-bundler
@@ -419,6 +431,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-flog
   rails-ujs
+  ransack
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
