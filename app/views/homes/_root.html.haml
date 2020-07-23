@@ -1,0 +1,70 @@
+- if user_signed_in?
+  .container
+    .row
+      .col-md-12
+        = render "shared/alert_message"
+    .row
+      .col-lg-12
+        .bs-component
+          = render "shared/root-nav-bar.html.haml"
+
+  .container
+    .row
+      .mb-3
+        = paginate @babysitters
+        = page_entries_info @babysitters
+    .row.text-center
+      - @babysitters.each do |babysitter|
+        .col-lg-3.col-md-6.mb-4
+          .card
+            .center-block
+              = image_tag babysitter.babysitter_images.first.name.to_s, class: "card-img-top", style: "height: 200px; weight: auto;"
+            .card-body
+              %h4.card-title= babysitter.user.nickname
+              %p.card-text= babysitter.introduction_title
+            %table.table
+              %thead
+              %tbody
+                %tr
+                  %th{scope: "col"} 時給
+                  %td= babysitter.money_hour
+                %tr
+                  %th{scope: "col"} 市区町村
+                  %td= "#{babysitter.user.prefecture}#{babysitter.user.city}"
+            .card-footer
+              - if current_user.parent.present?
+                = link_to "詳細", home_path(id: babysitter, parent_id: current_user.parent.id), class: "btn btn-primary"
+              - else
+                = link_to "保護者登録", new_parent_path, class: "btn btn-primary"
+
+- else
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    %button.navbar-toggler{aria: {controls: "navbarResponsive", expanded: "false", label: "Toggle navigation"}, data: {target: "#navbarResponsive", toggle: "collapse"}, type: "button"}
+      %span.navbar-toggler-icon
+    #navbarResponsive.collapse.navbar-collapse
+      .navbar-brand.js-scroll-trigger
+      %ul.navbar-nav
+        %li.nav-item
+          %img.d-block.ml-auto{alt: "", height: "40px", width: "200px", src: "../images/logo_clear.png", class: "img-fluid top-image"}
+        %li.nav-item
+          = link_to "新規登録", step1_signups_path, method: :GET, class: "nav-link js-scroll-trigger header-signup"
+        %li.nav-item
+          = link_to "ログイン", "#", class: "nav-link js-scroll-trigger header-login", data: {target: "#exampleModal", toggle: "modal"}
+
+
+  .bg-primary
+    .container
+      .row
+      -# ログインページ
+      = render "devise/sessions/new"
+      .row
+        .col-12
+          %header.bg-primary.text-white
+            .container.text-center
+              %h1 SHARE CHILDCARE ~育児支援サービス~
+              %p.lead お子様専用のベビーシッターサービスです。
+              %p.lead どうしてもお子様のお世話ができない時に、本サービスで依頼することができます。
+              .top-image-box.slick
+                %img{src: "/images/top-image1.jpg", class: "img-fluid top-image"}
+                %img{src: "/images/top-image2.jpg", class: "img-fluid top-image"}
+                %img{src: "/images/top-image3.jpg", class: "img-fluid top-image"}
