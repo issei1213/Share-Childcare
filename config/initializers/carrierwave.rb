@@ -19,6 +19,7 @@ CarrierWave.configure do |config|
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/share-childcare'
   end
 
-  config.fog_attributes = {cache_control: 'max-age=31536000', expires: 1.year.from_now.httpdate}
+  # config.fog_attributes = {cache_control: 'max-age=31536000', expires: 1.year.from_now.httpdate}
+  config.fog_attributes = {expires: 1.year.from_now.httpdate}
   config.fog_public = true
 end
