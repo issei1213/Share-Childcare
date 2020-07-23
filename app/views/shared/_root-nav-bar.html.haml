@@ -21,23 +21,9 @@
         = link_to notifications_path, class: "nav-link" do
           %i.fas.fa-bell
             お知らせ
-
-        -# 実装予定
-        -# - if unchecked_notifications.any?
-        -#   = link_to notifications_path, class: "nav-link font-weight-bold" do
-        -#     %span.fa-stack
-        -#       %i.fas.fa-bell.fa-stack-1x
-        -#       %i.fas.fa-circle.n-circle.fa-stack-1x
-        -#     お知らせ
-        -# - else
-        -#   = link_to notifications_path, class: "nav-link" do
-        -#     %i.fas.fa-bell
-        -#       お知らせ
-
       %li.nav-item
         = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link", data: { confirm: "ログアウトします。よろしいでしょうか。" }
 
-    -# 実装予定
-    -# %form.form-inline.my-2.my-lg-0
-    -#   %input.form-control.mr-sm-2{:placeholder => "Search", :type => "text"}/
-    -#   %button.btn.btn-secondary.my-2.my-sm-0{:type => "submit"} 検索
+    %form.form-inline.my-2.my-lg-0
+      %input.form-control.mr-sm-2{:placeholder => "Search", :type => "text"}/
+      %button.btn.btn-secondary.my-2.my-sm-0{:type => "submit"} 検索
