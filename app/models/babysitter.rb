@@ -33,7 +33,7 @@
 class Babysitter < ApplicationRecord
   belongs_to :user
   has_many :babysitter_images
-  accepts_nested_attributes_for :babysitter_images
+  accepts_nested_attributes_for :babysitter_images, allow_destroy: true
   has_many :orders
 
   enum experience_year:{ less_than_one_year: 0, one_to_less_than_two: 1, two_to_less_than_three: 2, three_to_less_than_four: 3, four_to_less_than_five: 4, over_five_year: 5 }

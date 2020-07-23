@@ -1,13 +1,11 @@
 $(function(){
   // 画像用のinputを生成する関数
   const buildFileField = (num)=> {
-    const html = `<div class="d-flex justify-content-start">
-                    <div class="js-file_group" data-index="${num}">
-                      <input class="js-file form-control" required="required" type="file"
-                      name="babysitter[babysitter_images_attributes][${num}][name]"
-                      id="babysitter_babysitter_images_attributes_${num}_name">
+    const html = `<div class="js-file_group" data-index="${num}">
+                    <div class="d-flex justify-content-start">
+                      <input class="js-file form-control" type="file" name="babysitter[babysitter_images_attributes][${num}][name]" id="babysitter_babysitter_images_attributes_${num}_name">
+                      <span class="js-remove btn btn-outline-warning ml-3">削除</span>
                     </div>
-                    <span class="js-remove btn btn-sm">削除</span>
                   </div>`;
     return html;
   }
@@ -23,7 +21,7 @@ $(function(){
   // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
-  // $('.hidden-destroy').hide();
+  $('.hidden-destroy').hide();
 
 
   $('#image-box').on('change', '.js-file', function(e) {

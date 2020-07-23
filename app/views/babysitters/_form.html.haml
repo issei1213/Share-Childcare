@@ -110,17 +110,19 @@
             .js-file_group{"data-index" => "#{image.index}"}
               .d-flex.justify-content-start
                 = image.file_field :name, class: 'js-file form-control'
-                %span.js-remove.btn.btn-sm 削除
+                %span.js-remove.btn.btn-outline-warning.ml-3 削除
                 -# .invalid-feedback
                 -#   写真を1枚以上添付して下さい
             - if @babysitter.persisted?
               = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+
+          -# 編集時、画像のレコードがあればフォームを追加する
           - if @babysitter.persisted?
             .js-file_group{"data-index" => "#{@babysitter.babysitter_images.count}"}
               .d-flex.justify-content-start
                 = file_field_tag :name, name: "babysitter[babysitter_images_attributes][#{@babysitter.babysitter_images.count}][name]", class: 'js-file form-control'
-                .js-remove.btn.btn-sm 削除
+                %span.js-remove.btn.btn-outline-warning.ml-3 削除
 
   .row
     .col-4
-      = f.submit "登録", class: "btn btn-primary pull-right"
+      = f.submit "登録", class: "btn btn-primary pull-right mt-5"
