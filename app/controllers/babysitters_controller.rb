@@ -22,6 +22,7 @@ class BabysittersController < ApplicationController
   end
 
   def update
+    # binding.pry
     @babysitter = Babysitter.find(params[:id])
     if @babysitter.update(babysitter_params)
       redirect_to babysitter_path, notice: "変更しました。"
@@ -41,7 +42,7 @@ class BabysittersController < ApplicationController
   end
 
   def babysitter_find
-    @babysitter = Babysitter.find(params[:id])
+    @babysitter = Babysitter.find(current_user.babysitter.id)
   end
 
   def move_to_show
