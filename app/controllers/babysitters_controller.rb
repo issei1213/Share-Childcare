@@ -22,7 +22,6 @@ class BabysittersController < ApplicationController
   end
 
   def update
-    # binding.pry
     @babysitter = Babysitter.find(params[:id])
     if @babysitter.update(babysitter_params)
       redirect_to babysitter_path, notice: "変更しました。"
