@@ -7,11 +7,11 @@ class OrdersController < ApplicationController
 
   def index
     if current_user.parent.present? && current_user.babysitter.present?
-      @orders_parent = Order.where(["parent_id = ?", current_user.parent.id]).page(params[:page]).per(10)
-      @orders_babysitter = Order.where(["babysitter_id = ?", current_user.babysitter.id]).page(params[:page]).per(10)
+      @orders_parent = Order.where(["parent_id = ?", current_user.parent.id]).includes(:babysitter).page(params[:page]).per(10)
+      @orders_babysitter = Order.where(["babysitter_id = ?", current_user.babysitter.id]).includes(:parent).page(params[:page]).per(10)
     else
-      @orders_parent = Order.where(["created_at = ?", "2000-00-00 00:00:00"]).page(params[:page]).per(10)
-      @orders_babysitter = Order.where(["created_at = ?", "2000-00-00 00:00:00"]).page(params[:page]).per(10)
+      @orders_parent = Order.where(["created_at = ?", "2000-00-00 00:00:00"]).includes(:babysitter).page(params[:page]).per(10)
+      @orders_babysitter = Order.where(["created_at = ?", "2000-00-00 00:00:00"]).includes(:parent).page(params[:page]).per(10)
     end
   end
 

@@ -22,9 +22,9 @@ class ChatsController < ApplicationController
 
   def list
     if current_user.parent.present? && current_user.babysitter.present?
-      @orders = Order.where(["(parent_id = ? or babysitter_id = ?) and status = ?", current_user.parent.id, current_user.babysitter.id, 2]).page(params[:page]).per(15)
+      @orders = Order.where(["(parent_id = ? or babysitter_id = ?) and status = ?", current_user.parent.id, current_user.babysitter.id, 2]).includes([chats: :user, babysitter: :user, parent: :user]).page(params[:page]).per(15)
     else
-      @orders = Order.where(["created_at = ?", "2000-00-00 00:00:00"]).page(params[:page]).per(15)
+      @orders = Order.where(["created_at = ?", "2000-00-00 00:00:00"]).includes(:babysitter, :user, :parent, :chats).page(params[:page]).per(15)
     end
   end
 
