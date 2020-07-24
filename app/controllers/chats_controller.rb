@@ -1,6 +1,7 @@
 class ChatsController < ApplicationController
   def index
     @order = Order.find(params[:order_id])
+    # binding.pry
     @chats = @order.chats.includes(:user)
     @chat = @order.chats.new
     @order.save_notification_checked!(current_user)
