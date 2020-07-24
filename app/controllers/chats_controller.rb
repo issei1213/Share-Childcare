@@ -23,7 +23,7 @@ class ChatsController < ApplicationController
   def list
     if current_user.parent.present? && current_user.babysitter.present?
       @orders = Order.where(["(parent_id = ? or babysitter_id = ?) and status = ?", current_user.parent.id, current_user.babysitter.id, 2]).includes([chats: :user, babysitter: :user, parent: :user]).page(params[:page]).per(15)
-    elsif current.user.parent.present?
+    elsif current_user.parent.present?
       @orders = Order.where(["parent_id = ? and status = ?", current_user.parent.id, 2]).includes([chats: :user, babysitter: :user, parent: :user]).page(params[:page]).per(15)
     elsif current_user.babysitter.present?
       @orders = Order.where(["babysitter_id = ? and status = ?", current_user.babysitter.id, 2]).includes([chats: :user, babysitter: :user, parent: :user]).page(params[:page]).per(15)
