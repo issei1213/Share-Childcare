@@ -1,7 +1,6 @@
 class ChatsController < ApplicationController
   def index
     @order = Order.find(params[:order_id])
-    # binding.pry
     @chats = @order.chats.includes(:user)
     @chat = @order.chats.new
     @order.save_notification_checked!(current_user)
@@ -24,8 +23,12 @@ class ChatsController < ApplicationController
   def list
     if current_user.parent.present? && current_user.babysitter.present?
       @orders = Order.where(["(parent_id = ? or babysitter_id = ?) and status = ?", current_user.parent.id, current_user.babysitter.id, 2]).includes([chats: :user, babysitter: :user, parent: :user]).page(params[:page]).per(15)
+    elsif current.parent.present?
+      @orders = Order.where(["(parent_id = ? and status = ?", current_user.parent.id, 2]).includes([chats: :user, babysitter: :user, parent: :user]).page(params[:page]).per(15)
+    elsif current_user.babysitter.present?
+      @orders = Order.where(["babysitter_id = ? and status = ?", current_user.babysitter.id, 2]).includes([chats: :user, babysitter: :user, parent: :user]).page(params[:page]).per(15)
     else
-      @orders = Order.where(["created_at = ?", "2000-00-00 00:00:00"]).includes(:babysitter, :user, :parent, :chats).page(params[:page]).per(15)
+      @orders = Order.where(["created_at = ?", "2000-00-00 00:00:00"]).includes([chats: :user, babysitter: :user, parent: :user]).page(params[:page]).per(15)
     end
   end
 
