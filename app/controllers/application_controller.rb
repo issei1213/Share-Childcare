@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     end
 
     def store_user_location!
-      store_location_for(:user, root_path)
+      store_location_for(:user, request.fullpath)
     end
 
     def after_sign_in_path_for(resource_or_scope)

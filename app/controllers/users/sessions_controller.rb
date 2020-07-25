@@ -8,16 +8,6 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
-
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
-
   # ログイン失敗後は def failed に飛ぶように変更
   def create
     auth_options = { scope: resource_name, recall: "#{controller_path}#failed" }
@@ -27,6 +17,11 @@ class Users::SessionsController < Devise::SessionsController
     yield resource if block_given?
     respond_with resource, location: after_sign_in_path_for(resource)
   end
+
+  # DELETE /resource/sign_out
+  # def destroy
+  #   super
+  # end
 
   # ログイン失敗の時は直前のURLにリダイレクトする
   def failed
