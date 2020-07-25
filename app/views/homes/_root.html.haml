@@ -36,6 +36,7 @@
                 = link_to "詳細", home_path(id: babysitter, parent_id: current_user.parent.id), class: "btn btn-primary"
               - else
                 = link_to "保護者登録", new_parent_path, class: "btn btn-primary"
+                - flash[:notice] = "保護者情報の登録してください"
 
 - else
   %nav.navbar.navbar-expand-lg.navbar-light.bg-light
@@ -55,8 +56,42 @@
   .bg-primary
     .container
       .row
-      -# ログインページ
-      = render "devise/sessions/new"
+        .col-12
+          = render "shared/alert_message"
+          
+      .row
+        -# ログインモーダル
+        #exampleModal.modal.fade.mt-5{aria: {labelledby: "exampleModalLabel"}, role: "dialog", tabindex: "-1"}
+          .modal-dialog{role: "document"}
+            .modal-content
+              .modal-header
+                %h5#exampleModalLabel.modal-title ログイン
+                %button.close{aria: {label: "閉じる"},data: {dismiss: "modal"}, type: "button"}
+                  %span{aria: {hidden: "true"}} ×
+              .modal-body
+                = form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-signin") do |f|
+                  .form-label-group
+                    = f.label :email, "メールアドレス"
+                    = f.email_field :email, autofocus: true, placeholder: "メールアドレスを入力", required: false, class: "form-control", id: "inputEmail"
+                  %br
+                  .form-label-group
+                    = f.label :password, "パスワード"
+                    = f.password_field :password, placeholder: "パスワードを入力", required: "", class: "form-control", id: "inputPassword"
+                    = f.hidden_field :url, value: request.fullpath
+                  .custom-control.custom-checkbox.mb-3
+                    %input#customCheck1.custom-control-input{type: "checkbox"}/
+                    %label.custom-control-label{for: "customCheck1"} パスワードを保存
+                  .d-flex.justify-content-end
+                    %button.btn.btn-secondary.mr-2{data: {dismiss: "modal"}, type: "button"} 閉じる
+                    %button.btn.btn-primary{type: "submit"} ログイン
+              .modal-footer
+                %button.btn.btn-google.btn-block.text-white{type: "submit"}
+                  %i.fab.fa-google.mr-2.text-white
+                  Googleでログイン
+                %button.btn.btn-facebook.btn-block.text-white.mt-0{type: "submit"}
+                  %i.fab.fa-facebook-f.mr-2.text-white
+                  Facebookでログイン
+
       .row
         .col-12
           %header.bg-primary.text-white
