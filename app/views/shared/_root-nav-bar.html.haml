@@ -25,7 +25,7 @@
         = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link", data: { confirm: "ログアウトします。よろしいでしょうか。" }
 
 
-    - if controller.controller_name == "homes" && controller.action_name == "index"
+    - if controller.controller_name == "homes" && (controller.action_name == "index" or controller.action_name == "search")
       = search_form_for @q, url: search_homes_path, class: "form-inline my-2 my-lg-0" do |f|
         = f.collection_select :user_prefecture_eq, @user, :prefecture, :prefecture, { include_blank: "指定なし" }, { class: "form-control mr-sm-2" }
         = f.submit "検索", class: "btn btn-secondary my-2 my-sm-0"
