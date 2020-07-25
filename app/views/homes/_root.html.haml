@@ -77,7 +77,7 @@
                   .form-label-group
                     = f.label :password, "パスワード"
                     = f.password_field :password, placeholder: "パスワードを入力", required: "", class: "form-control", id: "inputPassword"
-                    = f.hidden_field :url, value: request.fullpath
+                    = f.hidden_field :url, value: root_path
                   .custom-control.custom-checkbox.mb-3
                     %input#customCheck1.custom-control-input{type: "checkbox"}/
                     %label.custom-control-label{for: "customCheck1"} パスワードを保存
