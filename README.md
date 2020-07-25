@@ -1,5 +1,5 @@
 ## アプリ名
-  Share Childcare　※現在開発中
+  Share Childcare
 
 ## アプリ概要
   育児専用のマッチングアプリケーション
