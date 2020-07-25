@@ -3,6 +3,21 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  # GET /resource/sign_in
+  # def new
+  #   super
+  # end
+
+  # POST /resource/sign_in
+  # def create
+  #   super
+  # end
+
+  # DELETE /resource/sign_out
+  # def destroy
+  #   super
+  # end
+
   # ログイン失敗後は def failed に飛ぶように変更
   def create
     auth_options = { scope: resource_name, recall: "#{controller_path}#failed" }
@@ -18,22 +33,6 @@ class Users::SessionsController < Devise::SessionsController
     flash[:error] = "メールアドレスまたはパスワードが違います。"
     redirect_to params[:user][:url]
   end
-
-
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
-
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
-
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
 
   # protected
 
