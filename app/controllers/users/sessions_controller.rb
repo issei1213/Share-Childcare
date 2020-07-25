@@ -18,16 +18,17 @@ class Users::SessionsController < Devise::SessionsController
     respond_with resource, location: after_sign_in_path_for(resource)
   end
 
+    # ログイン失敗の時は直前のURLにリダイレクトする
+    def failed
+      flash[:error] = "メールアドレスまたはパスワードが違います。"
+      redirect_to params[:user][:url]
+    end
+  
+
   # DELETE /resource/sign_out
   # def destroy
   #   super
   # end
-
-  # ログイン失敗の時は直前のURLにリダイレクトする
-  def failed
-    flash[:error] = "メールアドレスまたはパスワードが違います。"
-    redirect_to params[:user][:url]
-  end
 
   # protected
 
