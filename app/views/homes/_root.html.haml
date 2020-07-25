@@ -36,6 +36,7 @@
                 = link_to "詳細", home_path(id: babysitter, parent_id: current_user.parent.id), class: "btn btn-primary"
               - else
                 = link_to "保護者登録", new_parent_path, class: "btn btn-primary"
+                - flash[:notice] = "保護者情報の登録してください"
 
 - else
   %nav.navbar.navbar-expand-lg.navbar-light.bg-light
