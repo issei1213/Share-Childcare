@@ -28,4 +28,5 @@ Rails.application.routes.draw do
       resources :chats, only: :index, defaults: { format: "json" }
     end
   end
+  get "chatslist", to: "chats#list"
 end
