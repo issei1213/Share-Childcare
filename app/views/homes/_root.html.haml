@@ -69,21 +69,7 @@
                 %button.close{aria: {label: "閉じる"},data: {dismiss: "modal"}, type: "button"}
                   %span{aria: {hidden: "true"}} ×
               .modal-body
-                = form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-signin") do |f|
-                  .form-label-group
-                    = f.label :email, "メールアドレス"
-                    = f.email_field :email, autofocus: true, placeholder: "メールアドレスを入力", required: false, class: "form-control", id: "inputEmail"
-                  %br
-                  .form-label-group
-                    = f.label :password, "パスワード"
-                    = f.password_field :password, placeholder: "パスワードを入力", required: "", class: "form-control", id: "inputPassword"
-                    = f.hidden_field :url, value: request.fullpath
-                  .custom-control.custom-checkbox.mb-3
-                    %input#customCheck1.custom-control-input{type: "checkbox"}/
-                    %label.custom-control-label{for: "customCheck1"} パスワードを保存
-                  .d-flex.justify-content-end
-                    %button.btn.btn-secondary.mr-2{data: {dismiss: "modal"}, type: "button"} 閉じる
-                    %button.btn.btn-primary{type: "submit"} ログイン
+                = render "devise/sessions/new"
               .modal-footer
                 %button.btn.btn-google.btn-block.text-white{type: "submit"}
                   %i.fab.fa-google.mr-2.text-white
@@ -91,6 +77,13 @@
                 %button.btn.btn-facebook.btn-block.text-white.mt-0{type: "submit"}
                   %i.fab.fa-facebook-f.mr-2.text-white
                   Facebookでログイン
+
+
+
+
+
+
+
 
       .row
         .col-12
