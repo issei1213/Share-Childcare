@@ -31,11 +31,6 @@
 |---|---|
 |![top-before_login](https://user-images.githubusercontent.com/59830008/88449876-9096de00-ce85-11ea-9a7b-0f02e2ddd967.jpg)|![top-after_login](https://user-images.githubusercontent.com/59830008/88449897-aefcd980-ce85-11ea-98f6-a37da0953375.jpg)|
 
-![top-before_login](https://user-images.githubusercontent.com/59830008/88449876-9096de00-ce85-11ea-9a7b-0f02e2ddd967.jpg)
-![top-after_login](https://user-images.githubusercontent.com/59830008/88449897-aefcd980-ce85-11ea-98f6-a37da0953375.jpg)
-
-
-
 ## 投稿画面
 
 
