@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions'}
+  # 実装予定
+  # devise_for :users, controllers: { sessions: 'users/sessions'}
+  devise_for :users
   root to: 'homes#index'
   resources :homes do
     collection do

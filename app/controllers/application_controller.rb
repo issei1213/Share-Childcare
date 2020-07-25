@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # 実装予定
   # before_action :store_user_location!, if: :storable_location?
   # before_action :authenticate_user!
 
