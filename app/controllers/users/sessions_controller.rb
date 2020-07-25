@@ -7,7 +7,8 @@ class Users::SessionsController < Devise::SessionsController
   # def new
   #   super
   # end
-
+  
+  # POST /resource/sign_in
   # ログイン失敗後は def failed に飛ぶように変更
   def create
     auth_options = { scope: resource_name, recall: "#{controller_path}#failed" }

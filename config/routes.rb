@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions'}
   root to: 'homes#index'
+  resources :homes do
+    collection do
+      get "search", to: "homes#search"
+    end
+  end
   resources :signups do
     collection do
       get 'step1', to: 'signups#step1'
@@ -12,11 +17,6 @@ Rails.application.routes.draw do
   end
   resources :babysitters
   resources :parents
-  resources :homes do
-    collection do
-      get "search", to: "homes#search"
-    end
-  end
   resources :notifications, only: :index
   resources :orders do
     member do
