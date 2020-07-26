@@ -29,15 +29,23 @@
 ## トップ画面
 |ログイン前|ログイン後|
 |---|---|
-|![top-before_login](https://user-images.githubusercontent.com/59830008/88449876-9096de00-ce85-11ea-9a7b-0f02e2ddd967.jpg)|![top-after_login](https://user-images.githubusercontent.com/59830008/88449897-aefcd980-ce85-11ea-98f6-a37da0953375.jpg)|
+|![localhost_3000_](https://user-images.githubusercontent.com/59830008/88450617-326cf980-ce8b-11ea-8719-747b96800b1f.png)|![share-childcare aws-and-infra online_ (1)](https://user-images.githubusercontent.com/59830008/88450444-e9687580-ce89-11ea-8976-5b022e58b188.png)|
 
-## 投稿画面
+## ユーザー新規登録画面(ウィザード形式)
+|step1|step2|確認画面|
+|---|---|---|
+|![localhost_3000_signups_step1 (1)](https://user-images.githubusercontent.com/59830008/88450711-f25a4680-ce8b-11ea-9f63-b47ce5f876ab.png)|![localhost_3000_signups_step2](https://user-images.githubusercontent.com/59830008/88450714-f9815480-ce8b-11ea-9501-e256aea73be5.png)|![localhost_3000_signups_new](https://user-images.githubusercontent.com/59830008/88450717-000fcc00-ce8c-11ea-8b2c-3b9285a1d29b.png)|
 
+## マイメニュー
+|お知らせ|依頼リスト|チャットリスト|
+|---|---|---|
+|![localhost_3000_notifications](https://user-images.githubusercontent.com/59830008/88450833-ef138a80-ce8c-11ea-8304-800191006489.png)|![localhost_3000_orders](https://user-images.githubusercontent.com/59830008/88450841-f89cf280-ce8c-11ea-9172-02caa3ccb55d.png)|![localhost_3000_chatslist](https://user-images.githubusercontent.com/59830008/88450848-00f52d80-ce8d-11ea-9aac-5e9c7847a95b.png)|
 
-## 編集画面
+## 設定メニュー
+|共通情報|保護者情報|ベビーシッター情報|
+|---|---|---|
+|![localhost_3000_signups_1](https://user-images.githubusercontent.com/59830008/88472591-6f022900-cf4f-11ea-994e-ea40b761fb89.png)|![localhost_3000_parents_2_user_id=1](https://user-images.githubusercontent.com/59830008/88472606-9e189a80-cf4f-11ea-8416-81aa21326a15.png)|![localhost_3000_babysitters_1](https://user-images.githubusercontent.com/59830008/88472633-f6e83300-cf4f-11ea-94d0-0174288c5a7b.png)|
 
-
-## ユーザ登録画面 -->
 
 
 ## 工夫したポイント
