@@ -88,6 +88,5 @@ $(function () {
         text: hour_down[i].txt
       }).appendTo('#order-form-hour-down');
     }
-    console.log(hour_down)
   });
 });
