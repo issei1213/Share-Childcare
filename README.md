@@ -46,7 +46,16 @@
 |---|---|---|
 |![localhost_3000_signups_1](https://user-images.githubusercontent.com/59830008/88472591-6f022900-cf4f-11ea-994e-ea40b761fb89.png)|![localhost_3000_parents_2_user_id=1](https://user-images.githubusercontent.com/59830008/88472606-9e189a80-cf4f-11ea-8416-81aa21326a15.png)|![localhost_3000_babysitters_1](https://user-images.githubusercontent.com/59830008/88472633-f6e83300-cf4f-11ea-94d0-0174288c5a7b.png)|
 
+## 依頼画面
+|依頼フォーム|依頼詳細|
+|---|---|
+|![localhost_3000_homes_7_parent_id=2](https://user-images.githubusercontent.com/59830008/88473205-2a2dc080-cf56-11ea-91db-91aa35cb6c03.png)|![localhost_3000_orders (1)](https://user-images.githubusercontent.com/59830008/88473213-387bdc80-cf56-11ea-90d1-d87be2f53bf8.png)|
 
+
+## チャットルーム
+|チャットルーム|
+|---|
+|![share-childcare aws-and-infra online_orders_1_chats](https://user-images.githubusercontent.com/59830008/88474601-205e8a00-cf63-11ea-8a11-0c7564d6c535.png)|
 
 ## 工夫したポイント
   - CI/CDツール使用し、自動テスト・デプロイ実施
@@ -65,13 +74,9 @@
   - 開発環境：Docker
   - 本番環境：AWS
 
-<!-- ## 課題や今後実装したい機能
-  - 画像投稿機能
-  - インクリメンタルサーチのプルダウンで場合分け
-  - タグ登録時のplugin機能
-  - いいね機能のデザイン変更・非同期通信
-  - 投稿時の5W1H入力
-  - コメント機能（非同期通信） -->
+## 課題や今後実装したい機能
+  - 評価機能
+  - 外部APIを使用してログイン機能
 
 ## 使用技術詳細
 ![使用技術詳細](https://user-images.githubusercontent.com/59830008/87224046-f6329700-c3bc-11ea-85cf-f89120052812.jpg)
