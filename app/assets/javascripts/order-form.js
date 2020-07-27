@@ -38,7 +38,7 @@ $(function () {
     $('#order-form-date').empty();
     // 日が入るセレクトボックスにデフォルト値の'--'を入れる
     $("<option>", {
-      text: '--'
+      text: ''
     }).appendTo('#order-form-date');
     // ２月の日にち、すなわちmonths[1]を28にセットし直す
     months[1] = 28;
