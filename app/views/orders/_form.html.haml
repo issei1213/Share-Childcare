@@ -21,30 +21,32 @@
         .invalid-feedback
           依頼時間を選択してください
   .row
-    .col-md-5.mt-3
-      = f.label "希望時給"
-      .input-group
-        - case controller.action_name
-        - when "show"
-          = f.text_field :money_hour, class: "form-control", value: current_user.parent.order_money_hour, required: true
-        - when "edit"
-          = f.text_field :money_hour, class: "form-control", required: true
-        .input-group-prepend
-          %span.input-group-text 円
-        .invalid-feedback
-          金額を選択してください
-    .col-md-5.mt-3
-      = f.label "希望オプション金額"
-      .input-group
-        - case controller.action_name
-        - when "show"
-          = f.text_field :money_option, class: "form-control", value: current_user.parent.order_money_option, required: true
-        - when "edit"
-          = f.text_field :money_option, class: "form-control", required: true
-        .input-group-prepend
-          %span.input-group-text 円                
-        .invalid-feedback
-          金額を選択してください
+
+  -# .row
+  -#   .col-md-5.mt-3
+  -#     = f.label "希望時給"
+  -#     .input-group
+  -#       - case controller.action_name
+  -#       - when "show"
+  -#         = f.text_field :money_hour, class: "form-control", value: current_user.parent.order_money_hour, required: true
+  -#       - when "edit"
+  -#         = f.text_field :money_hour, class: "form-control", required: true
+  -#       .input-group-prepend
+  -#         %span.input-group-text 円
+  -#       .invalid-feedback
+  -#         金額を選択してください
+  -#   .col-md-5.mt-3
+  -#     = f.label "希望オプション金額"
+  -#     .input-group
+  -#       - case controller.action_name
+  -#       - when "show"
+  -#         = f.text_field :money_option, class: "form-control", value: current_user.parent.order_money_option, required: true
+  -#       - when "edit"
+  -#         = f.text_field :money_option, class: "form-control", required: true
+  -#       .input-group-prepend
+  -#         %span.input-group-text 円                
+  -#       .invalid-feedback
+  -#         金額を選択してください
   .row
     .col.mt-3
       = f.label "補足", class: "bmd-label-floating"
