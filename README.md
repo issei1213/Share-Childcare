@@ -86,8 +86,4 @@
 ## システム構成図
 ![ShareChildren_システム構成図 (1)](https://user-images.githubusercontent.com/59830008/87224229-91783c00-c3be-11ea-8aed-e5112093fbd5.jpg)
 
-### 補足
- - ELB：Webサーバーの負荷分散・ヘルチェックを行う
- - RDS：マルチAZの同期レプリケーションを使用
- - CircleCIはマージの時のみ実施する
 
