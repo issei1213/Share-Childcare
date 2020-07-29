@@ -92,6 +92,6 @@ $(function () {
 
     // 合計金額の計算を行う
     $("table tr").find(".order-form-money")
-    debugger
+
   });
 });
