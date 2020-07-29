@@ -88,5 +88,10 @@ $(function () {
         text: hour_down[i].txt
       }).appendTo('#order-form-hour-down');
     }
+
+
+    // 合計金額の計算を行う
+    $("table tr").find(".order-form-money")
+    debugger
   });
 });
