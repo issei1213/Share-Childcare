@@ -91,9 +91,9 @@ $(function () {
 
 
     // 合計金額の計算を行う
-    var option_money = $("#option_ money").text();
+    var hourly_pay = $("#hourly_pay").text();
     var option_pay = $("#option_pay").text();
-    var fee_pay = $("#option_ money").text();
+    var fee_pay = $("#fee_pay").text();
 
     debugger
 
