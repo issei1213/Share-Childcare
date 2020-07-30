@@ -91,7 +91,11 @@ $(function () {
 
 
     // 合計金額の計算を行う
-    $("table tr").find(".order-form-money")
+    var option_money = $("#option_ money").text();
+    var option_pay = $("#option_pay").text();
+    var fee_pay = $("#option_ money").text();
+
+    debugger
 
   });
 });
