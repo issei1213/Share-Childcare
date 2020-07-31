@@ -95,7 +95,5 @@ $(function () {
     var option_pay = $("#option_pay").text();
     var fee_pay = $("#fee_pay").text();
 
-    debugger
-
   });
 });
